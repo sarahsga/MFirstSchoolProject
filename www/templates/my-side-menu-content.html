@@ -6,12 +6,12 @@
 
 <div class="tabs-striped tabs-top">
     <div class="tabs" style="top:88px">
-        <a class="tab-item" title=""
-           ng-click="tabs_daily = true" ng-class="{'active': tabs_daily == true}"  ui-sref="main.tabs.daily" >
+        <a class="tab-item"
+           ng-click="tabs_daily = true; getJSON()" ng-class="{'active': tabs_daily == true}"  ui-sref="main.tabs.daily" >
             Daily Tips
         </a>
-        <a class="tab-item" title="Chat"
-           ng-click="tabs_daily = false" ng-class="{'active': tabs_daily == false}" ui-sref="main.tabs.weekly">
+        <a class="tab-item"
+           ng-click="tabs_daily = false; getJSON()" ng-class="{'active': tabs_daily == false}" ui-sref="main.tabs.weekly">
             Weekly Picks
         </a>
     </div>
