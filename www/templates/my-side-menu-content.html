@@ -1,0 +1,22 @@
+<ion-header-bar class="bar" style="top:44px; background: #A6A6A6" ng-click="chooseType()">
+    <div class="title" style="color:black; text-align: center">
+            dsjfsdk
+    </div>
+</ion-header-bar>
+
+<div class="tabs-striped tabs-top">
+    <div class="tabs" style="top:88px">
+        <a class="tab-item" title=""
+           ng-click="tabs_daily = true" ng-class="{'active': tabs_daily == true}"  ui-sref="main.tabs.daily" >
+            Daily Tips
+        </a>
+        <a class="tab-item" title="Chat"
+           ng-click="tabs_daily = false" ng-class="{'active': tabs_daily == false}" ui-sref="main.tabs.weekly">
+            Weekly Picks
+        </a>
+    </div>
+
+    <div style="margin-top:144px">
+        <my-tabs-content></my-tabs-content>
+    </div>
+</div>

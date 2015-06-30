@@ -8,20 +8,14 @@
             </div>
             <h1 class="title">Title!</h1>
             <div class="buttons">
-                <button class="button button-icon icon ion-android-share-alt"></button>
+                <button class="button button-icon icon ion-android-share-alt"
+                        onclick="window.plugins.socialsharing.share('Message only')"></button>
             </div>
         </ion-header-bar>
 
-      <!--  <ion-nav-bar class="bar-dark nav-title-slide-ios7" align-title="left" >
-            <ion-nav-buttons>
-                <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-                <button class="button button-icon icon ion-android-share-alt" style="float:right"></button>
-            </ion-nav-buttons>
-        </ion-nav-bar>-->
+        <my-side-menu-content></my-side-menu-content>
 
-        <ion-nav-view name="main" class="has-header"></ion-nav-view>
     </ion-side-menu-content>
-
 
     <ion-side-menu side="left" expose-aside-when="large">
         <ion-content>
