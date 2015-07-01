@@ -15,22 +15,17 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
             template: 'Loading...'
         });
 
-        $http.get('http://cgtipster.com/api/InsertDataUsingSP.php').
-            success(function(data, status, headers, config) {
-                $ionicLoading.hide();
-                alert("success")
-                alert(JSON.stringify(data))
-                alert(JSON.stringify(status))
-                alert(JSON.stringify(headers))
-                alert(JSON.stringify(config))
-            }).
-            error(function(data, status, headers, config) {
-                $ionicLoading.hide();
-                alert("error")
-                alert(JSON.stringify(data))
-                alert(JSON.stringify(status))
-                alert(JSON.stringify(headers))
-                alert(JSON.stringify(config))
-            });
+        $.ajax({
+            url: 'http://cgtipster.com/api2/week4starhighscoring.php',
+            dataType:'jsonp',
+            success:function(data){
+                console.log(data)
+            },
+            fail: function(err)
+            {
+                console.log(err.message);
+            }
+        });
     }
+
 });
