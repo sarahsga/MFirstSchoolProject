@@ -1,0 +1,19 @@
+{
+  "stock":[
+    {
+      "HomeTeam":"Nasarawa United",
+      "AwayTeam":"Taraba",
+      "League":"Nigeria - Professional Football League",
+      "Date":"Wednesday 01 Jul 2015 17:00",
+      "KickOff":"17:00:00"
+    },
+    {
+      "HomeTeam":"Abia Warriors",
+      "AwayTeam":"Bayelsa United",
+      "League":"Nigeria - Professional Football League",
+      "Date":"Wednesday 01 Jul 2015 17:00",
+      "KickOff":"17:00:00"
+    }
+  ],
+  "success":1
+}

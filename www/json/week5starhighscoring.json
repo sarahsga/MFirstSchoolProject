@@ -1,0 +1,19 @@
+{
+  "stock":[
+    {
+      "HomeTeam":"Djurgaarden",
+      "AwayTeam":"Oerebro",
+      "League":"Sweden - Allsvenskan",
+      "Date":"Saturday 04 Jul 2015 16:00",
+      "KickOff":"16:00:00"
+    },
+    {
+      "HomeTeam":"Nomme JK Kalju",
+      "AwayTeam":"Paide Linnameeskond",
+      "League":"Estonia - Meistriliiga",
+      "Date":"Monday 06 Jul 2015 18:00",
+      "KickOff":"18:00:00"
+    }
+  ],
+  "success":1
+}

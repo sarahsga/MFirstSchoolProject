@@ -1,22 +1,103 @@
-<ion-header-bar class="bar" style="top:44px; background: #A6A6A6" ng-click="chooseType()">
-    <div class="title" style="color:black; text-align: center">
-            dsjfsdk
-    </div>
-</ion-header-bar>
+<div ng-if="sideMenuOptions['Football Tips']">
 
-<div class="tabs-striped tabs-top">
-    <div class="tabs" style="top:88px">
-        <a class="tab-item"
-           ng-click="tabs_daily = true; getJSON()" ng-class="{'active': tabs_daily == true}"  ui-sref="main.tabs.daily" >
-            Daily Tips
-        </a>
-        <a class="tab-item"
-           ng-click="tabs_daily = false; getJSON()" ng-class="{'active': tabs_daily == false}" ui-sref="main.tabs.weekly">
-            Weekly Picks
-        </a>
+   <ion-pane class="has-header">
+       <div class="tabs-striped tabs-top">
+           <div class="tabs myTabs">
+               <a class="tab-item"
+                  ng-click="tabs_daily = true; urlArgs.time = 'Daily'; getJson()"
+                  ng-class="{'active': tabs_daily == true}">
+                   Daily Tips
+               </a>
+               <a class="tab-item"
+                  ng-click="tabs_daily = false; urlArgs.time = 'Weekly'; getJson()"
+                  ng-class="{'active': tabs_daily == false}">
+                   Weekly Picks
+               </a>
+           </div>
+
+           <div style="margin-top:96px">
+               <my-tabs-content></my-tabs-content>
+           </div>
+       </div>
+   </ion-pane>
+
+    <div class="bar bar-footer mySelect" ng-click="chooseType()">
+        <select ng-model="urlArgs.winType">
+            <option selected value="Home Wins">Home Wins
+                <span class="badge badge-assertive" ng-show="tabs_daily">{{badges.HomeTodayTotal}}</span>
+                <span class="badge badge-assertive" ng-hide="tabs_daily">{{badges.HomeTotal}}</span>
+            </option>
+            <option value="Away Wins">Away Wins
+                <span class="badge badge-assertive" ng-show="tabs_daily">{{badges.AwayTodayTotal}}</span>
+                <span class="badge badge-assertive" ng-hide="tabs_daily">{{badges.AwayTotal}}</span>
+            </option>
+            <option value="High Scoring">High Scoring
+                <span class="badge badge-assertive" ng-show="tabs_daily">{{badges.HighTodayTotal}}</span>
+                <span class="badge badge-assertive" ng-hide="tabs_daily">{{badges.HighTotal}}</span>
+            </option>
+            <option value="Low Scoring">Low Scoring
+                <span class="badge badge-assertive" ng-show="tabs_daily">{{badges.LowTodayTotal}}</span>
+                <span class="badge badge-assertive" ng-hide="tabs_daily">{{badges.LowTotal}}</span>
+            </option>
+            <option value="BTTS">BTTS
+                <span class="badge badge-assertive" ng-show="tabs_daily">{{badges.BTTSTodayTotal}}</span>
+                <span class="badge badge-assertive" ng-hide="tabs_daily">{{badges.BTTSTotal}}</span>
+            </option>
+        </select>
+        <div class="buttons">
+
+            <button class="button" ng-class="{'option-active': urlArgs.star == '4 Star', 'option-passive': urlArgs.star != '4 Star'}"
+                    ng-click="urlArgs.star = '4 Star'">4 Star Tips
+                <span class="badge badge-assertive">{{badges[badgeArray[0]]}}</span>
+            </button>
+
+            <button class="button"ng-class="{'option-active': urlArgs.star == '5 Star', 'option-passive': urlArgs.star != '5 Star'}"
+                    ng-click="urlArgs.star = '5 Star'">5 Star Tips&nbsp;
+                <i class="icon ion-android-lock" ng-show="true"></i>
+                <span class="badge badge-assertive">{{badges[badgeArray[1]]}}</span>
+            </button>
+
+        </div>
+
     </div>
 
-    <div style="margin-top:144px">
-        <my-tabs-content></my-tabs-content>
-    </div>
 </div>
+
+<ion-content class="has-header">
+    <div ng-if="sideMenuOptions['Horse Racing Tips']">
+        <div ng-if="stock[0] == ''">{{content.message}}</div>
+        <div ng-repeat="st in stock[0]" class="row"
+             ng-class-even="'listEven'" ng-class-odd="'listOdd'">
+            <div class="col">{{st.ID}}</div>
+            <div class="col">{{st.Name}}</div>
+            <div class="col">{{st.Tipster}}</div>
+            <div class="col">{{st.Racecard}}</div>
+        </div>
+    </div>
+
+    <div ng-if="sideMenuOptions['NFL Tips']">
+        <div ng-if="stock[0] == ''">{{content.message}}</div>
+        <div ng-repeat="st in stock[0]" class="row"
+             ng-class-even="'listEven'" ng-class-odd="'listOdd'">
+            <div class="col">{{st.Match}}</div>
+            <div class="col">{{st.Tip}}</div>
+            <div class="col">{{st.Date}}</div>
+        </div>
+    </div>
+
+    <div ng-if="sideMenuOptions['Accuracy']">
+        <div ng-show="urlArgs.first == 'Accuracy'">
+            <div class="row" ng-repeat="(key,value) in stock[0][0]"
+                 ng-class-even="'listEven'" ng-class-odd="'listOdd'" >
+                <div class="col">{{key}}</div>
+                <div class="col">{{value}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="sideMenuOptions['Settings']"></div>
+
+    <div ng-if="sideMenuOptions['Choose League']">
+        <choose-league></choose-league>
+    </div>
+</ion-content>

@@ -1,0 +1,82 @@
+{
+  "stock":[
+    {
+      "HomeTeam":"Joinville",
+      "AwayTeam":"Flamengo",
+      "League":"Brazil - Serie A",
+      "Date":"Thursday 02 Jul 2015 03:00",
+      "KickOff":"03:00:00"
+    },
+    {
+      "HomeTeam":"Coritiba",
+      "AwayTeam":"Joinville",
+      "League":"Brazil - Serie A",
+      "Date":"Saturday 04 Jul 2015 20:00",
+      "KickOff":"20:00:00"
+    },
+    {
+      "HomeTeam":"Santos FC",
+      "AwayTeam":"Gremio",
+      "League":"Brazil - Serie A",
+      "Date":"Sunday 05 Jul 2015 21:00",
+      "KickOff":"21:00:00"
+    },
+    {
+      "HomeTeam":"Goias",
+      "AwayTeam":"Corinthians",
+      "League":"Brazil - Serie A",
+      "Date":"Sunday 05 Jul 2015 21:00",
+      "KickOff":"21:00:00"
+    },
+    {
+      "HomeTeam":"Luverdense",
+      "AwayTeam":"Ceara",
+      "League":"Brazil - Serie B",
+      "Date":"Wednesday 01 Jul 2015 03:30",
+      "KickOff":"03:30:00"
+    },
+    {
+      "HomeTeam":"Ittihad Al Shorta",
+      "AwayTeam":"El Gounah",
+      "League":"Egypt - Premier League",
+      "Date":"Wednesday 01 Jul 2015 22:00",
+      "KickOff":"22:00:00"
+    },
+    {
+      "HomeTeam":"Ansan Police FC",
+      "AwayTeam":"Gyeongnam FC",
+      "League":"South Korea - K. League Challenge",
+      "Date":"Wednesday 01 Jul 2015 12:00",
+      "KickOff":"12:00:00"
+    },
+    {
+      "HomeTeam":"Wikki Tourist",
+      "AwayTeam":"Giwa FC",
+      "League":"Nigeria - Professional Football League",
+      "Date":"Wednesday 01 Jul 2015 17:00",
+      "KickOff":"17:00:00"
+    },
+    {
+      "HomeTeam":"Warri Wolves FC",
+      "AwayTeam":"Lobi Stars",
+      "League":"Nigeria - Professional Football League",
+      "Date":"Wednesday 01 Jul 2015 17:00",
+      "KickOff":"17:00:00"
+    },
+    {
+      "HomeTeam":"Sunshine Stars",
+      "AwayTeam":"Akwa United",
+      "League":"Nigeria - Professional Football League",
+      "Date":"Wednesday 01 Jul 2015 17:00",
+      "KickOff":"17:00:00"
+    },
+    {
+      "HomeTeam":"Enugu Rangers",
+      "AwayTeam":"Kano Pillars",
+      "League":"Nigeria - Professional Football League",
+      "Date":"Wednesday 01 Jul 2015 17:00",
+      "KickOff":"17:00:00"
+    }
+  ],
+  "success":1
+}

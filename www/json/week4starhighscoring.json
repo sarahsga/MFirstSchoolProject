@@ -1,0 +1,19 @@
+{
+  "stock":[
+    {
+      "HomeTeam":"Sao Paulo",
+      "AwayTeam":"Fluminense",
+      "League":"Brazil - Serie A",
+      "Date":"Sunday 05 Jul 2015 21:00",
+      "KickOff":"21:00:00"
+    },
+    {
+      "HomeTeam":"JK Sillamae Kalev",
+      "AwayTeam":"Tulevik Viljandi",
+      "League":"Estonia - Meistriliiga",
+      "Date":"Monday 06 Jul 2015 18:00",
+      "KickOff":"18:00:00"
+    }
+  ],
+  "success":1
+}

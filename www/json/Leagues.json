@@ -1,0 +1,563 @@
+{
+  "stock":[
+    {
+      "League":"England - Conference Premier"
+    },
+    {
+      "League":"England - Conference North"
+    },
+    {
+      "League":"England - Conference South"
+    },
+    {
+      "League":"England - Isthmian League"
+    },
+    {
+      "League":"Spain - Primera Division"
+    },
+    {
+      "League":"Spain - Segunda Division"
+    },
+    {
+      "League":"Spain - Segunda B Group I"
+    },
+    {
+      "League":"Spain - Tercera Division - Grp. 2"
+    },
+    {
+      "League":"Italy - Serie A"
+    },
+    {
+      "League":"Italy - Serie B"
+    },
+    {
+      "League":"Germany - 1. Bundesliga"
+    },
+    {
+      "League":"Germany - 2. Bundesliga"
+    },
+    {
+      "League":"France - Ligue 1"
+    },
+    {
+      "League":"France - Ligue 2"
+    },
+    {
+      "League":"Netherlands - Eredivisie"
+    },
+    {
+      "League":"Netherlands - Jupiler League"
+    },
+    {
+      "League":"Belgium - Pro League"
+    },
+    {
+      "League":"Belgium - 2. Division"
+    },
+    {
+      "League":"Portugal - Primeira Liga"
+    },
+    {
+      "League":"Portugal - Segunda Liga"
+    },
+    {
+      "League":"Greece - Super League"
+    },
+    {
+      "League":"Turkey - Super Lig"
+    },
+    {
+      "League":"Austria - Bundesliga"
+    },
+    {
+      "League":"Austria - Erste Liga"
+    },
+    {
+      "League":"Switzerland - Super League"
+    },
+    {
+      "League":"Switzerland - Challenge League"
+    },
+    {
+      "League":"Denmark - Superligaen"
+    },
+    {
+      "League":"Denmark - 1. Division"
+    },
+    {
+      "League":"Finland - Veikkausliiga"
+    },
+    {
+      "League":"Finland - Ykkonen"
+    },
+    {
+      "League":"Finland - Kakkonen Eastern"
+    },
+    {
+      "League":"Finland - Kakkonen Northern"
+    },
+    {
+      "League":"Finland - Kakkonen Southern"
+    },
+    {
+      "League":"Finland - Kakkonen Western"
+    },
+    {
+      "League":"Norway - Tippeligaen"
+    },
+    {
+      "League":"Norway - 1. Divisjon"
+    },
+    {
+      "League":"Norway - 2. Divisjon avd. 1"
+    },
+    {
+      "League":"Norway - 2. Divisjon avd. 2"
+    },
+    {
+      "League":"Norway - 2. Divisjon avd. 3"
+    },
+    {
+      "League":"Norway - 2. Divisjon avd. 4"
+    },
+    {
+      "League":"Sweden - Allsvenskan"
+    },
+    {
+      "League":"Sweden - Superettan"
+    },
+    {
+      "League":"Sweden - 1. Division North"
+    },
+    {
+      "League":"Sweden - 1. Division South"
+    },
+    {
+      "League":"Wales - Premier Division"
+    },
+    {
+      "League":"N. Ireland - Premiership"
+    },
+    {
+      "League":"N. Ireland - 1. Division"
+    },
+    {
+      "League":"Ireland - Premier Division"
+    },
+    {
+      "League":"Ireland - 1. Division"
+    },
+    {
+      "League":"Brazil - Serie A"
+    },
+    {
+      "League":"Brazil - Serie B"
+    },
+    {
+      "League":"Russia - Premier League"
+    },
+    {
+      "League":"Russia - National Football League"
+    },
+    {
+      "League":"Russia - PFL Zone Ural-Povolzhye"
+    },
+    {
+      "League":"Russia - PFL Zone Center"
+    },
+    {
+      "League":"Russia - PFL Zone East"
+    },
+    {
+      "League":"Russia - PFL Zone South"
+    },
+    {
+      "League":"Russia - PFL Zone West"
+    },
+    {
+      "League":"Argentina - Primera Division"
+    },
+    {
+      "League":"Argentina - Primera B Nacional"
+    },
+    {
+      "League":"Australia - A-League"
+    },
+    {
+      "League":"Australia - Capital"
+    },
+    {
+      "League":"Australia - New South Wales"
+    },
+    {
+      "League":"Australia - Northern"
+    },
+    {
+      "League":"Australia - Queensland"
+    },
+    {
+      "League":"Australia - Southern"
+    },
+    {
+      "League":"Australia - Tasmania Victory League"
+    },
+    {
+      "League":"Australia - Victorian"
+    },
+    {
+      "League":"Australia - Western"
+    },
+    {
+      "League":"Australia - New South Wales Premier League 2"
+    },
+    {
+      "League":"Australia - Victorian Premier League One"
+    },
+    {
+      "League":"Bulgaria - A Grupa"
+    },
+    {
+      "League":"Bulgaria - B PFG"
+    },
+    {
+      "League":"Croatia - 1. Division"
+    },
+    {
+      "League":"Croatia - 2. Division"
+    },
+    {
+      "League":"Czech Republic - 1. Division"
+    },
+    {
+      "League":"Czech Republic - FNL"
+    },
+    {
+      "League":"Hungary - NB I"
+    },
+    {
+      "League":"Israel - Ligat HaAl"
+    },
+    {
+      "League":"Mexico - Liga MX Apertura"
+    },
+    {
+      "League":"Mexico - Ascenso MX Apertura"
+    },
+    {
+      "League":"Poland - Ekstraklasa"
+    },
+    {
+      "League":"Poland - 1. Division"
+    },
+    {
+      "League":"Romania - Liga I"
+    },
+    {
+      "League":"Slovakia - Super Liga"
+    },
+    {
+      "League":"Slovakia - 1. Division East"
+    },
+    {
+      "League":"Slovakia - 1. Division West"
+    },
+    {
+      "League":"Slovenia - Prva Liga"
+    },
+    {
+      "League":"Slovenia - 2. Division"
+    },
+    {
+      "League":"Ukraine - Premier League"
+    },
+    {
+      "League":"Ukraine - 1. Division"
+    },
+    {
+      "League":"USA - Major League Soccer"
+    },
+    {
+      "League":"USA - USL"
+    },
+    {
+      "League":"USA - NASL Spring Season"
+    },
+    {
+      "League":"Albania - Kategoria Superiore"
+    },
+    {
+      "League":"Algeria - Ligue 1"
+    },
+    {
+      "League":"Andorra - 1. Division"
+    },
+    {
+      "League":"Angola - Girabola"
+    },
+    {
+      "League":"Armenia - Premier League"
+    },
+    {
+      "League":"Azerbaijan - Premier League"
+    },
+    {
+      "League":"Bahrain - Premier League"
+    },
+    {
+      "League":"Barbados - Premier Division"
+    },
+    {
+      "League":"Belarus - Premier League"
+    },
+    {
+      "League":"Benin - Championnat National"
+    },
+    {
+      "League":"Bolivia - Primera Division - Apertura"
+    },
+    {
+      "League":"Bosnia-Herzegovina - Premier League"
+    },
+    {
+      "League":"Botswana - Premier League"
+    },
+    {
+      "League":"Cameroon - Ligue 1"
+    },
+    {
+      "League":"Canada - CSL"
+    },
+    {
+      "League":"Chile - Primera Division Apertura"
+    },
+    {
+      "League":"China - Super League"
+    },
+    {
+      "League":"China - China League"
+    },
+    {
+      "League":"Colombia - Liga Postob\u00f3n Apertura"
+    },
+    {
+      "League":"Congo - Ligue 1"
+    },
+    {
+      "League":"Costa Rica - Primera Torneo de Invierno"
+    },
+    {
+      "League":"Cuba - Campeonato Nacional"
+    },
+    {
+      "League":"Cyprus - 1. Division"
+    },
+    {
+      "League":"Egypt - Premier League"
+    },
+    {
+      "League":"El Salvador - Primera Division - Apertura"
+    },
+    {
+      "League":"Estonia - Meistriliiga"
+    },
+    {
+      "League":"Estonia - Esiliiga"
+    },
+    {
+      "League":"Faroe Islands - Premier League"
+    },
+    {
+      "League":"Gabon - Championnat National de D1"
+    },
+    {
+      "League":"Gambia - GFA Premier League"
+    },
+    {
+      "League":"Ghana - Premier League"
+    },
+    {
+      "League":"Guadeloupe - 1 Division"
+    },
+    {
+      "League":"Guatemala - Liga Nacional Apertura"
+    },
+    {
+      "League":"Guinea - Championnat National de Ligue 1"
+    },
+    {
+      "League":"Honduras - Liga Nacional - Apertura"
+    },
+    {
+      "League":"Hong Kong - First Division"
+    },
+    {
+      "League":"Iceland - Urvalsdeild"
+    },
+    {
+      "League":"Iceland - 1. Deild"
+    },
+    {
+      "League":"India - I-League"
+    },
+    {
+      "League":"Iran - Pro League"
+    },
+    {
+      "League":"Iraq - Super League"
+    },
+    {
+      "League":"Ivory Coast - Championnat National"
+    },
+    {
+      "League":"Jamaica - Premier League"
+    },
+    {
+      "League":"Japan - J. League"
+    },
+    {
+      "League":"Jordan - Premier League"
+    },
+    {
+      "League":"Kazakhstan - Premier League"
+    },
+    {
+      "League":"Kenya - Premier League"
+    },
+    {
+      "League":"Latvia - Virsliga"
+    },
+    {
+      "League":"Lebanon - Premier League"
+    },
+    {
+      "League":"Lesotho - Premier League"
+    },
+    {
+      "League":"Lithuania - A Lyga"
+    },
+    {
+      "League":"Lithuania - 1. Division"
+    },
+    {
+      "League":"Luxembourg - National Division"
+    },
+    {
+      "League":"Macedonia - Prva Liga"
+    },
+    {
+      "League":"Malawi - Super League"
+    },
+    {
+      "League":"Malaysia - Super Liga"
+    },
+    {
+      "League":"Malta - Premier League"
+    },
+    {
+      "League":"Martinique - Division d\u00b4Honneur"
+    },
+    {
+      "League":"Mauritius - Premier League"
+    },
+    {
+      "League":"Moldova - National Division"
+    },
+    {
+      "League":"Montenegro - 1. CFL"
+    },
+    {
+      "League":"Morocco - Botola Pro"
+    },
+    {
+      "League":"Mozambique - Mocambola"
+    },
+    {
+      "League":"Nicaragua - Campeonato Nacional Apertura"
+    },
+    {
+      "League":"Nigeria - Professional Football League"
+    },
+    {
+      "League":"Palestine - Gaza Strip League"
+    },
+    {
+      "League":"Palestine - West Bank Premier League"
+    },
+    {
+      "League":"Peru - Primera Divisi\u00f3n - Apertura"
+    },
+    {
+      "League":"Puerto Rico - Premier League"
+    },
+    {
+      "League":"Rwanda - Championnat National"
+    },
+    {
+      "League":"San Marino - Campionato"
+    },
+    {
+      "League":"Senegal - Championnat National"
+    },
+    {
+      "League":"Serbia - Super Liga"
+    },
+    {
+      "League":"Sierra Leone - Premier_League"
+    },
+    {
+      "League":"Singapore - S.League"
+    },
+    {
+      "League":"South Africa - Premier Soccer League"
+    },
+    {
+      "League":"South Korea - K. League Challenge"
+    },
+    {
+      "League":"St. Kitts and Nevis - SKNFA League"
+    },
+    {
+      "League":"Sudan - Premier League"
+    },
+    {
+      "League":"Taiwan - Division A"
+    },
+    {
+      "League":"Tanzania - Premier League"
+    },
+    {
+      "League":"Thailand - Premier League"
+    },
+    {
+      "League":"Togo - Championnat National"
+    },
+    {
+      "League":"Tunisia - Ligue I"
+    },
+    {
+      "League":"Uganda - Super League"
+    },
+    {
+      "League":"Uzbekistan - Uzbek League"
+    },
+    {
+      "League":"Vanuatu - Premier League"
+    },
+    {
+      "League":"Venezuela - Primera Division - Apertura"
+    },
+    {
+      "League":"Vietnam - V-league"
+    },
+    {
+      "League":"Yemen - Premier League"
+    },
+    {
+      "League":"Zambia - Premier League"
+    },
+    {
+      "League":"Zimbabwe - Premier Soccer League"
+    }
+  ],
+  "success":1
+}

@@ -1,18 +1,81 @@
-<div class="bar bar-dark" style="position:relative" ng-click="four_star = !four_star">
-    <div class="title" style="color:#33CD5F">
-        <i class="icon ion-android-star-outline"></i>&nbsp;4 Star Tips&nbsp;<i class="icon ion-android-star-outline"></i>
+<!--<div class="row">-->
+    <!--<button class="col button button-medium"-->
+            <!--style="border-right: none"-->
+            <!--ng-class="{'option-active': urlArgs.star == '4 Star', 'option-passive': urlArgs.star != '4 Star'}"-->
+            <!--ng-click="urlArgs.star = '4 Star'">4 Star Tips-->
+        <!--<span class="badge badge-assertive">{{badges[badgeArray[0]]}}</span>-->
+    <!--</button>-->
+    <!--<button class="col button button-medium"-->
+            <!--style="border-left: none"-->
+            <!--ng-class="{'option-active': urlArgs.star == '5 Star', 'option-passive': urlArgs.star != '5 Star'}"-->
+            <!--ng-click="urlArgs.star = '5 Star'">5 Star Tips&nbsp;-->
+            <!--<i class="icon ion-android-lock" ng-show="true"></i>-->
+        <!--<span class="badge badge-assertive">{{badges[badgeArray[1]]}}</span>-->
+
+    <!--</button>-->
+<!--</div>-->
+<ion-content class="has-header has-subheader has-footer">
+    <div>
+        <div ng-if="urlArgs.star == '4 Star'">
+            <div ng-if="stock[0] == ''">{{content.message}}</div>
+            <div class="row"  ng-class-even="'listEven'" ng-class-odd="'listOdd'"
+                 ng-repeat="record in stock[0] | LeagueFilter : selectedLeagues">
+                <div class="col">
+                    <div class="row">
+                        {{record.HomeTeam}}
+                    </div>
+                    <div class="row">
+                        {{record.AwayTeam}}
+                    </div>
+                </div>
+                <div class="col">
+                    {{record.League}}
+                </div>
+                <div class="col">
+                    {{record.Date}}
+                    {{record.KickOff}}
+                </div>
+            </div>
+        </div>
+        <div ng-if="urlArgs.star == '5 Star'" class="myList">
+            <div ng-if="stock[1] == ''">{{content.message}}</div>
+            <div class="row" ng-class-even="'listEven'" ng-class-odd="'listOdd'" ng-repeat="record in stock[1]">
+                <div class="col">
+                    <div class="row">
+                        {{record.HomeTeam}}
+                    </div>
+                    <div class="row">
+                        {{record.AwayTeam}}
+                    </div>
+                </div>
+                <div class="col">
+                    {{record.League}}
+                </div>
+                <div class="col">
+                    {{record.Date}}
+                    {{record.KickOff}}
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div ng-show="four_star" class="tips">Sarah</div>
+</ion-content>
 
 
-<div style="height:1px"></div>
+<!--<div class="bar bar-dark" style="position:relative" ng-click="four_star = !four_star">-->
+    <!--<div class="title" style="color:#33CD5F">-->
+        <!--<i class="icon ion-android-star-outline"></i>&nbsp;4 Star Tips&nbsp;<i class="icon ion-android-star-outline"></i>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div ng-show="four_star" class="tips">Sarah</div>-->
 
 
-<div class="bar bar-dark" style="position:relative" ng-click="five_star = !five_star"
-        ng-class="{'icon ion-android-lock': true}">
-    <div class="title" style="color: #33CD5F">
-        <i class="icon ion-android-star-outline"></i>&nbsp;5 Star Tips&nbsp;<i class="icon ion-android-star-outline"></i>
-    </div>
-</div>
-<div ng-show="five_star" class="tips">Ahmed</div>
+<!--<div style="height:1px"></div>-->
+
+
+<!--<div class="bar bar-dark" style="position:relative" ng-click="five_star = !five_star"-->
+        <!--ng-class="{'icon ion-android-lock': true}">-->
+    <!--<div class="title" style="color: #33CD5F">-->
+        <!--<i class="icon ion-android-star-outline"></i>&nbsp;5 Star Tips&nbsp;<i class="icon ion-android-star-outline"></i>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div ng-show="five_star" class="tips">Ahmed</div>-->

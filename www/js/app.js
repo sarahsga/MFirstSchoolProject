@@ -1,6 +1,6 @@
 var app =  angular.module('tipster', ['ionic', 'ngCordova'])
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -10,6 +10,7 @@ app.run(function($ionicPlatform) {
         if(window.StatusBar) {
             StatusBar.styleDefault();
         }
+
     });
 })
 
@@ -38,3 +39,35 @@ app.directive('myTabsContent', function() {
         templateUrl: 'templates/my-tabs-content.html'
     }
 })
+
+app.directive('chooseLeague', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/choose-league.html'
+    }
+})
+
+app.filter('TitleFilter', function() {
+    return function(items) {
+        var result = {};
+        angular.forEach(items, function(value, key) {
+            if (value == true) {
+                result[key] = value;
+            }
+        });
+        return result;
+    };
+});
+
+app.filter('LeagueFilter', function() {
+    return function(items, selectedLeagues) {
+        var result = []
+            angular.forEach( items, function(i) {
+                if (selectedLeagues.indexOf(i.League) != -1) {
+                    result.push(i)
+                }
+            });
+            return result;
+
+    };
+});

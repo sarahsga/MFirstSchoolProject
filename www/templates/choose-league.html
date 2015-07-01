@@ -1,0 +1,13 @@
+<button class="button button-positive" ng-if="selectAllLeagues == false" ng-click="setLeaguesSame(true)">Select All</button>
+<button class="button button-positive" ng-if="selectAllLeagues == true" ng-click="setLeaguesSame(false)">Deselect All</button>
+
+<ul class="list">
+
+    <li class="item item-checkbox" ng-repeat="league in leagues">
+        <label class="checkbox">
+            <input type="checkbox" ng-model="league.value">
+        </label>
+        {{league.League}}
+    </li>
+
+</ul>

@@ -1,3 +1,47 @@
 .tips {
     background-color: #C9EAD2;
 }
+
+.option-active {
+    color: #ECD184;
+    background-color: #EF7663;
+    border: none;
+}
+
+.option-passive {
+    color: #ECD184;
+    background-color:#fff ;
+    border-color: #ECD184;
+}
+
+.myHeader {
+    background-color: #2A3A49;
+}
+
+.myHeader .elements {
+    color: white;
+}
+
+.mySelect {
+    background-color: #7994B1;
+}
+
+.mySelect .elements {
+    color: #2A3A49;
+}
+
+.myTabs {
+    background-color: #F3BD75 !important;
+}
+
+.myTabs a {
+    color: #2A3A49;
+}
+
+.listEven {
+    background-color: #E3D5EA;
+}
+
+.listOdd {
+    background-color: #C1C7CE;
+}

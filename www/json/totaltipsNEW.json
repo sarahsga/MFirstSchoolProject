@@ -1,0 +1,42 @@
+{
+  "stock":[
+    {
+      "HomeTodayTotal":"0",
+      "AwayTodayTotal":"0",
+      "HighTodayTotal":"0",
+      "LowTodayTotal":"1",
+      "BTTSTodayTotal":"0",
+      "HomeTotal":"3",
+      "AwayTotal":"0",
+      "HighTotal":"4",
+      "LowTotal":"10",
+      "TodayTotal":"1",
+      "WeekTotal":"18",
+      "BTTSTotal":"1",
+      "HomeToday4":"0",
+      "HomeToday5":"0",
+      "HomeWeek4":"2",
+      "HomeWeek5":"1",
+      "HighToday4":"0",
+      "HighToday5":"0",
+      "HighWeek4":"2",
+      "HighWeek5":"2",
+      "AwayToday4":"0",
+      "AwayToday5":"0",
+      "AwayWeek4":"0",
+      "AwayWeek5":"0",
+      "LowToday4":"1",
+      "LowToday5":"0",
+      "LowWeek4":"8",
+      "LowWeek5":"2",
+      "BTTSToday4":"0",
+      "BTTSToday5":"0",
+      "BTTSWeek4":"1",
+      "BTTSWeek5":"0",
+      "HorsesTips":"14",
+      "NFLTips":"9"
+    }
+  ],
+  "success":1,
+  "newsFeed":"Total Tips Today = 1. INFO - Not every game is tipped, only those that meet the formula. Any questions email info@cgtipster.com "
+}
