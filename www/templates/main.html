@@ -2,17 +2,17 @@
     <ion-side-menus>
         <ion-side-menu-content edge-drag-threshold="true"
                                drag-content="true">
-
-            <ion-header-bar class="bar nav-title-slide-ios7 myHeader">
+            <ion-header-bar class="bar nav-title-slide-ios7 topHeader" style="border-bottom: 0px">
                 <div class="buttons">
-                    <button menu-toggle="left" class="button button-icon icon ion-navicon elements"></button>
+                    <button menu-toggle="left" class="button button-icon icon ion-navicon"
+                            style="color: #FE7C67;"></button>
                 </div>
-                <h1 class="title elements">
+                <h1 class="title">
                     <span ng-repeat="(key,value) in sideMenuOptions | TitleFilter">{{key}}</span>
                 </h1>
-                <div class="buttons">
-                    <button class="button button-icon icon ion-android-share-alt elements"
-                            ng-click="shareMessage()"></button>
+                <div class="buttons" >
+                    <button class="button button-icon icon ion-android-share-alt"
+                            ng-click="shareMessage()" style="color: #FE7C67;"></button>
                 </div>
             </ion-header-bar>
 
@@ -20,7 +20,7 @@
 
         </ion-side-menu-content>
 
-        <ion-side-menu side="left" expose-aside-when="large">
+        <ion-side-menu side="left" expose-aside-when="large" class="sideMenu">
             <ion-content>
                 <div class="list">
 
@@ -36,7 +36,7 @@
                         <span class="badge badge-assertive">{{badges.HorsesTips}}</span>
                     </a>
 
-                    <a class="item item-icon-left" ng-click="changeMenu('NFL Tips');">
+                    <a class="item item-icon-left" ng-click="changeMenu('NFL Tips');" style="border-bottom: 1px solid white">
                         <i class="icon ion-ios-football-outline dark"></i>
                         NFL Tips
                         <span class="badge badge-assertive">{{badges.NFLTips}}</span>
@@ -65,7 +65,7 @@
 </div>
 
 <div ng-if="sideMenuOptions['Settings'] == true">
-    <ion-header-bar class="bar myHeader">
+    <ion-header-bar class="bar">
             <button class="button button-icon icon ion-android-arrow-back elements"
                     ng-click="goBackFromSettings()"></button>
         <h1 class="title elements">Settings
@@ -75,7 +75,7 @@
 </div>
 
 <div ng-if="sideMenuOptions['Choose League'] == true">
-    <ion-header-bar class="bar myHeader">
+    <ion-header-bar class="bar">
         <button class="button button-icon icon ion-android-arrow-back elements"
                 ng-click="goBackFromChooseLeague()"></button>
         <h1 class="title elements">Choose League
@@ -85,10 +85,3 @@
         <choose-league></choose-league>
     </ion-content>
 </div>
-
-          <style>
-    .item{
-        border-color: #ffffff !important;
-    }
-
-</style>

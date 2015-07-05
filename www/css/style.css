@@ -3,25 +3,94 @@
 }
 
 .option-active {
-    color: #ECD184;
-    background-color: #EF7663;
-    border: none;
-}
-
-.option-passive {
-    color: #ECD184;
-    background-color:#fff ;
-    border-color: #ECD184;
-}
-
-.myHeader {
-    background-color: #2A3A49;
-}
-
-.myHeader .elements {
+    border: 2px solid #FE7C67;
+    background-color: #FE7C67;
     color: white;
 }
 
+.option-passive {
+    border: 2px solid #FE7C67;
+    background-color: #2A3A49;
+    color: white;
+}
+
+select
+{
+    border: 2px solid #FE7C67;
+    background-color: #2A3A49;
+    color: white;
+}
+
+.button {
+    border-radius: 0px;
+}
+.button:hover{
+    color: white;
+}
+.button:active{
+    color: white;
+    background-color: #2A3A49;
+    border: 2px solid #2A3A49;
+}
+
+.topHeader {
+    background-color: #2A3A49 !important;
+    color: #ffffff !important;
+}
+
+.bottomHeader
+{
+    top: 93px !important;
+    padding-top: 2px !important;
+    height: 70px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.title
+{
+    color: #ffffff !important;
+    font-size: 22px !important;
+}
+.mainContent
+{
+    background-color: #7B96B3 !important;
+}
+
+
+.tab-item
+{
+    color: #ffffff !important;
+    opacity: 1;
+}
+
+.tab-item.active
+{
+    border-color: #FE7C67 !important;
+    color: #ffffff !important;
+}
+.tabs-striped .tabs
+{
+    border-bottom: 1px solid #2A3A49 !important;
+}
+
+
+.sideMenu
+{
+    background-color: #7B96B3 !important;
+}
+.item
+{
+    background-color: #7B96B3 !important;
+    color: white !important;
+    border: none;
+}
+.icon
+{
+    color: white !important;
+}
+
+/*
 .mySelect {
     background-color: #7994B1;
 }
@@ -44,4 +113,4 @@
 
 .listOdd {
     background-color: #C1C7CE;
-}
+}*/
