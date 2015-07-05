@@ -17,9 +17,9 @@
 <ion-content class="has-header has-subheader mainContent" style="top: 143px !important;">
     <div>
         <div ng-if="urlArgs.star == '4 Star'">
-            <div ng-if="stock[0] == ''">{{content.message}}</div>
-            <div class="row"  ng-class-even="'listEven'" ng-class-odd="'listOdd'"
-                 ng-repeat="record in stock[0] | LeagueFilter : selectedLeagues">
+            <div ng-if="content[0].success == 0">{{content[0].message}}</div>
+            <div ng-if="content[0].success == 1" class="row"  ng-class-even="'listEven'" ng-class-odd="'listOdd'"
+                 ng-repeat="record in stock[0]">
                 <div class="col">
                     <div class="row">
                         {{record.HomeTeam}}
@@ -38,8 +38,9 @@
             </div>
         </div>
         <div ng-if="urlArgs.star == '5 Star'" class="myList">
-            <div ng-if="stock[1] == ''">{{content.message}}</div>
-            <div class="row" ng-class-even="'listEven'" ng-class-odd="'listOdd'" ng-repeat="record in stock[1]">
+            <div ng-if="content[1].success == 0">{{content[1].message}}</div>
+            <div ng-if="content[1].success == 1" class="row" ng-class-even="'listEven'" ng-class-odd="'listOdd'"
+                 ng-repeat="record in stock[1]">
                 <div class="col">
                     <div class="row">
                         {{record.HomeTeam}}

@@ -1,12 +1,12 @@
 
 app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading, $http, $cordovaSocialSharing)
-{
+    {
     $scope.tabs_daily = true;
     $scope.badges = null;
     $scope.urlArray = null;
     $scope.badgeArray = null;
     $scope.stock = "";
-    $scope.content = {};
+    $scope.content = [];
 
     $scope.leagues = [];
     $scope.allLeaguesArray = [];
@@ -38,7 +38,7 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
     $scope.initialize = function() { // will run every time the app is initialized
         getBadges();
         $scope.getJson();
-        getLeagues();
+        //getLeagues();
     }
 
     $scope.$watch( function(scope) {return scope.urlArgs.winType},
@@ -51,45 +51,45 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
             'Daily': {
                 '4 Star' : {
                     'Home Wins': {
-                        'url': 'json/today4starhomewin.json',
+                        'url': 'http://www.cgtipster.com/api2/today4starhomewin.php',
                         'badge': 'HomeToday4'
                     },
                     'Away Wins': {
-                        'url': 'json/today4starawaywin.json',
+                        'url': 'http://www.cgtipster.com/api2/today4starawaywin.php',
                         'badge': 'AwayToday4'
                     },
                     'High Scoring': {
-                        'url': 'json/today4starhighscoring.json',
+                        'url': 'http://www.cgtipster.com/api2/today4starhighscoring.php',
                         'badge': 'HighToday4'
                     },
                     'Low Scoring': {
-                        'url': 'json/today4starlowscoring.json',
+                        'url': 'http://www.cgtipster.com/api2/today4starlowscoring.php',
                         'badge': 'LowToday4'
                     },
                     'BTTS': {
-                        'url': 'json/today4starbtts.json',
+                        'url': 'http://www.cgtipster.com/api2/today4starbtts.php',
                         'badge': 'BTTSToday4'
                     }
                 },
                 '5 Star' : {
                     'Home Wins': {
-                        'url': 'json/today5starhomewin.json',
+                        'url': 'http://www.cgtipster.com/api2/today5starhomewin.php',
                         'badge': 'HomeToday5'
                     },
                     'Away Wins': {
-                        'url': 'json/today5starawaywin.json',
+                        'url': 'http://www.cgtipster.com/api2/today5starawaywin.php',
                         'badge': 'AwayToday5'
                     },
                     'High Scoring': {
-                        'url': 'json/today5starhighscoring.json',
+                        'url': 'http://www.cgtipster.com/api2/today5starhighscoring.php',
                         'badge': 'HighToday5'
                     },
                     'Low Scoring': {
-                        'url': 'json/today5starlowscoring.json',
+                        'url': 'http://www.cgtipster.com/api2/today5starlowscoring.php',
                         'badge': 'LowToday5'
                     },
                     'BTTS': {
-                        'url': 'json/today5starbtts.json',
+                        'url': 'http://www.cgtipster.com/api2/today5starbtts.php',
                         'badge': 'BTTSToday5'
                     }
                 }
@@ -97,82 +97,95 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
             'Weekly': {
                 '4 Star' : {
                     'Home Wins': {
-                        'url': 'json/week4starhomewin.json',
+                        'url': 'http://www.cgtipster.com/api2/week4starhomewin.php',
                         'badge': 'HomeWeek4'
                     },
                     'Away Wins': {
-                        'url': 'json/week4starawaywin.json',
+                        'url': 'http://www.cgtipster.com/api2/week4starawaywin.php',
                         'badge': 'AwayWeek4'
                     },
                     'High Scoring': {
-                        'url': 'json/week4starhighscoring.json',
+                        'url': 'http://www.cgtipster.com/api2/week4starhighscoring.php',
                         'badge': 'HighWeek4'
                     },
                     'Low Scoring': {
-                        'url': 'json/week4starlowscoring.json',
+                        'url': 'http://www.cgtipster.com/api2/week4starlowscoring.php',
                         'badge': 'LowWeek4'
                     },
                     'BTTS': {
-                        'url': 'json/week4starbtts.json',
+                        'url': 'http://www.cgtipster.com/api2/week4starbtts.php',
                         'badge': 'BTTSWeek4'
                     }
                 },
                 '5 Star' : {
                     'Home Wins': {
-                        'url': 'json/week5starhomewin.json',
+                        'url': 'http://www.cgtipster.com/api2/week5starhomewin.php',
                         'badge': 'HomeWeek5'
                     },
                     'Away Wins': {
-                        'url': 'json/week5starawaywin.json',
+                        'url': 'http://www.cgtipster.com/api2/week5starawaywin.php',
                         'badge': 'AwayWeek5'
                     },
                     'High Scoring': {
-                        'url': 'json/week5starhighscoring.json',
+                        'url': 'http://www.cgtipster.com/api2/week5starhighscoring.php',
                         'badge': 'HighWeek5'
                     },
                     'Low Scoring': {
-                        'url': 'json/week5starlowscoring.json',
+                        'url': 'http://www.cgtipster.com/api2/week5starlowscoring.php',
                         'badge': 'LowWeek5'
                     },
                     'BTTS': {
-                        'url': 'json/week5starbtts.json',
+                        'url': 'http://www.cgtipster.com/api2/week5starbtts.php',
                         'badge': 'BTTSWeek5'
                     }
                 }
             }
         },
         'Horse Racing Tips' : {
-            'url': 'json/horseracingtips.json',
+            'url': 'http://www.cgtipster.com/api2/horseracingtips.php',
             'badge': 'HorsesTips'
         },
         'NFL Tips': {
-            'url': 'json/NFL.json',
+            'url': 'http://www.cgtipster.com/api2/NFL.php',
             'badge': 'NFLTips'
         },
         'Accuracy': {
-            'url': 'json/accuracy.json'
+            'url': 'http://www.cgtipster.com/api2/accuracy.php'
         },
         'Leagues': {
             'url': 'json/Leagues.json'
         },
         'Badges': {
-            'url': 'json/totaltipsNEW.json'
+            'url': 'http://www.cgtipster.com/api2/totaltipsNEW.php'
         }
     }
 
 
 
     var getBadges = function() {
-        $http.get(urlType.Badges.url).
-            success(function(data, status, headers, config) {
-                if (data.success == 1) {
-                    $scope.badges = data.stock[0];
-                    $scope.badges.FootballTips = parseInt($scope.badges.TodayTotal) + parseInt($scope.badges.WeekTotal);
+        $ionicLoading.show({
+            template: 'Loading...'
+        });
+            $.ajax({
+                type: 'GET',
+                url: urlType.Badges.url,
+                dataType: 'jsonp',
+                success: function (data) {
+                    console.log("badges success.. data = " + JSON.stringify(data))
+                    if (data.success == 1) {
+                        console.log("success==1");
+                        $scope.badges = data.stock[0];
+                        console.log($scope.badges);
+                        $scope.badges.FootballTips = parseInt($scope.badges.TodayTotal) + parseInt($scope.badges.WeekTotal);
+                    }
+                    $ionicLoading.hide();
+
+                },
+                fail: function (err) {
+                    $scope.badges = "";
+                    console.log(err.message);
+                    $ionicLoading.hide();
                 }
-            }).
-            error(function(data, status, headers, config) {
-                $scope.badges = "";
-                console.log("error");console.log(JSON.stringify(data));
             });
     }
 
@@ -191,22 +204,30 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
             $scope.urlArray.push(urlType[$scope.urlArgs['first']]['url']);
         }
 
-
-        $scope.urlArray.forEach( function(url){
-            $http.get(url).
-                success(function(data, status, headers, config) {
-                    $scope.content = data;
+        $ionicLoading.show({
+            template: 'Loading...'
+        });
+        $scope.urlArgs.star = '4 Star';
+        $scope.urlArray.forEach( function(url) {
+            $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'jsonp',
+                success: function (data) {
+                    $scope.content[$scope.urlArray.indexOf(url)] = data;
                     if (data.success == 1) {
                         $scope.stock[$scope.urlArray.indexOf(url)] = data.stock
                     } else {
-                        $scope.stock[$scope.urlArray.indexOf(url)] = "";
+                        $scope.stock[$scope.urlArray.indexOf(url)] = ""
                     }
-
-                }).
-                error(function(data, status, headers, config) {
+                    $ionicLoading.hide();
+                },
+                fail: function (err) {
                     $scope.stock = "";
-                    console.log("error");console.log(JSON.stringify(data));
-                });
+                    console.log(err.message);
+                    $ionicLoading.hide();
+                }
+            });
         });
 
     }
@@ -220,17 +241,19 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
                     message = message + record.HomeTeam + " - " + record.AwayTeam + " ," + record.Date + "\n\n"
                 } )
             })
-        } else if ( $scope.urlArgs['first'] == 'Horse Racing') {
+        } else if ( $scope.urlArgs['first'] == 'Horse Racing Tips') {
             message = "Horse Racing Tips\n\n";
             $scope.stock[0].forEach( function(record) {
                 message = message + record.ID + ". " + record.Name + ", Tip by " + record.Tipster + " - " + record.Racecard + "\n\n";
             })
-        } else if ( $scope.urlArgs['first'] == 'NFL' ) {
+        } else if ( $scope.urlArgs['first'] == 'NFL Tips' ) {
             message = "NFL Tips\n\n";
             $scope.stock[0].forEach( function(record) {
                 message = message + record.Match + " - " + record.Tip + " - " + record.Date + "\n\n";
             })
         }
+
+
         return message;
     }
 
@@ -251,8 +274,14 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
     }
 
     var getLeagues = function() {
-        $http.get(urlType.Leagues.url).
-            success(function(data, status, headers, config) {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+        $.ajax({
+            url: urlType.Leagues.url,
+            dataType: 'jsonp',
+            cache : false,
+            success: function (data) {
                 if (data.success == 1) {
                     $scope.leagues = data.stock;
                     $scope.setLeaguesSame(false);
@@ -261,12 +290,17 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
                         $scope.allLeaguesArray.push(leagueObj.League)
                     } )
                     $scope.selectedLeagues = $scope.allLeaguesArray;
+                    console.log("selected leagues = " + $scope.selectedLeagues)
                 }
-            }).
-            error(function(data, status, headers, config) {
+
+                    $ionicLoading.hide();
+            },
+            fail: function (err) {
                 $scope.leagues = [];
-                console.log("error");console.log(JSON.stringify(data));
-            });
+                console.log(err.message);
+                $ionicLoading.hide();
+            }
+        });
     }
 
     $scope.setLeaguesSame = function(value) {
@@ -296,7 +330,6 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
             $scope.urlArgs.star = '4 Star';
             $scope.urlArgs.winType = 'Home Wins';
         }
-        $scope.getJson();
         toggleLeft();
     }
 
@@ -333,18 +366,3 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
 
     $scope.initialize();
 });
-
-
-
-/*
-$.ajax({
-    url: 'http://cgtipster.com/api2/week4starhighscoring.php',
-    dataType:'jsonp',
-    success:function(data){
-        console.log(data)
-    },
-    fail: function(err)
-    {
-        console.log(err.message);
-    }
-});*/

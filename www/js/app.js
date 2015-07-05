@@ -12,6 +12,8 @@ app.run(function($ionicPlatform, $rootScope) {
         }
 
     });
+
+
 })
 
 app.config(function($stateProvider, $urlRouterProvider) {
@@ -25,6 +27,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/main');
 });
+
 
 app.directive('mySideMenuContent', function() {
     return {
@@ -60,14 +63,15 @@ app.filter('TitleFilter', function() {
 });
 
 app.filter('LeagueFilter', function() {
+
     return function(items, selectedLeagues) {
         var result = []
-            angular.forEach( items, function(i) {
-                if (selectedLeagues.indexOf(i.League) != -1) {
-                    result.push(i)
-                }
-            });
-            return result;
+        angular.forEach( items, function(i) {
+            if (selectedLeagues.indexOf(i.League) != -1) {
+                result.push(i)
+            }
+        });
+        return result;
 
     };
 });

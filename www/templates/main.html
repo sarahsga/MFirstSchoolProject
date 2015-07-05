@@ -24,25 +24,25 @@
             <ion-content>
                 <div class="list">
 
-                    <a class="item item-icon-left" ng-click="changeMenu('Football Tips');">
+                    <a class="item item-icon-left" ng-click="changeMenu('Football Tips'); getJson();">
                         <i class="icon ion-ios-football dark"></i>
                         Football Tips
                         <span class="badge badge-assertive">{{badges.FootballTips}}</span>
                     </a>
 
-                    <a class="item item-icon-left" ng-click="changeMenu('Horse Racing Tips');">
+                    <a class="item item-icon-left" ng-click="changeMenu('Horse Racing Tips');getJson();">
                         <i class="icon ion-flag dark"></i>
                         Horse Racing Tips
                         <span class="badge badge-assertive">{{badges.HorsesTips}}</span>
                     </a>
 
-                    <a class="item item-icon-left" ng-click="changeMenu('NFL Tips');" style="border-bottom: 1px solid white">
+                    <a class="item item-icon-left" ng-click="changeMenu('NFL Tips'); getJson();" style="border-bottom: 1px solid white">
                         <i class="icon ion-ios-football-outline dark"></i>
                         NFL Tips
                         <span class="badge badge-assertive">{{badges.NFLTips}}</span>
                     </a>
 
-                    <a class="item" style="border-color: #ddd !important;" ng-click="changeMenu('Accuracy');">
+                    <a class="item" style="border-color: #ddd !important;" ng-click="changeMenu('Accuracy');getJson();">
                         Accuracy
                     </a>
 
@@ -50,7 +50,7 @@
                         Settings
                     </a>
 
-                    <a class="item" ng-click="changeMenu('Choose League');">
+                    <a class="item" ng-click="changeMenu('Choose League'); getLeagues();">
                         Choose League
                     </a>
 
@@ -65,7 +65,7 @@
 </div>
 
 <div ng-if="sideMenuOptions['Settings'] == true">
-    <ion-header-bar class="bar">
+    <ion-header-bar class="bar bar-dark">
             <button class="button button-icon icon ion-android-arrow-back elements"
                     ng-click="goBackFromSettings()"></button>
         <h1 class="title elements">Settings
@@ -75,7 +75,7 @@
 </div>
 
 <div ng-if="sideMenuOptions['Choose League'] == true">
-    <ion-header-bar class="bar">
+    <ion-header-bar class="bar bar-dark">
         <button class="button button-icon icon ion-android-arrow-back elements"
                 ng-click="goBackFromChooseLeague()"></button>
         <h1 class="title elements">Choose League
