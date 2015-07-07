@@ -1,7 +1,13 @@
 
-app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading, $http, $cordovaSocialSharing)
-    {
-    $scope.tabs_daily = true;
+app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cordovaNetwork, $filter, $ionicSideMenuDelegate, $ionicLoading, $http, $cordovaSocialSharing, $ionicPopup)
+{
+    var popUp = null;
+    var wifiAlert = {
+        'message':'No Internet Connection',
+        'title':'Network Error',
+        'button': 'OK'
+    }
+    $scope.popType = ''
     $scope.badges = null;
     $scope.urlArray = null;
     $scope.badgeArray = null;
@@ -16,6 +22,9 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
     }
     $scope.selectAllLeagues = false;
     $scope.selectedLeagues = [];
+
+    $scope.filteredResult = [];
+
 
     $scope.sideMenuOptions = {
         'Football Tips': true,
@@ -37,8 +46,6 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
 
     $scope.initialize = function() { // will run every time the app is initialized
         getBadges();
-        $scope.getJson();
-        //getLeagues();
     }
 
     $scope.$watch( function(scope) {return scope.urlArgs.winType},
@@ -163,20 +170,27 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
 
 
     var getBadges = function() {
-        $ionicLoading.show({
-            template: 'Loading...'
-        });
+
+        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+            $scope.badges = [];
+        } else {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+
             $.ajax({
                 type: 'GET',
                 url: urlType.Badges.url,
                 dataType: 'jsonp',
                 success: function (data) {
-                    console.log("badges success.. data = " + JSON.stringify(data))
+                    console.log(urlType.Badges.url + " === " + JSON.stringify(data))
                     if (data.success == 1) {
                         console.log("success==1");
                         $scope.badges = data.stock[0];
                         console.log($scope.badges);
                         $scope.badges.FootballTips = parseInt($scope.badges.TodayTotal) + parseInt($scope.badges.WeekTotal);
+                        getLeagues();
                     }
                     $ionicLoading.hide();
 
@@ -187,48 +201,72 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
                     $ionicLoading.hide();
                 }
             });
+
+        }
     }
 
     $scope.getJson = function() {
         $scope.urlArray = [];
         $scope.badgeArray = [];
         $scope.stock = [];
+        var counter = 0;
+        var countNumb = 1;
         if ( $scope.urlArgs['first'] == 'Football Tips') {
             $scope.urlArray.push(urlType[$scope.urlArgs['first']][$scope.urlArgs.time]['4 Star'][$scope.urlArgs.winType]['url']);
             $scope.urlArray.push(urlType[$scope.urlArgs['first']][$scope.urlArgs.time]['5 Star'][$scope.urlArgs.winType]['url']);
 
             $scope.badgeArray.push(urlType[$scope.urlArgs['first']][$scope.urlArgs.time]['4 Star'][$scope.urlArgs.winType]['badge']);
             $scope.badgeArray.push(urlType[$scope.urlArgs['first']][$scope.urlArgs.time]['5 Star'][$scope.urlArgs.winType]['badge']);
-
+            countNumb = 2;
+            $scope.filteredResult = [];
         } else {
             $scope.urlArray.push(urlType[$scope.urlArgs['first']]['url']);
         }
-
-        $ionicLoading.show({
-            template: 'Loading...'
-        });
         $scope.urlArgs.star = '4 Star';
-        $scope.urlArray.forEach( function(url) {
-            $.ajax({
-                type: 'GET',
-                url: url,
-                dataType: 'jsonp',
-                success: function (data) {
-                    $scope.content[$scope.urlArray.indexOf(url)] = data;
-                    if (data.success == 1) {
-                        $scope.stock[$scope.urlArray.indexOf(url)] = data.stock
-                    } else {
-                        $scope.stock[$scope.urlArray.indexOf(url)] = ""
-                    }
-                    $ionicLoading.hide();
-                },
-                fail: function (err) {
-                    $scope.stock = "";
-                    console.log(err.message);
-                    $ionicLoading.hide();
-                }
+
+        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+
+            $scope.filteredResult = []
+        } else {
+            $ionicLoading.show({
+                template: 'Loading...'
             });
-        });
+
+            $scope.urlArray.forEach( function(url) {
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    dataType: 'jsonp',
+                    success: function (data) {
+                        var index = $scope.urlArray.indexOf(url);
+                        counter++;
+                        $scope.content[index] = data;
+                        if (data.success == 1) {
+                            $scope.stock[index] = data.stock;
+                            console.log(url + " === " + JSON.stringify($scope.stock[index]));
+                            if ($scope.urlArgs.first == 'Football Tips') {
+                                $scope.filteredResult[index] = $filter('LeagueFilter')(data.stock, $scope.selectedLeagues)
+                                console.log("filtered length = " + $scope.filteredResult[index].length + " ==== " + JSON.stringify($scope.filteredResult[index]))
+                            }
+                        } else {
+                            $scope.stock[index] = ""
+                        }
+                        if (counter == countNumb) {
+                            $ionicLoading.hide();
+                        }
+                    },
+                    fail: function (err) {
+                        counter++;
+                        $scope.stock = "";
+                        console.log(err.message);
+                        if (counter == countNumb) {
+                            $ionicLoading.hide();
+                        }
+                    }
+                });
+            });
+        }
 
     }
 
@@ -274,34 +312,63 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
     }
 
     var getLeagues = function() {
+
+        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+
+            $scope.leagues = []
+            $scope.selectedLeagues = []
+            $scope.changeMenu();
+        } else {
             $ionicLoading.show({
                 template: 'Loading...'
             });
-        $.ajax({
-            url: urlType.Leagues.url,
-            dataType: 'jsonp',
-            cache : false,
-            success: function (data) {
-                if (data.success == 1) {
-                    $scope.leagues = data.stock;
-                    $scope.setLeaguesSame(false);
 
-                    $scope.leagues.forEach( function(leagueObj) {
-                        $scope.allLeaguesArray.push(leagueObj.League)
-                    } )
-                    $scope.selectedLeagues = $scope.allLeaguesArray;
-                    console.log("selected leagues = " + $scope.selectedLeagues)
-                }
+            $http.get(urlType.Leagues.url).
+                success(function(data, status, headers, config) {
+                    if (data.success == 1) {
+                        $scope.leagues = data.stock;
+                        $scope.setLeaguesSame(false);
 
+                        $scope.leagues.forEach(function (leagueObj) {
+                            $scope.allLeaguesArray.push(leagueObj.League)
+                        })
+                        $scope.selectedLeagues = $scope.allLeaguesArray;
+                        console.log("selected leagues = " + $scope.selectedLeagues)
+                        $scope.getJson();
+                    }
+                }).
+                error(function (data, status, headers, config) {
+                    $scope.leagues = [];
+                    console.log(JSON.stringify(data));
                     $ionicLoading.hide();
-            },
-            fail: function (err) {
-                $scope.leagues = [];
-                console.log(err.message);
-                $ionicLoading.hide();
-            }
-        });
+                })
+        }
     }
+    //$.ajax({
+        //    url: urlType.Leagues.url,
+        //    dataType: 'jsonp',
+        //    cache : false,
+        //    success: function (data) {
+        //        if (data.success == 1) {
+        //            $scope.leagues = data.stock;
+        //            $scope.setLeaguesSame(false);
+        //
+        //            $scope.leagues.forEach( function(leagueObj) {
+        //                $scope.allLeaguesArray.push(leagueObj.League)
+        //            } )
+        //            $scope.selectedLeagues = $scope.allLeaguesArray;
+        //            console.log("selected leagues = " + $scope.selectedLeagues)
+        //        }
+        //
+        //        $ionicLoading.hide();
+        //    },
+        //    fail: function (err) {
+        //        $scope.leagues = [];
+        //        console.log(err.message);
+        //        $ionicLoading.hide();
+        //    }
+        //});
 
     $scope.setLeaguesSame = function(value) {
 
@@ -358,11 +425,32 @@ app.controller('MainCtrl',function($scope, $ionicSideMenuDelegate, $ionicLoading
         }
 
         $scope.changeMenu('Football Tips');
+        $scope.getJson();
     }
 
     $scope.goBackFromSettings = function() {
         $scope.changeMenu('Football Tips');
     }
 
-    $scope.initialize();
+    $scope.openPopup = function(popType) {
+        $scope.popType = popType;
+
+        popUp = $ionicPopup.show({
+            templateUrl: "templates/" + popType + ".html",
+            scope: $scope
+        });
+    }
+
+    $scope.closePopup = function(itemType) {
+        if ( $scope.popType == 'popStar') {
+            $scope.urlArgs.star = itemType;
+        } else if ( $scope.popType == 'popWin') {
+            $scope.urlArgs.winType = itemType;
+        }
+        popUp.close();
+    }
+
+    $ionicPlatform.ready(function() {
+        $scope.initialize();
+    });
 });

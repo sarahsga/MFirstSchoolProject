@@ -21,6 +21,12 @@ select
     color: white;
 }
 
+.my-select-button {
+    border: 2px solid #FE7C67;
+    background-color: #2A3A49;
+    color: white;
+}
+
 .button {
     border-radius: 0px;
 }
@@ -90,6 +96,22 @@ select
     color: white !important;
 }
 
+.popup-head
+{
+    padding: 0px !important;
+}
+
+.popup-body {
+    padding: 1px !important;
+}
+
+.menu-active {
+    background-color: #FE7C67 !important;
+}
+
+.popUpList > .item {
+    border: 1px solid white !important;
+}
 /*
 .mySelect {
     background-color: #7994B1;

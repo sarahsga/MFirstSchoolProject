@@ -1,0 +1,31 @@
+<ul class="list popUpList">
+    <a class="item" ng-click="closePopup('Home Wins', pop)"
+       ng-class="{'menu-active': urlArgs.winType == 'Home Wins'}">Home Wins
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.HomeTodayTotal}}</span>
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.HomeTotal}}</span>
+    </a>
+
+    <a class="item" ng-click="closePopup('Away Wins', pop)"
+       ng-class="{'menu-active': urlArgs.winType == 'Away Wins'}">Away Wins
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.AwayTodayTotal}}</span>
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.AwayTotal}}</span>
+    </a>
+
+    <a class="item" ng-click="closePopup('High Scoring', pop)"
+       ng-class="{'menu-active': urlArgs.winType == 'High Scoring'}">High Scoring
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.HighTodayTotal}}</span>
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.HighTotal}}</span>
+    </a>
+
+    <a class="item" ng-click="closePopup('Low Scoring', pop)"
+       ng-class="{'menu-active': urlArgs.winType == 'Low Scoring'}">Low Scoring
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.LowTodayTotal}}</span>
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.LowTotal}}</span>
+    </a>
+
+    <a class="item" ng-click="closePopup('BTTS', pop)"
+       ng-class="{'menu-active': urlArgs.winType == 'BTTS'}">BTTS
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.BTTSTodayTotal}}</span>
+        <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.BTTSTotal}}</span>
+    </a>
+</ul>
