@@ -109,6 +109,7 @@ ion-content {
 .popup-head
 {
     padding: 0px !important;
+    border-bottom: 0px !important;
 }
 
 .popup-body {
@@ -122,6 +123,14 @@ ion-content {
 .popUpList > .item {
     border: 1px solid white !important;
 }
+.newsFeed
+{
+   border-bottom: 1px solid rgb(172, 172, 172) !important;
+    padding: 10px; !important;
+    margin-top: 0px !important;
+    padding-top: 10px !important;
+}
+
 /*
 .mySelect {
     background-color: #7994B1;

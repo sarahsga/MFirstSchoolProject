@@ -20,7 +20,7 @@
             <div ng-if="filteredResult[0].length == 0" class="row">
                 <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto">There are no tips available at this time</h4>
             </div>
-            <div ng-if="content[0].success == 1" class="row"  ng-class-even="'listEven'" ng-class-odd="'listOdd'"
+            <div ng-if="content[0].success == 1" class="row newsFeed"
                  ng-repeat="record in filteredResult[0]">
                 <div class="col">
                     <div class="row">
@@ -43,7 +43,7 @@
             <div ng-if="filteredResult[1].length == 0" class="row">
                 <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto">There are no tips available at this time</h4>
             </div>
-            <div ng-if="content[1].success == 1" class="row" ng-class-even="'listEven'" ng-class-odd="'listOdd'"
+            <div ng-if="content[1].success == 1" class="row newsFeed"
                  ng-repeat="record in filteredResult[1]">
                 <div class="col">
                     <div class="row">

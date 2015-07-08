@@ -123,8 +123,7 @@
         <div ng-if="stock[0] == ''" class="row">
             <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto">There are no tips available at this time</h4>
         </div>
-        <div ng-repeat="st in stock[0]" class="row"
-             ng-class-even="'listEven'" ng-class-odd="'listOdd'">
+        <div ng-repeat="st in stock[0]" class="row newsFeed">
             <div class="col">{{st.ID}}</div>
             <div class="col">{{st.Name}}</div>
             <div class="col">{{st.Tipster}}</div>
@@ -133,10 +132,10 @@
     </div>
 
     <div ng-if="sideMenuOptions['NFL Tips']">
-        <div ng-if="stock[0] == ''" class="row">
+        <div ng-if="stock[0] == ''" class="row ">
             <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto">There are no tips available at this time</h4>
         </div>
-        <div ng-repeat="st in stock[0]" class="row"
+        <div ng-repeat="st in stock[0]" class="row newsFeed"
              ng-class-even="'listEven'" ng-class-odd="'listOdd'">
             <div class="col">{{st.Match}}</div>
             <div class="col">{{st.Tip}}</div>
@@ -146,8 +145,7 @@
 
     <div ng-if="sideMenuOptions['Accuracy']">
         <div ng-show="urlArgs.first == 'Accuracy'">
-            <div class="row" ng-repeat="(key,value) in accuracy | orderAccuracyBy : accuracyorder"
-                 ng-class-even="'listEven'" ng-class-odd="'listOdd'" >
+            <div class="row newsFeed" ng-repeat="(key,value) in accuracy | orderAccuracyBy : accuracyorder" >
                 <div class="col">{{value.name}}</div>
                 <div class="col">{{value.percent}}%</div>
             </div>
