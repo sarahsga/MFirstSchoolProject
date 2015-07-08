@@ -64,14 +64,27 @@ app.filter('TitleFilter', function() {
 
 app.filter('LeagueFilter', function() {
 
-    return function(items, selectedLeagues) {
+    return function (items, selectedLeagues) {
         var result = []
-        angular.forEach( items, function(i) {
+        angular.forEach(items, function (i) {
             if (selectedLeagues.indexOf(i.League) != -1) {
                 result.push(i)
             }
         });
         return result;
 
+    }
+});
+
+app.filter('orderAccuracyBy', function() {
+    return function(items, field) {
+        var filtered = [];
+        angular.forEach(items, function(item) {
+            filtered.push(item);
+        });
+        filtered.sort(function (a, b) {
+            return (a[field] > b[field] ? 1 : -1);
+        });
+        return filtered;
     };
 });

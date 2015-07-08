@@ -43,9 +43,12 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
         winType: 'Home Wins'
     }
 
+    $scope.accuracyorder = []
 
     $scope.initialize = function() { // will run every time the app is initialized
         getBadges();
+        getAccuracy();
+
     }
 
     $scope.$watch( function(scope) {return scope.urlArgs.winType},
@@ -167,17 +170,59 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
         }
     }
 
+    $scope.accuracy = {
+        '5StarHome' : {
+            name: '5 Star Home Wins',
+            percent: '0'
+        },
+        '4StarHome' : {
+            name: '4 Star Home Wins',
+            percent: '0'
+        },
+        '5StarAway' : {
+            name: '5 Star Away Wins',
+            percent: '0'
+        },
+        '4StarAway' : {
+            name: '4 Star Away Wins',
+            percent: '0'
+        },
+        '5StarHigh' : {
+            name: '5 Star High Scoring',
+            percent: '0'
+        },
+        '4StarHigh' : {
+            name: '4 Star High Scoring',
+            percent: '0'
+        },
+        '5StarLow' : {
+            name: '5 Star Low Scoring',
+            percent: '0'
+        },
+        '4StarLow' : {
+            name: '4 Star Low Scoring',
+            percent: '0'
+        },
+        '5StarBTTS' : {
+            name: '5 Star BTTS',
+            percent: '0'
+        },
+        '4StarBTTS' : {
+            name: '4 Star BTTS',
+            percent: '0'
+        }
+    }
 
 
     var getBadges = function() {
 
-        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
-            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-            $scope.badges = [];
-        } else {
-            $ionicLoading.show({
-                template: 'Loading...'
-            });
+        //if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+        //    $scope.badges = [];
+        //} else {
+        //    $ionicLoading.show({
+        //        template: 'Loading...'
+        //    });
 
             $.ajax({
                 type: 'GET',
@@ -203,6 +248,33 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
             });
 
         }
+    //}
+
+    var getAccuracy = function() {
+        $.ajax({
+            type: 'GET',
+            url: urlType.Accuracy.url,
+            dataType: 'jsonp',
+            success: function (data) {
+                if (data.success == 1) {
+
+                    for (var property in data.stock[0]) {
+                        if (data.stock[0].hasOwnProperty(property)) {
+                            $scope.accuracy[property].percent = data.stock[0][property]
+                        }
+                        $scope.accuracyorder.push($scope.accuracy[property].name)
+                    }
+
+
+                    console.log('$scope.accuracy = ' + JSON.stringify($scope.accuracy));
+                    console.log('$scope.accuracyOrder = ' + JSON.stringify($scope.accuracyorder));
+
+                }
+            },
+            fail: function (err) {
+
+            }
+        });
     }
 
     $scope.getJson = function() {
@@ -224,14 +296,14 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
         }
         $scope.urlArgs.star = '4 Star';
 
-        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
-            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-
-            $scope.filteredResult = []
-        } else {
-            $ionicLoading.show({
-                template: 'Loading...'
-            });
+        //if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+        //
+        //    $scope.filteredResult = []
+        //} else {
+        //    $ionicLoading.show({
+        //        template: 'Loading...'
+        //    });
 
             $scope.urlArray.forEach( function(url) {
                 $.ajax({
@@ -251,6 +323,7 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
                             }
                         } else {
                             $scope.stock[index] = ""
+                            $scope.filteredResult[index] = [];
                         }
                         if (counter == countNumb) {
                             $ionicLoading.hide();
@@ -268,7 +341,7 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
             });
         }
 
-    }
+    //}
 
     $scope.getMessage = function() {
         var message = "";
@@ -313,16 +386,16 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
 
     var getLeagues = function() {
 
-        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
-            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-
-            $scope.leagues = []
-            $scope.selectedLeagues = []
-            $scope.changeMenu();
-        } else {
-            $ionicLoading.show({
-                template: 'Loading...'
-            });
+        //if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+        //
+        //    $scope.leagues = []
+        //    $scope.selectedLeagues = []
+        //    $scope.changeMenu();
+        //} else {
+        //    $ionicLoading.show({
+        //        template: 'Loading...'
+        //    });
 
             $http.get(urlType.Leagues.url).
                 success(function(data, status, headers, config) {
@@ -344,7 +417,9 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
                     $ionicLoading.hide();
                 })
         }
-    }
+    //}
+
+
     //$.ajax({
         //    url: urlType.Leagues.url,
         //    dataType: 'jsonp',
@@ -450,7 +525,7 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
         popUp.close();
     }
 
-    $ionicPlatform.ready(function() {
+    //$ionicPlatform.ready(function() {
         $scope.initialize();
-    });
+    //});
 });

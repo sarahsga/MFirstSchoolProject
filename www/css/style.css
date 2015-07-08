@@ -2,6 +2,11 @@
     background-color: #C9EAD2;
 }
 
+.checkbox-assertive input:checked:before, .checkbox-assertive input:checked + .checkbox-icon:before {
+    background: #FE7C67;
+    border-color: #FE7C67;
+}
+
 .option-active {
     border: 2px solid #FE7C67;
     background-color: #FE7C67;
@@ -61,6 +66,11 @@ select
 .mainContent
 {
     background-color: #7B96B3 !important;
+}
+
+ion-content {
+    background-color: #7B96B3 !important;
+    color: #ffffff !important;
 }
 
 
