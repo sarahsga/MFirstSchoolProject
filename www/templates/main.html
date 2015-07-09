@@ -41,7 +41,7 @@
                     <a class="item item-icon-left" ng-click="changeMenu('NFL Tips'); getJson();" style="border-bottom: 1px solid white"
                        ng-class="{'menu-active': urlArgs.first == 'NFL Tips'}">
                         <i class="icon ion-ios-football-outline dark"></i>
-                        NFL Tips
+                            NFL Tips
                         <span class="badge badge-assertive">{{badges.NFLTips}}</span>
                     </a>
 
@@ -72,7 +72,7 @@
 </div>
 
 <div ng-if="sideMenuOptions['Settings'] == true">
-    <ion-header-bar class="bar bar-dark">
+    <ion-header-bar class="bar topHeader">
             <button class="button button-icon icon ion-android-arrow-back elements"
                     ng-click="goBackFromSettings()"></button>
         <h1 class="title elements">Settings
@@ -82,7 +82,7 @@
 </div>
 
 <div ng-if="sideMenuOptions['Choose League'] == true">
-    <ion-header-bar class="bar bar-dark">
+    <ion-header-bar class="bar topHeader">
         <button class="button button-icon icon ion-android-arrow-back elements"
                 ng-click="goBackFromChooseLeague()"></button>
         <h1 class="title elements">Choose League

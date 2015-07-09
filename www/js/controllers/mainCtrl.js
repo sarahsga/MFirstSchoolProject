@@ -1,5 +1,5 @@
 
-app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cordovaNetwork, $filter, $ionicSideMenuDelegate, $ionicLoading, $http, $cordovaSocialSharing, $ionicPopup)
+app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordovaDialogs, $cordovaNetwork, $filter, $ionicSideMenuDelegate, $ionicLoading, $http, $cordovaSocialSharing, $ionicPopup)
 {
     var popUp = null;
     var wifiAlert = {
@@ -216,13 +216,13 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
 
     var getBadges = function() {
 
-        //if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
-        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-        //    $scope.badges = [];
-        //} else {
-        //    $ionicLoading.show({
-        //        template: 'Loading...'
-        //    });
+        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+            $scope.badges = [];
+        } else {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
 
             $.ajax({
                 type: 'GET',
@@ -238,43 +238,55 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
                         getLeagues();
                     }
                     $ionicLoading.hide();
+                    //$cordovaToast.showLongBottom("Badge success")
 
                 },
                 fail: function (err) {
                     $scope.badges = "";
                     console.log(err.message);
                     $ionicLoading.hide();
+                    //$cordovaToast.showLongBottom("Badge fail")
                 }
             });
 
         }
-    //}
+    }
 
     var getAccuracy = function() {
-        $.ajax({
-            type: 'GET',
-            url: urlType.Accuracy.url,
-            dataType: 'jsonp',
-            success: function (data) {
-                if (data.success == 1) {
 
-                    for (var property in data.stock[0]) {
-                        if (data.stock[0].hasOwnProperty(property)) {
-                            $scope.accuracy[property].percent = data.stock[0][property]
+        if ($cordovaNetwork.getNetwork() == Connection.NONE) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+            $scope.badges = [];
+        } else {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
+
+            $.ajax({
+                type: 'GET',
+                url: urlType.Accuracy.url,
+                dataType: 'jsonp',
+                success: function (data) {
+                    if (data.success == 1) {
+
+                        for (var property in data.stock[0]) {
+                            if (data.stock[0].hasOwnProperty(property)) {
+                                $scope.accuracy[property].percent = data.stock[0][property]
+                            }
+                            $scope.accuracyorder.push($scope.accuracy[property].name)
                         }
-                        $scope.accuracyorder.push($scope.accuracy[property].name)
+
+
+                        console.log('$scope.accuracy = ' + JSON.stringify($scope.accuracy));
+                        console.log('$scope.accuracyOrder = ' + JSON.stringify($scope.accuracyorder));
+
                     }
-
-
-                    console.log('$scope.accuracy = ' + JSON.stringify($scope.accuracy));
-                    console.log('$scope.accuracyOrder = ' + JSON.stringify($scope.accuracyorder));
+                },
+                fail: function (err) {
 
                 }
-            },
-            fail: function (err) {
-
-            }
-        });
+            });
+        }
     }
 
     $scope.getJson = function() {
@@ -296,14 +308,14 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
         }
         $scope.urlArgs.star = '4 Star';
 
-        //if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
-        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-        //
-        //    $scope.filteredResult = []
-        //} else {
-        //    $ionicLoading.show({
-        //        template: 'Loading...'
-        //    });
+        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+
+            $scope.filteredResult = []
+        } else {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
 
             $scope.urlArray.forEach( function(url) {
                 $.ajax({
@@ -326,7 +338,11 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
                             $scope.filteredResult[index] = [];
                         }
                         if (counter == countNumb) {
+                            if ($scope.urlArgs.first == 'NFL Tips') {
+                                console.log('NFL...' + url + ' .... ' + JSON.stringify($scope.stock[0]))
+                            }
                             $ionicLoading.hide();
+                            //$cordovaToast.showLongBottom("json success")
                         }
                     },
                     fail: function (err) {
@@ -335,22 +351,25 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
                         console.log(err.message);
                         if (counter == countNumb) {
                             $ionicLoading.hide();
+                            //$cordovaToast.showLongBottom("json fail")
                         }
                     }
                 });
             });
         }
 
-    //}
+    }
 
     $scope.getMessage = function() {
         var message = "";
         if ( $scope.urlArgs['first'] == 'Football Tips') {
             message = $scope.urlArgs.winType + " Tips\n\n";
             $scope.stock.forEach(function(stock) { // repeated for 4/5 star ... stock[0] for 4star, and stock[1] for 5star
-                stock.forEach( function(record) { //repeat for each obj/result/team
-                    message = message + record.HomeTeam + " - " + record.AwayTeam + " ," + record.Date + "\n\n"
-                } )
+                if (stock != "") {
+                    stock.forEach( function(record) { //repeat for each obj/result/team
+                        message = message + record.HomeTeam + " - " + record.AwayTeam + " ," + record.Date + "\n\n"
+                    } )
+                }
             })
         } else if ( $scope.urlArgs['first'] == 'Horse Racing Tips') {
             message = "Horse Racing Tips\n\n";
@@ -372,6 +391,8 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
     $scope.shareMessage = function() {
         var message = ""
         if ($scope.stock != "" && $scope.stock != null) {
+            console.log("stock scope is not empty.. message.. " + JSON.stringify($scope.stock))
+
             message = $scope.getMessage();
         }
 
@@ -386,16 +407,16 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
 
     var getLeagues = function() {
 
-        //if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
-        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-        //
-        //    $scope.leagues = []
-        //    $scope.selectedLeagues = []
-        //    $scope.changeMenu();
-        //} else {
-        //    $ionicLoading.show({
-        //        template: 'Loading...'
-        //    });
+        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+
+            $scope.leagues = []
+            $scope.selectedLeagues = []
+            $scope.changeMenu();
+        } else {
+            $ionicLoading.show({
+                template: 'Loading...'
+            });
 
             $http.get(urlType.Leagues.url).
                 success(function(data, status, headers, config) {
@@ -409,15 +430,17 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
                         $scope.selectedLeagues = $scope.allLeaguesArray;
                         console.log("selected leagues = " + $scope.selectedLeagues)
                         $scope.getJson();
+                        //$cordovaToast.showLongBottom("league success")
                     }
                 }).
                 error(function (data, status, headers, config) {
                     $scope.leagues = [];
                     console.log(JSON.stringify(data));
                     $ionicLoading.hide();
+                    //$cordovaToast.showLongBottom("league fail")
                 })
         }
-    //}
+    }
 
 
     //$.ajax({
@@ -525,7 +548,7 @@ app.controller('MainCtrl',function($scope, $ionicPlatform, $cordovaDialogs, $cor
         popUp.close();
     }
 
-    //$ionicPlatform.ready(function() {
+    $ionicPlatform.ready(function() {
         $scope.initialize();
-    //});
+    });
 });
