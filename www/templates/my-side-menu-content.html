@@ -123,11 +123,12 @@
         <div class="tabs topHeader bottomHeader2">
             <button class="button my-select-button" ng-click="openPopup('popStatsType')">{{urlArgs.statsType}}</button>
         </div>
-        <div class="tabs topHeader bottomHeader3 newsFeed" style="text-align: center">
-            <div class="row">
+        <div class="tabs topHeader bottomHeader3 newsFeed" style="text-align: center; line-height: 30px; vertical-align: middle">
+            <!--<div class="row">-->
                 <div class="col" ng-repeat="item in statsOrder" ng-if="stats[0].hasOwnProperty(item)"
-                        >{{item}}</div>
-            </div>
+                       style="padding: 0px; line-height: 8px;" >{{item}}
+                </div>
+            <!--</div>-->
         </div>
             <div>
                 <ion-content style="top: 133px !important">
