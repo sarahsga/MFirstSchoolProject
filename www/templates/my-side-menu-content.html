@@ -120,8 +120,11 @@
 
 <ion-content class="has-header">
     <div ng-if="sideMenuOptions['Horse Racing Tips']">
-        <div ng-if="stock[0] == ''" class="row">
-            <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto">There are no tips available at this time</h4>
+        <div ng-if="stock[0] == ''  && internet != false" class="row">
+            <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">There are no tips available at this time</h4>
+        </div>
+        <div ng-if="internet == false" class="row">
+            <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">Please connect to the internet and try again</h4>
         </div>
         <div ng-repeat="st in stock[0]" class="row newsFeed">
             <div class="col">{{st.ID}}</div>
@@ -132,8 +135,11 @@
     </div>
 
     <div ng-if="sideMenuOptions['NFL Tips']">
-        <div ng-if="stock[0] == ''" class="row ">
-            <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto">There are no tips available at this time</h4>
+        <div ng-if="stock[0] == '' && internet != false" class="row ">
+            <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">There are no tips available at this time</h4>
+        </div>
+        <div ng-if="internet == false" class="row">
+            <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">Please connect to the internet and try again</h4>
         </div>
         <div ng-repeat="st in stock[0]" class="row newsFeed"
              ng-class-even="'listEven'" ng-class-odd="'listOdd'">
@@ -157,4 +163,12 @@
     <div ng-if="sideMenuOptions['Choose League']">
         <choose-league></choose-league>
     </div>
+
+    <div ng-if="sideMenuOptions['Test']">
+        <button class="button button-dark button-medium row" ng-click="startPurchase('5startips')">Buy 5startips</button>
+        <button class="button button-dark button-medium row" ng-click="startPurchase('horseracingtips')">Buy horseracingtips</button>
+        <button class="button button-dark button-medium row" ng-click="startPurchase('nfltips')">Buy nfltips</button>
+        <button class="button button-dark button-medium row" ng-click="startPurchase('entireapp')">Buy entireapp</button>
+    </div>
+
 </ion-content>

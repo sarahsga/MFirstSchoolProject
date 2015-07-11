@@ -51,6 +51,7 @@ app.directive('chooseLeague', function() {
 })
 
 app.filter('TitleFilter', function() {
+    console.log("start")
     return function(items) {
         var result = {};
         angular.forEach(items, function(value, key) {

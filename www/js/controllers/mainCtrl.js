@@ -1,5 +1,5 @@
 
-app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordovaDialogs, $cordovaNetwork, $filter, $ionicSideMenuDelegate, $ionicLoading, $http, $cordovaSocialSharing, $ionicPopup)
+app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNetwork, $ionicPlatform, $cordovaDialogs, $cordovaNetwork, $filter, $ionicSideMenuDelegate, $ionicLoading, $http, $cordovaSocialSharing, $ionicPopup)
 {
     var popUp = null;
     var wifiAlert = {
@@ -7,8 +7,18 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
         'title':'Network Error',
         'button': 'OK'
     }
+
+    $scope.noFilterTips = [];
+    $scope.internet = true;
+    $scope.unlock = {
+        '5startips': '',
+        'horseracingtips' : '',
+        'nfltips' : '',
+        'entireapp' : ''
+    }
+    //$scope.online = false;
     $scope.popType = ''
-    $scope.badges = null;
+    $scope.badges = "";
     $scope.urlArray = null;
     $scope.badgeArray = null;
     $scope.stock = "";
@@ -45,14 +55,158 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
 
     $scope.accuracyorder = []
 
-    $scope.initialize = function() { // will run every time the app is initialized
-        getBadges();
-        getAccuracy();
+    var initialize = function() { // will run every time the app is initialized
+
+        if ($scope.badges == "") {
+            //console.log("abt to init")
+
+            getBadges();
+            getAccuracy();
+            getLeagues();
+
+            if (window.store) {
+                store.register({
+                    id: "5startips",
+                    alias: "5startips",
+                    type: store.NON_CONSUMABLE
+                });
+
+                store.register({
+                    id: "horseracingtips",
+                    alias: "horseracingtips",
+                    type: store.NON_CONSUMABLE
+                });
+
+                store.register({
+                    id: "nfltips",
+                    alias: "nfltips",
+                    type: store.NON_CONSUMABLE
+                });
+
+                store.register({
+                    id: "entireapp",
+                    alias: "entireapp",
+                    type: store.NON_CONSUMABLE
+                });
+
+                store.ready(function () {
+                    console.log("\\o/ STORE READY \\o/");
+                });
+
+                store.refresh();
+
+                store.when("5startips").updated(function (p) {
+                    $scope.unlock['5startips'] = p.state;
+                    console.log("updated prod 5startips = " + JSON.stringify(p))
+                });
+
+                store.when("horseracingtips").updated(function (p) {
+                    $scope.unlock['horseracingtips'] = p.state;
+                    console.log("updated horseracingtips = " + JSON.stringify(p))
+                });
+
+                store.when("nfltips").updated(function (p) {
+                    $scope.unlock['nfltips'] = p.state;
+                    console.log("updated nfltips = " + JSON.stringify(p))
+                });
+
+
+                store.when("entireapp").updated(function (p) {
+                    $scope.unlock['entireapp'] = p.state;
+                    console.log("updated entireapp = " + JSON.stringify(p))
+                });
+
+                ////////////////////////////////////////////////
+
+                $scope.startPurchase = function (item) {
+                    console.log("Purchase initiated");
+                    //alert("Purchase initiated")
+                    if ($scope.unlock[item] != 'owned') {
+                        store.order(item);
+                    }
+                }
+
+                store.when("5startips").approved(function (product) {
+                    // download the feature
+                    console.log("SarahA: approved 5startips = " + JSON.stringify(product));
+                    product.finish()
+                });
+
+                store.when("5startips").cancelled(function (product) {
+                    // download the feature
+                    console.log("SarahA: cancelled 5startips = " + JSON.stringify(product));
+                });
+
+                store.when("5startips").error(function (product) {
+                    // download the feature
+                    console.log("SarahA: error  5startips = " + JSON.stringify(product));
+                });
+
+                //////////////////////////////////////////////////
+
+                store.when("horseracingtips").approved(function (product) {
+                    // download the feature
+                    console.log("SarahA: approved horseracingtips = " + JSON.stringify(product));
+                    product.finish()
+                });
+
+                store.when("horseracingtips").cancelled(function (product) {
+                    // download the feature
+                    console.log("SarahA: cancelled horseracingtips = " + JSON.stringify(product));
+                });
+
+                store.when("horseracingtips").error(function (product) {
+                    // download the feature
+                    console.log("SarahA: error  horseracingtips = " + JSON.stringify(product));
+                });
+
+                ////////////////////////////////////
+
+                store.when("nfltips").approved(function (product) {
+                    // download the feature
+                    console.log("SarahA: approved nfltips = " + JSON.stringify(product));
+                    product.finish()
+                });
+
+                store.when("nfltips").cancelled(function (product) {
+                    // download the feature
+                    console.log("SarahA: cancelled nfltips = " + JSON.stringify(product));
+                });
+
+                store.when("nfltips").error(function (product) {
+                    // download the feature
+                    console.log("SarahA: error  nfltips = " + JSON.stringify(product));
+                });
+
+                ////////////////////////////////////
+
+                store.when("entireapp").approved(function (product) {
+                    // download the feature
+                    console.log("SarahA: approved entireapp = " + JSON.stringify(product));
+                    product.finish()
+                });
+
+                store.when("entireapp").cancelled(function (product) {
+                    // download the feature
+                    console.log("SarahA: cancelled entireapp = " + JSON.stringify(product));
+                });
+
+                store.when("entireapp").error(function (product) {
+                    // download the feature
+                    console.log("SarahA: error  entireapp = " + JSON.stringify(product));
+                });
+
+            }
+            else {
+                console.log("no store")
+            }
+        }
+
 
     }
 
-    $scope.$watch( function(scope) {return scope.urlArgs.winType},
-        function() {$scope.getJson()})
+    //$scope.$watch( function(scope) {return scope.urlArgs.winType},
+    //    function() {$scope.getJson()})
 
     var url = [];
 
@@ -218,7 +372,7 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
 
         if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
             $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-            $scope.badges = [];
+            $scope.badges = "";
         } else {
             $ionicLoading.show({
                 template: 'Loading...'
@@ -233,9 +387,8 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
                     if (data.success == 1) {
                         console.log("success==1");
                         $scope.badges = data.stock[0];
-                        console.log($scope.badges);
+                        //console.log($scope.badges);
                         $scope.badges.FootballTips = parseInt($scope.badges.TodayTotal) + parseInt($scope.badges.WeekTotal);
-                        getLeagues();
                     }
                     $ionicLoading.hide();
                     //$cordovaToast.showLongBottom("Badge success")
@@ -254,10 +407,11 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
 
     var getAccuracy = function() {
 
-        if ($cordovaNetwork.getNetwork() == Connection.NONE) {
+        if ($cordovaNetwork.isOnline() == false) {
             $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-            $scope.badges = [];
+            $scope.internet = false;
         } else {
+            $scope.internet = true;
             $ionicLoading.show({
                 template: 'Loading...'
             });
@@ -277,8 +431,8 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
                         }
 
 
-                        console.log('$scope.accuracy = ' + JSON.stringify($scope.accuracy));
-                        console.log('$scope.accuracyOrder = ' + JSON.stringify($scope.accuracyorder));
+                        //console.log('$scope.accuracy = ' + JSON.stringify($scope.accuracy));
+                        //console.log('$scope.accuracyOrder = ' + JSON.stringify($scope.accuracyorder));
 
                     }
                 },
@@ -308,11 +462,13 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
         }
         $scope.urlArgs.star = '4 Star';
 
-        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+        if ($cordovaNetwork.isOnline() == false) {
+            $scope.internet = false;
             $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-
+            $scope.stock[0] = '';
             $scope.filteredResult = []
         } else {
+            $scope.internet = true;
             $ionicLoading.show({
                 template: 'Loading...'
             });
@@ -328,10 +484,11 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
                         $scope.content[index] = data;
                         if (data.success == 1) {
                             $scope.stock[index] = data.stock;
-                            console.log(url + " === " + JSON.stringify($scope.stock[index]));
+                            //console.log(url + " === " + JSON.stringify($scope.stock[index]));
                             if ($scope.urlArgs.first == 'Football Tips') {
                                 $scope.filteredResult[index] = $filter('LeagueFilter')(data.stock, $scope.selectedLeagues)
-                                console.log("filtered length = " + $scope.filteredResult[index].length + " ==== " + JSON.stringify($scope.filteredResult[index]))
+                                //console.log("filtered length = " + $scope.filteredResult[index].length + " ==== " + JSON.stringify($scope.filteredResult[index]))
+                                $scope.noFilterTips = data.stock
                             }
                         } else {
                             $scope.stock[index] = ""
@@ -339,7 +496,7 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
                         }
                         if (counter == countNumb) {
                             if ($scope.urlArgs.first == 'NFL Tips') {
-                                console.log('NFL...' + url + ' .... ' + JSON.stringify($scope.stock[0]))
+                                //console.log('NFL...' + url + ' .... ' + JSON.stringify($scope.stock[0]))
                             }
                             $ionicLoading.hide();
                             //$cordovaToast.showLongBottom("json success")
@@ -391,7 +548,7 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
     $scope.shareMessage = function() {
         var message = ""
         if ($scope.stock != "" && $scope.stock != null) {
-            console.log("stock scope is not empty.. message.. " + JSON.stringify($scope.stock))
+            //console.log("stock scope is not empty.. message.. " + JSON.stringify($scope.stock))
 
             message = $scope.getMessage();
         }
@@ -407,13 +564,14 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
 
     var getLeagues = function() {
 
-        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+        if ($cordovaNetwork.isOnline() == false) {
+            $scope.internet = false;
             $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-
             $scope.leagues = []
             $scope.selectedLeagues = []
             $scope.changeMenu();
         } else {
+            $scope.internet = true;
             $ionicLoading.show({
                 template: 'Loading...'
             });
@@ -428,7 +586,7 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
                             $scope.allLeaguesArray.push(leagueObj.League)
                         })
                         $scope.selectedLeagues = $scope.allLeaguesArray;
-                        console.log("selected leagues = " + $scope.selectedLeagues)
+                        //console.log("selected leagues = " + $scope.selectedLeagues)
                         $scope.getJson();
                         //$cordovaToast.showLongBottom("league success")
                     }
@@ -549,6 +707,17 @@ app.controller('MainCtrl',function($scope, $cordovaToast, $ionicPlatform, $cordo
     }
 
     $ionicPlatform.ready(function() {
-        $scope.initialize();
+        if ($cordovaNetwork.isOnline() == true) {
+            initialize();
+        } else {
+            $cordovaDialogs.confirm(wifiAlert.message, wifiAlert.title, [wifiAlert.button])
+                .then(function(buttonIndex) {
+                    ionic.Platform.exitApp();
+                });
+        }
     });
+
+
+
+
 });
