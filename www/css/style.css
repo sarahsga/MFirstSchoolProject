@@ -27,8 +27,8 @@ select
 }
 
 .my-select-button {
-    border: 2px solid #FE7C67;
-    background-color: #2A3A49;
+    border: 2px solid #2A3A49;
+    background-color: #FE7C67;
     color: white;
 }
 
@@ -58,15 +58,36 @@ select
     padding-bottom: 10px !important;
 }
 
+.bottomHeader2
+{
+    top: 43px !important;
+    padding-top: 2px !important;
+    height: 70px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.bottomHeader3
+{
+    top: 113px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-top: 0px !important;
+    height: 30px !important;
+    /*padding-top: 10px !important;*/
+    padding-bottom: 0px !important;
+    color: #FE7C67 !important;
+}
+
 .title
 {
     color: #ffffff !important;
     font-size: 22px !important;
 }
-.mainContent
-{
-    background-color: #7B96B3 !important;
-}
+/*.mainContent*/
+/*{*/
+    /*background-color: #7B96B3 !important;*/
+/*}*/
 
 ion-content {
     background-color: #7B96B3 !important;
@@ -129,6 +150,10 @@ ion-content {
     padding: 10px; !important;
     margin-top: 0px !important;
     padding-top: 10px !important;
+}
+
+.my-icon {
+    font-size: 20px !important;
 }
 
 /*

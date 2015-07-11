@@ -118,6 +118,44 @@
    </ion-pane>
 </div>
 
+<div ng-if="sideMenuOptions['Stats']">
+    <ion-pane class="has-header">
+        <div class="tabs topHeader bottomHeader2">
+            <button class="button my-select-button" ng-click="openPopup('popStatsType')">{{urlArgs.statsType}}</button>
+        </div>
+        <div class="tabs topHeader bottomHeader3 newsFeed" style="text-align: center">
+            <div class="row">
+                <div class="col" ng-repeat="item in statsOrder" ng-if="stats[0].hasOwnProperty(item)"
+                        >{{item}}</div>
+            </div>
+        </div>
+            <div>
+                <ion-content style="top: 133px !important">
+                    <div class="newsFeed" collection-repeat="item in stats">
+                        <!--<div class="row" ng-if="$first">-->
+                        <!--<div class="col"  ng-repeat="(key,value) in item" ng-if="key != 'Name' && key!= 'League'">{{key}}</div>-->
+                        <!--</div>-->
+                        <div class="row" ng-if="item.hasOwnProperty('Name')">
+                            <div class="col">
+                                <span>{{item.Name}}</span>
+                                <span ng-if="item.hasOwnProperty('League')"><br/>{{item.League}}</span>
+                            </div>
+                        </div>
+                        <div class="row"  style="text-align: center">
+                            <div class="col"
+                                 ng-repeat="st in statsOrder" ng-if="item.hasOwnProperty(st)">{{item[st]}}</div>
+                        </div>
+                    </div>
+                </ion-content>
+            </div>
+
+
+
+
+    </ion-pane>
+</div>
+
+
 <ion-content class="has-header">
     <div ng-if="sideMenuOptions['Horse Racing Tips']">
         <div ng-if="stock[0] == ''  && internet != false" class="row">
@@ -127,14 +165,13 @@
             <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">Please connect to the internet and try again</h4>
         </div>
         <div ng-repeat="st in stock[0]" class="row newsFeed">
-            <div class="col">{{st.ID}}</div>
             <div class="col">{{st.Name}}</div>
             <div class="col">{{st.Tipster}}</div>
             <div class="col">{{st.Racecard}}</div>
         </div>
     </div>
 
-    <div ng-if="sideMenuOptions['NFL Tips']">
+    <div ng-if="sideMenuOptions['NFL Tips'] || sideMenuOptions['Cricket Tips'] || sideMenuOptions['Boxing Tips']  || sideMenuOptions['Tennis Tips']">
         <div ng-if="stock[0] == '' && internet != false" class="row ">
             <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">There are no tips available at this time</h4>
         </div>
@@ -143,7 +180,25 @@
         </div>
         <div ng-repeat="st in stock[0]" class="row newsFeed"
              ng-class-even="'listEven'" ng-class-odd="'listOdd'">
-            <div class="col">{{st.Match}}</div>
+            <div class="col">
+                <span ng-show="sideMenuOptions['Tennis Tips']">{{st.Game}}</span>
+                <span ng-hide="sideMenuOptions['Tennis Tips']">{{st.Match}}</span>
+            </div>
+            <div class="col">{{st.Tip}}</div>
+            <div class="col">{{st.Date}}</div>
+        </div>
+    </div>
+
+    <div ng-if="sideMenuOptions['Tennis Tips']">
+        <div ng-if="stock[0] == '' && internet != false" class="row ">
+            <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">There are no tips available at this time</h4>
+        </div>
+        <div ng-if="internet == false" class="row">
+            <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">Please connect to the internet and try again</h4>
+        </div>
+        <div ng-repeat="st in stock[0]" class="row newsFeed"
+             ng-class-even="'listEven'" ng-class-odd="'listOdd'">
+            <div class="col">{{st.Game}}</div>
             <div class="col">{{st.Tip}}</div>
             <div class="col">{{st.Date}}</div>
         </div>
@@ -151,9 +206,32 @@
 
     <div ng-if="sideMenuOptions['Accuracy']">
         <div ng-show="urlArgs.first == 'Accuracy'">
-            <div class="row newsFeed" ng-repeat="(key,value) in accuracy | orderAccuracyBy : accuracyorder" >
+            <div class="row newsFeed" ng-repeat="(key,value) in accuracy | myOrderBy : accuracyorder" >
                 <div class="col">{{value.name}}</div>
-                <div class="col">{{value.percent}}%</div>
+                <div class="col" style="text-align:right;">{{value.percent}}%</div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="sideMenuOptions['Statssd']">
+        <div class="newsFeed" collection-repeat="item in stats" style="text-align: center">
+            <!--<div class="row" ng-if="$first">-->
+                <!--<div class="col"  ng-repeat="(key,value) in item" ng-if="key != 'Name' && key!= 'League'">{{key}}</div>-->
+            <!--</div>-->
+            <div class="row" ng-if="item.hasOwnProperty('Name')">{{item.Name}}
+                <span ng-if="item.hasOwnProperty('League')">
+                - {{item.League}}
+                </span>
+            </div>
+            <div class="row">
+                <div class="col" ng-if="item.hasOwnProperty('P')">{{item.P}}</div>
+                <div class="col" ng-if="item.hasOwnProperty('W')">{{item.W}}</div>
+                <div class="col" ng-if="item.hasOwnProperty('D')">{{item.D}}</div>
+                <div class="col" ng-if="item.hasOwnProperty('L')">{{item.L}}</div>
+                <div class="col" ng-if="item.hasOwnProperty('GF')">{{item.GF}}</div>
+                <div class="col" ng-if="item.hasOwnProperty('GA')">{{item.GA}}</div>
+                <div class="col" ng-if="item.hasOwnProperty('GD')">{{item.GD}}</div>
+                <div class="col" ng-if="item.hasOwnProperty('Pts')">{{item.Pts}}</div>
             </div>
         </div>
     </div>

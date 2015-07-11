@@ -31,18 +31,46 @@
                         <span class="badge badge-assertive">{{badges.FootballTips}}</span>
                     </a>
 
-                    <a class="item item-icon-left" ng-click="changeMenu('Horse Racing Tips');getJson();"
+                    <a class="item item-icon-left item-icon-right" ng-click="changeMenu('Horse Racing Tips');getJson();"
                        ng-class="{'menu-active': urlArgs.first == 'Horse Racing Tips'}">
                         <i class="icon ion-flag dark"></i>
                         Horse Racing Tips
-                        <span class="badge badge-assertive">{{badges.HorsesTips}}</span>
+                        <i class="icon ion-android-lock my-icon" ng-if="true"></i>
+                        <span class="badge badge-assertive" ng-if="false">{{badges.HorsesTips}}</span>
                     </a>
 
-                    <a class="item item-icon-left" ng-click="changeMenu('NFL Tips'); getJson();" style="border-bottom: 1px solid white"
+                    <a class="item item-icon-left item-icon-right" ng-click="changeMenu('NFL Tips'); getJson();"
                        ng-class="{'menu-active': urlArgs.first == 'NFL Tips'}">
+                        <i class="icon ion-ios-americanfootball dark"></i>
+                        NFL Tips
+                        <i class="icon ion-android-lock my-icon" ng-if="true"></i>
+                        <span class="badge badge-assertive" ng-if="false">{{badges.NFLTips}}</span>
+                    </a>
+
+                    <a class="item item-icon-left item-icon-right" ng-click="changeMenu('Boxing Tips'); getJson();"
+                       ng-class="{'menu-active': urlArgs.first == 'Boxing Tips'}">
+                        <i class="icon ion-ios-nutrition-outline dark"></i>
+                        Boxing Tips
+                        <i class="icon ion-android-lock my-icon" ng-if="true"></i>
+                    </a>
+
+                    <a class="item item-icon-left item-icon-right" ng-click="changeMenu('Cricket Tips'); getJson();"
+                       ng-class="{'menu-active': urlArgs.first == 'Cricket Tips'}">
+                        <i class="icon ion-ios-flask dark"></i>
+                        Cricket Tips
+                        <i class="icon ion-android-lock my-icon" ng-if="true"></i>
+                    </a>
+
+                    <a class="item item-icon-left item-icon-right" ng-click="changeMenu('Tennis Tips'); getJson();" style="border-bottom: 1px solid white"
+                       ng-class="{'menu-active': urlArgs.first == 'Tennis Tips'}">
                         <i class="icon ion-ios-football-outline dark"></i>
-                            NFL Tips
-                        <span class="badge badge-assertive">{{badges.NFLTips}}</span>
+                        Tennis Tips
+                        <i class="icon ion-android-lock my-icon" ng-if="true"></i>
+                    </a>
+
+                    <a class="item" style="border-color: #ddd !important;" ng-click="changeMenu('Stats'); getStats();"
+                       ng-class="{'menu-active': urlArgs.first == 'Stats'}">
+                        Tables / Stats
                     </a>
 
                     <a class="item" style="border-color: #ddd !important;" ng-click="changeMenu('Accuracy');getJson();"
@@ -60,7 +88,7 @@
                         Choose League
                     </a>
 
-                    <a class="item" ng-click="changeMenu('Rate Us');"
+                    <a class="item" ng-click="urlArgs.first = 'Rate Us'"
                        ng-class="{'menu-active': urlArgs.first == 'Rate Us'}">
                         Rate Us
                     </a>

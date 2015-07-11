@@ -77,15 +77,19 @@ app.filter('LeagueFilter', function() {
     }
 });
 
-app.filter('orderAccuracyBy', function() {
+app.filter('myOrderBy', function() {
     return function(items, field) {
+        console.log(items);
         var filtered = [];
         angular.forEach(items, function(item) {
             filtered.push(item);
         });
+
+        console.log("my filtered = " + filtered)
         filtered.sort(function (a, b) {
             return (a[field] > b[field] ? 1 : -1);
         });
+        console.log(JSON.stringify(filtered))
         return filtered;
     };
 });
