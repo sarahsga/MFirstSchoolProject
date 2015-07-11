@@ -12,5 +12,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="cgTipster node_modules" level="project" />
     <orderEntry type="library" name="cgtipster node_modules" level="project" />
+    <orderEntry type="library" name="cgtipster.git node_modules" level="project" />
   </component>
 </module>

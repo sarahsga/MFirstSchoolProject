@@ -518,15 +518,6 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
             success: function (data) {
                 if (data.success == 1) {
                     $scope.stats = data.stock;
-                    console.log(urlType.Stats[$scope.urlArgs.statsType].url + " >> " +JSON.stringify($scope.stats))
-                    //if ($scope.stats.length >= 1) {
-                    //    $scope.statsOrder = statsOrderFull;
-                    //    statsOrderFull.forEach(function(item) {
-                    //        if ($scope.stats.hasOwnProperty(item)) {
-                    //            $scope.statsOrder.splice()
-                    //        }
-                    //    })
-                    //}
                 }
                 $ionicLoading.hide();
             },
@@ -629,10 +620,15 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
             $scope.stock[0].forEach( function(record) {
                 message = message + record.ID + ". " + record.Name + ", Tip by " + record.Tipster + " - " + record.Racecard + "\n\n";
             })
-        } else if ( $scope.urlArgs['first'] == 'NFL Tips' ) {
-            message = "NFL Tips\n\n";
+        } else if ( $scope.urlArgs['first'] == 'NFL Tips' || $scope.urlArgs['first'] == 'Boxing Tips' || $scope.urlArgs['first'] == 'Cricket Tips') {
+            message = $scope.urlArgs['first'] + "\n\n";
             $scope.stock[0].forEach( function(record) {
                 message = message + record.Match + " - " + record.Tip + " - " + record.Date + "\n\n";
+            })
+        }  else if ( $scope.urlArgs['first'] == 'Tennis Tips' ) {
+            message = "Tennis Tips\n\n";
+            $scope.stock[0].forEach( function(record) {
+                message = message + record.Game + " - " + record.Tip + " - " + record.Date + "\n\n";
             })
         }
 

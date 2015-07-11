@@ -156,6 +156,27 @@ ion-content {
     font-size: 20px !important;
 }
 
+.my-img-icon {
+    max-height: 54px!important;
+    height:32px !important;
+    max-width: 32px !important;
+    position: absolute !important;
+    top: 0px !important;
+    right:auto !important;
+    left:11px !important;
+    font-size: 32px !important;
+    align-items: center !important;
+    line-height: 54px !important;
+    vertical-align: middle !important;
+}
+
+img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+
 /*
 .mySelect {
     background-color: #7994B1;
