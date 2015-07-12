@@ -21,7 +21,8 @@
                    <span class="badge badge-assertive" ng-if="filteredResult[0].length + filteredResult[1].length == undefined">0</span>
                </button>
                <button class="button my-select-button" ng-click="openPopup('popStar')">{{urlArgs.star}} Tips
-                   <i class="icon ion-android-lock" ng-show="true" ng-if="urlArgs.star == '5 Star'"></i>
+                   <i class="icon ion-android-lock" ng-show="true"
+                      ng-if="urlArgs.star == '5 Star' && purchase['horseracingtips'] == false"></i>
                    <span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star'">{{filteredResult[0].length}}</span>
                    <span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star' && filteredResult[0].length == undefined">0</span>
                    <span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star'">{{filteredResult[1].length}}</span>

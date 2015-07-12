@@ -177,6 +177,11 @@ img {
     margin:auto;
 }
 
+.my-menu-list-item {
+    padding: 16px 54px 16px 54px !important;
+}
+
+
 /*
 .mySelect {
     background-color: #7994B1;
