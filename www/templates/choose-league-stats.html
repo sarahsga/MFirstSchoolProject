@@ -1,0 +1,15 @@
+<div class="list list-inset" style="top: 43px; margin: 0px">
+    <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" ng-model="leagueSearch.value" placeholder="Search" style="color:white">
+    </label>
+</div>
+
+<ion-content class="has-header" style="top: 88px;">
+    <ul class="list">
+        <li class="item" collection-repeat="league in leagues | filter: leagueSearch.value" ng-click="chooseLeagueStatsFunc(league)">
+            <div style="height:1px; background-color:rgb(172, 172, 172); width: 100%"></div><br/>{{league.League}}
+        </li>
+
+    </ul>
+</ion-content>

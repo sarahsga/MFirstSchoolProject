@@ -7,16 +7,25 @@
     border-color: #FE7C67;
 }
 
-.option-active {
+.option {
+    padding: 2px 3px 2px 3px !important;
+    border-left: 0 none !important;
     border: 2px solid #FE7C67;
+    font-size: 12px !important;
+    line-height: 13px !important;
+    vertical-align: middle !important;
+    height: 35px;
+}
+
+.option-active {
     background-color: #FE7C67;
     color: white;
 }
 
 .option-passive {
-    border: 2px solid #FE7C67;
     background-color: #2A3A49;
     color: white;
+
 }
 
 select
@@ -27,10 +36,25 @@ select
 }
 
 .my-select-button {
-    border: 2px solid #2A3A49;
-    background-color: #FE7C67;
-    color: white;
+    border: 2px solid #2A3A49 !important;
+    background-color: #FE7C67 !important;
+    color: white !important;
 }
+
+.my-league-stat-select {
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+    min-height: 40px !important;
+    height: 40px !important;
+}
+
+/*.my-center-align {*/
+    /*text-align: left;*/
+    /*width: 30vw;*/
+    /*height: 30px;*/
+    /*line-height: 30px !important;*/
+/*}*/
 
 .button {
     border-radius: 0px;
@@ -58,18 +82,25 @@ select
     padding-bottom: 10px !important;
 }
 
-.bottomHeader2
+.bottomHeader-league
 {
     top: 43px !important;
+    height: 40px !important;
+    padding-top: 0px !important;
+}
+
+.bottomHeader2
+{
+    top: 83px !important;
     padding-top: 2px !important;
-    height: 70px !important;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    height: 50px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
 }
 
 .bottomHeader3
 {
-    top: 113px !important;
+    top: 133px !important;
     padding-left: 10px !important;
     padding-right: 10px !important;
     padding-top: 0px !important;
@@ -77,6 +108,7 @@ select
     /*padding-top: 10px !important;*/
     padding-bottom: 0px !important;
     color: #FE7C67 !important;
+    padding: 15px 15px 0px 15px !important;
 }
 
 .title
@@ -179,6 +211,12 @@ img {
 
 .my-menu-list-item {
     padding: 16px 54px 16px 54px !important;
+}
+
+.newsFeed-horizontal-scroll {
+    background-color: #2A3A49 !important;
+    color: #FE7C67 !important;
+    line-height: 34px;
 }
 
 

@@ -6,7 +6,7 @@
 
     <a class="item" ng-click="closePopup('5 Star')"
        ng-class="{'menu-active': urlArgs.star == '5 Star'}">5 Star &nbsp;
-        <i class="icon ion-android-lock" ng-show="purchase['5startips'] == false"></i>
+        <i class="icon ion-android-lock" ng-show="purchase['5startips'].value == false"></i>
         <span class="badge badge-assertive">{{badges[badgeArray[1]]}}</span>
     </a>
 

@@ -1,6 +1,6 @@
-<div ng-if="sideMenuOptions['Football Tips']">
+<div ng-if="sideMenuOptions['Football Tips'] && chooseLeagueStatsBool == false">
 
-   <ion-pane class="has-header">
+   <ion-pane class="has-header" ng-class="{'has-footer': showNewsFeed == true}">
        <div class="tabs-striped tabs-top topHeader">
            <div class="tabs topHeader">
                <a class="tab-item"
@@ -22,7 +22,7 @@
                </button>
                <button class="button my-select-button" ng-click="openPopup('popStar')">{{urlArgs.star}} Tips
                    <i class="icon ion-android-lock" ng-show="true"
-                      ng-if="urlArgs.star == '5 Star' && purchase['horseracingtips'] == false"></i>
+                      ng-if="urlArgs.star == '5 Star'"></i>
                    <span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star'">{{filteredResult[0].length}}</span>
                    <span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star' && filteredResult[0].length == undefined">0</span>
                    <span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star'">{{filteredResult[1].length}}</span>
@@ -119,33 +119,68 @@
    </ion-pane>
 </div>
 
-<div ng-if="sideMenuOptions['Stats']">
-    <ion-pane class="has-header">
-        <div class="tabs topHeader bottomHeader2">
-            <button class="button my-select-button" ng-click="openPopup('popStatsType')">{{urlArgs.statsType}}</button>
+<div ng-if="sideMenuOptions['Stats']  && chooseLeagueStatsBool == false">
+    <ion-pane class="has-header " ng-class="{'has-footer': showNewsFeed == true}">
+        <div class="tabs topHeader bottomHeader-league" style="text-align: center; line-height: 40px; vertical-align: middle">
+        <button class="button my-select-button my-league-stat-select" ng-click="chooseLeagueStatsFunc('')">
+            <span ng-if="urlArgs.statsType == 'Home Table' || urlArgs.statsType == 'Away Table'">All Teams</span>
+            <span ng-if="statsLeague == '' && urlArgs.statsType != 'Home Table' && urlArgs.statsType != 'Away Table'">
+                Choose League</span>
+            <span ng-if="statsLeague != '' && urlArgs.statsType != 'Home Table' && urlArgs.statsType != 'Away Table'">{{statsLeagueHeader}}</span>
+            <span></span>
+        </button>
         </div>
-        <div class="tabs topHeader bottomHeader3 newsFeed" style="text-align: center; line-height: 30px; vertical-align: middle">
+        <div class="tabs topHeader bottomHeader2">
+            <button class="button button-small option" style="border-left: 2px solid #FE7C67 !important;"
+                    ng-class="{'option-active': urlArgs.statsType == 'Main Table', 'option-passive': urlArgs.statsType != 'Main Table' }"
+                    ng-click="getStats('Main Table');">Main<br/>Table</button>
+            <button class="button button-small option"
+                    ng-class="{'option-active': urlArgs.statsType == 'Home Table', 'option-passive': urlArgs.statsType != 'Home Table' }"
+                    ng-click="getStats('Home Table')">Home<br/>Table</button>
+            <button class="button button-small option"
+                    ng-class="{'option-active': urlArgs.statsType == 'Away Table', 'option-passive': urlArgs.statsType != 'Away Table' }"
+                    ng-click="getStats('Away Table');">Away<br/>Table</button>
+            <button class="button button-small option"
+                    ng-class="{'option-active': urlArgs.statsType == 'Last 5', 'option-passive': urlArgs.statsType != 'Last 5' }"
+                    ng-click="getStats('Last 5')">Last 5</button>
+            <button class="button button-small option"
+                    ng-class="{'option-active': urlArgs.statsType == 'Last 5 Home', 'option-passive': urlArgs.statsType != 'Last 5 Home' }"
+                    ng-click="getStats('Last 5 Home')">Last 5<br/>Home</button>
+            <button class="button button-small option"
+                    ng-class="{'option-active': urlArgs.statsType == 'Last 5 Away', 'option-passive': urlArgs.statsType != 'Last 5 Away' }"
+                    ng-click="getStats('Last 5 Away')">Last 5<br/>Away</button>
+        </div>
+        <div class="tabs topHeader bottomHeader3 newsFeed" style="text-align: center; line-height: 30px; vertical-align: middle; font-size: 11px">
             <!--<div class="row">-->
-                <div class="col" ng-repeat="item in statsOrder" ng-if="stats[0].hasOwnProperty(item)"
-                       style="padding: 0px; line-height: 8px;" >{{item}}
-                </div>
+                <!--<div style="padding: 0px; line-height: 8px;" >-->
+                    <div class="col-27" style="width:30%; text-align:left; padding: 0px; line-height: 8px;">Name</div>
+                    <div class="col" style="padding: 0px; line-height: 8px;"
+                         ng-repeat="item in statsOrder" ng-if="stats[0].hasOwnProperty(item)">{{item}}</div>
+                    <div class="col-11" style="width:12%; text-align:right; padding: 0px; line-height: 8px;">Pts</div>
+                <!--</div>-->
             <!--</div>-->
         </div>
             <div>
-                <ion-content style="top: 133px !important">
-                    <div class="newsFeed" collection-repeat="item in stats">
+                <ion-content style="top: 163px !important; font-size: 11px !important;">
+                    <div class="newsFeed" collection-repeat="item in stats | filter: statsLeague">
                         <!--<div class="row" ng-if="$first">-->
                         <!--<div class="col"  ng-repeat="(key,value) in item" ng-if="key != 'Name' && key!= 'League'">{{key}}</div>-->
                         <!--</div>-->
-                        <div class="row" ng-if="item.hasOwnProperty('Name')">
-                            <div class="col">
-                                <span>{{item.Name}}</span>
-                                <span ng-if="item.hasOwnProperty('League')"><br/>{{item.League}}</span>
-                            </div>
-                        </div>
-                        <div class="row"  style="text-align: center">
+
+
+                        <!--<div class="row" ng-if="item.hasOwnProperty('Name')">-->
+                            <!--<div class="col">-->
+                                <!--<span>{{item.Name}}</span>-->
+                                <!--<span ng-if="item.hasOwnProperty('League')"><br/>{{item.League}}</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="row"  style="text-align: center; vertical-align: middle">
+                            <div class="col-27 my-center-align" style="text-align: left; width:30%"
+                                 ng-if="item.hasOwnProperty('Name')">{{item['Name']}}</div>
                             <div class="col"
                                  ng-repeat="st in statsOrder" ng-if="item.hasOwnProperty(st)">{{item[st]}}</div>
+                            <div class="col-11" style="text-align: right; width:12%; line-height:30px; vertical-align:middle"
+                                 ng-if="item.hasOwnProperty('Pts')">{{item['Pts']}}</div>
                         </div>
                     </div>
                 </ion-content>
@@ -154,8 +189,8 @@
 </div>
 
 
-<ion-content class="has-header">
-    <div ng-if="sideMenuOptions['Horse Racing Tips']">
+<ion-content class="has-header" ng-class="{'has-footer': showNewsFeed == true}">
+    <div ng-if="sideMenuOptions['Horse Racing Tips'] && chooseLeagueStatsBool == false">
         <div ng-if="stock[0] == ''  && internet != false" class="row">
             <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">There are no tips available at this time</h4>
         </div>
@@ -169,7 +204,7 @@
         </div>
     </div>
 
-    <div ng-if="sideMenuOptions['NFL Tips'] || sideMenuOptions['Cricket Tips'] || sideMenuOptions['Boxing Tips']  || sideMenuOptions['Tennis Tips']">
+    <div ng-if="chooseLeagueStatsBool == false && (sideMenuOptions['NFL Tips'] || sideMenuOptions['Cricket Tips'] || sideMenuOptions['Boxing Tips']  || sideMenuOptions['Tennis Tips'])">
         <div ng-if="stock[0] == '' && internet != false" class="row ">
             <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">There are no tips available at this time</h4>
         </div>
@@ -202,7 +237,7 @@
         <!--</div>-->
     <!--</div>-->
 
-    <div ng-if="sideMenuOptions['Accuracy']">
+    <div ng-if="sideMenuOptions['Accuracy'] && chooseLeagueStatsBool == false">
         <div ng-show="urlArgs.first == 'Accuracy'">
             <div class="row newsFeed" ng-repeat="(key,value) in accuracy | myOrderBy : accuracyorder" >
                 <div class="col">{{value.name}}</div>
@@ -211,17 +246,16 @@
         </div>
     </div>
 
-    <div ng-if="sideMenuOptions['Settings']"></div>
-
-    <div ng-if="sideMenuOptions['Choose League']">
+    <div ng-if="sideMenuOptions['Choose League'] && chooseLeagueStatsBool == false">
         <choose-league></choose-league>
     </div>
 
-    <div ng-if="sideMenuOptions['Test']">
-        <button class="button button-dark button-medium row" ng-click="startPurchase('5startips')">Buy 5startips</button>
-        <button class="button button-dark button-medium row" ng-click="startPurchase('horseracingtips')">Buy horseracingtips</button>
-        <button class="button button-dark button-medium row" ng-click="startPurchase('nfltips')">Buy nfltips</button>
-        <button class="button button-dark button-medium row" ng-click="startPurchase('entireapp')">Buy entireapp</button>
-    </div>
+    <!--<div ng-if="sideMenuOptions['Test']">-->
+        <!--<button class="button button-dark button-medium row" ng-click="startPurchase('5startips')">Buy 5startips</button>-->
+        <!--<button class="button button-dark button-medium row" ng-click="startPurchase('horseracingtips')">Buy horseracingtips</button>-->
+        <!--<button class="button button-dark button-medium row" ng-click="startPurchase('nfltips')">Buy nfltips</button>-->
+        <!--<button class="button button-dark button-medium row" ng-click="startPurchase('entireapp')">Buy entireapp</button>-->
+    <!--</div>-->
 
 </ion-content>
+

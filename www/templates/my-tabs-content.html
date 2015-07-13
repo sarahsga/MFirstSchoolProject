@@ -14,7 +14,7 @@
 
     <!--</button>-->
 <!--</div>-->
-<ion-content class="has-header has-subheader" style="top: 164px !important">
+<ion-content class="has-header has-subheader" ng-class="{'has-footer': showNewsFeed == true}" style="top: 164px !important">
     <div>
         <div ng-if="urlArgs.star == '4 Star'">
             <div ng-if="filteredResult[0].length == 0  && internet != false" class="row">

@@ -50,6 +50,13 @@ app.directive('chooseLeague', function() {
     }
 })
 
+app.directive('chooseLeagueStats', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/choose-league-stats.html'
+    }
+})
+
 app.filter('TitleFilter', function() {
     console.log("start")
     return function(items) {
