@@ -11,6 +11,8 @@ app.run(function($ionicPlatform, $rootScope) {
             StatusBar.styleDefault();
         }
 
+        console.log( new Date().getTime().toString());
+        //console.log("width = " + window.innerWidth)
     });
 
 

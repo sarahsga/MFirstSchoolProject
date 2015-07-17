@@ -1,12 +1,30 @@
 
-app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNetwork, $ionicPlatform, $cordovaDialogs, $cordovaNetwork, $filter, $ionicSideMenuDelegate, $ionicLoading, $http, $cordovaSocialSharing, $ionicPopup)
+app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $cordovaNetwork, $ionicPlatform, $cordovaDialogs, $cordovaNetwork, $filter, $ionicSideMenuDelegate, $ionicLoading, $http, $cordovaSocialSharing, $ionicPopup)
 {
+
+    $scope.notifyTime = {
+        'time': new Date(),
+        'disable': false,
+        'schedule': new Date()
+    }
+
+    var notificationEnabled= true
+    var defaultAdMobOptions = null;
     var popUp = null;
     var wifiAlert = {
         'message':'No Internet Connection',
         'title':'Network Error',
         'button': 'OK'
     }
+
+    ///////////// for admob //////////////////
+
+    var banner = {
+        'created': false,
+        'removed': false
+    }
+
+    ///////////// //////////////////
 
     var itemsInStoreCount = 0;
     var purchaseCounter = 0;
@@ -37,7 +55,7 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
     $scope.selectAllLeagues = false;
     $scope.selectedLeagues = [];
 
-    $scope.filteredResult = [];
+        $scope.filteredResult = [];
 
 
     $scope.sideMenuOptions = {
@@ -284,6 +302,14 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
         }
     }
 
+    removeAd = function() {
+        if (banner.created == true) {
+            AdMob.removeBanner();
+            banner.created = false;
+            banner.removed = true;
+        }
+    }
+
     var initialize = function() { // will run every time the app is initialized
 
         itemsInStoreCount = Object.keys($scope.purchase).length; // to count number of properties of object purchase
@@ -349,8 +375,11 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
                         $scope.purchase['5startips'].value = true;
                     }
 
-                    if ( ++purchaseCounter <= itemsInStoreCount - 1 ) {
+                    if ( ++purchaseCounter >= itemsInStoreCount - 1 ) {
                         $scope.showNewsFeed = true;
+
+                        removeAd();
+
                     }
                 });
 
@@ -363,8 +392,9 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
                             scope.getJson();
                         }
 
-                        if ( ++purchaseCounter <= itemsInStoreCount - 1 ) {
+                        if ( ++purchaseCounter >= itemsInStoreCount - 1 ) {
                             $scope.showNewsFeed = true;
+                            removeAd();
                         }
                     }
                 });
@@ -378,8 +408,9 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
                             scope.getJson();
                         }
 
-                        if ( ++purchaseCounter <= itemsInStoreCount - 1 ) {
+                        if ( ++purchaseCounter >= itemsInStoreCount - 1 ) {
                             $scope.showNewsFeed = true;
+                            removeAd();
                         }
                     }
                 });
@@ -393,8 +424,9 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
                             scope.getJson();
                         }
 
-                        if ( ++purchaseCounter <= itemsInStoreCount - 1 ) {
+                        if ( ++purchaseCounter >= itemsInStoreCount - 1 ) {
                             $scope.showNewsFeed = true;
+                            removeAd();
                         }
                     }
                 });
@@ -408,8 +440,9 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
                             scope.getJson();
                         }
 
-                        if ( ++purchaseCounter <= itemsInStoreCount - 1 ) {
+                        if ( ++purchaseCounter >= itemsInStoreCount - 1 ) {
                             $scope.showNewsFeed = true;
+                            removeAd();
                         }
                     }
                 });
@@ -423,8 +456,9 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
                             scope.getJson();
                         }
 
-                        if ( ++purchaseCounter <= itemsInStoreCount - 1 ) {
+                        if ( ++purchaseCounter >= itemsInStoreCount - 1 ) {
                             $scope.showNewsFeed = true;
+                            removeAd();
                         }
                     }
                 });
@@ -445,6 +479,7 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
                         }
 
                         $scope.showNewsFeed = true;
+                        removeAd();
                     }
                 });
 
@@ -590,10 +625,10 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
 
     var getBadges = function() {
 
-        //if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
-        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-        //    $scope.badges = "";
-        //} else {
+        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+            $scope.badges = "";
+        } else {
             $ionicLoading.show({
                 template: 'Loading...'
             });
@@ -605,6 +640,7 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
                 success: function (data) {
                     console.log(urlType.Badges.url + " === " + JSON.stringify(data))
                     if (data.success == 1) {
+                        localStorage.setItem("totalTipsToday", data.stock[0]['TodayTotal']);
                         console.log("success==1");
                         $scope.badges = data.stock[0];
                         $scope.newsFeed = data.newsFeed;
@@ -624,14 +660,14 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
             });
 
         }
-    //}
+    }
 
     var getAccuracy = function() {
 
-        //if ($cordovaNetwork.isOnline() == false) {
-        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-        //    $scope.internet = false;
-        //} else {
+        if ($cordovaNetwork.isOnline() == false) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+            $scope.internet = false;
+        } else {
         $scope.internet = true;
         $ionicLoading.show({
             template: 'Loading...'
@@ -663,39 +699,28 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
             }
         });
     }
-    //}
+    }
 
     $scope.chooseLeagueStatsFunc = function(item) {
         if ($scope.chooseLeagueStatsBool == true) {
-            console.log(typeof(item))
             if (typeof(item) == 'object') {
                 if ($scope.stats[0].hasOwnProperty('League')) {
                     $scope.statsLeague = item.League;
-                    $scope.statsLeagueHeader = $scope.statsLeague;
-                } else {
-                    $scope.statsLeague = '';
                 }
             }
         }
         $scope.leagueSearch = '';
-        if ( $scope.urlArgs.statsType != 'Home Table' && $scope.urlArgs.statsType != 'Away Table') {
             $scope.chooseLeagueStatsBool = !$scope.chooseLeagueStatsBool;
-        }
-
     }
 
     $scope.getStats = function(statsType) {
-        //if ($cordovaNetwork.isOnline() == false) {
-        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-        //    $scope.internet = false;
-        //} else {
+        if ($cordovaNetwork.isOnline() == false) {
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+            $scope.internet = false;
+        } else {
         $scope.internet = true;
         $scope.urlArgs.statsType = statsType;
-        if (statsType == 'Home Table' || statsType == 'Away Table') {
-            $scope.statsLeague = '';
-        } else {
-            $scope.statsLeague = $scope.statsLeagueHeader;
-        }
+
         $ionicLoading.show({
             template: 'Loading...'
         });
@@ -715,9 +740,37 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
             }
         });
     }
-    //}
+    }
 
 
+    $scope.changeNotifyTime = function(type) {
+        switch(type) {
+            case 'plusH':
+                if ($scope.notifyTime.time.getHours() == 23) $scope.notifyTime.time.setHours(0);
+                else $scope.notifyTime.time.setHours($scope.notifyTime.time.getHours() + 1)
+
+                break;
+            case 'minusH':
+                if ($scope.notifyTime.time.getHours() == 0) $scope.notifyTime.time.setHours(23);
+                else $scope.notifyTime.time.setHours($scope.notifyTime.time.getHours() - 1);
+                break;
+            case 'plusM':
+                if ($scope.notifyTime.time.getMinutes() == 59) {
+                    $scope.notifyTime.time.setMinutes(0);
+                    $scope.changeNotifyTime('plusH')
+                }
+                else $scope.notifyTime.time.setMinutes($scope.notifyTime.time.getMinutes() + 1);
+                break;
+            case 'minusM':
+                if ($scope.notifyTime.time.getMinutes() == 0) {
+                    $scope.notifyTime.time.setMinutes(59);
+                    $scope.changeNotifyTime('minusH')
+                }
+                else $scope.notifyTime.time.setMinutes($scope.notifyTime.time.getMinutes() - 1);
+                break;
+        }
+        //$scope.$apply();
+    }
 
     $scope.getJson = function() {
         $scope.urlArray = [];
@@ -738,12 +791,12 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
         }
         $scope.urlArgs.star = '4 Star';
 
-        //if ($cordovaNetwork.isOnline() == false) {
-        //    $scope.internet = false;
-        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-        //    $scope.stock[0] = '';
-        //    $scope.filteredResult = []
-        //} else {
+        if ($cordovaNetwork.isOnline() == false) {
+            $scope.internet = false;
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+            $scope.stock[0] = '';
+            $scope.filteredResult = []
+        } else {
             $scope.internet = true;
             $ionicLoading.show({
                 template: 'Loading...'
@@ -792,7 +845,7 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
             });
         }
 
-    //}
+    }
 
     $scope.getMessage = function() {
         var message = "";
@@ -822,7 +875,6 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
             })
         }
 
-
         return message;
     }
 
@@ -846,13 +898,13 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
 
     var getLeagues = function() {
 
-        //if ($cordovaNetwork.isOnline() == false) {
-        //    $scope.internet = false;
-        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-        //    $scope.leagues = []
-        //    $scope.selectedLeagues = []
-        //    $scope.changeMenu();
-        //} else {
+        if ($cordovaNetwork.isOnline() == false) {
+            $scope.internet = false;
+            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+            $scope.leagues = []
+            $scope.selectedLeagues = []
+            $scope.changeMenu();
+        } else {
             $scope.internet = true;
             $ionicLoading.show({
                 template: 'Loading...'
@@ -880,7 +932,7 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
                     //$cordovaToast.showLongBottom("league fail")
                 })
         }
-    //}
+    }
 
     $scope.setLeaguesSame = function(value) {
 
@@ -895,6 +947,8 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
     }
 
     $scope.changeMenu = function(chosenMenu) {
+        //removeAd();
+        //createSelectedBanner();
         for (var property in $scope.sideMenuOptions) {
             if ($scope.sideMenuOptions.hasOwnProperty(property)) {
                 $scope.sideMenuOptions[property] = false;
@@ -921,7 +975,7 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
     };
 
     $scope.goBackFromChooseLeague = function() {
-
+        $scope.leagueSearch.value = ''
         $scope.leagueValues.trueValue = 0;
         $scope.leagueValues.falseValue = 0;
         $scope.selectedLeagues = [];
@@ -947,14 +1001,70 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
     $scope.openPopup = function(popType) {
         $scope.popType = popType;
 
+        if (popType == 'timePicker') {
+            toggleLeft();
+            $scope.notifyTime.time = new Date();
+        }
+
         popUp = $ionicPopup.show({
             templateUrl: "templates/" + popType + ".html",
             scope: $scope
         });
+
+
     }
 
     $scope.closePopup = function(itemType) {
-        if ( $scope.popType == 'popStar') {
+        console.log('inside popup.. $scope.popType = ' + $scope.popType)
+        if ($scope.popType == 'timePicker') {
+        //    console.log('pop time picker')
+        //    if (itemType == 'Notify') {
+        //        console.log('Notify');
+        //        $scope.notifyTime.disable = false;
+        //
+        //        //$scope.updateSingleNotification = function () {
+        //        //    var notifyObj = {
+        //        //        id: 1,
+        //        //        title: 'Title - UPDATED',
+        //        //        text: 'Text - UPDATED',
+        //        //        firstAt: $scope.notifyTime.schedule,
+        //        //        every: 'day'
+        //        //    }
+        //        //
+        //        //    cordova.plugins.notification.local.getTriggered(function (notifications) {
+        //        //        if(notifications.length) {
+        //        //            $cordovaLocalNotification.update(notifyObj).then(function (result) {
+        //        //                if(result) {
+        //        //                    $scope.notifyTime.schedule = $scope.notifyTime.time;
+        //        //                }
+        //        //            });
+        //        //        } else {
+        //        //            $cordovaLocalNotification.schedule(notifyObj).then(function (result) {
+        //        //                if(result) {
+        //        //                    $scope.notifyTime.schedule = $scope.notifyTime.time;
+        //        //                }
+        //        //            });
+        //        //        }
+        //        //    });
+        //        //
+        //        //};
+        //
+        //
+        //    } else if ( itemType == 'Disable') {
+        //        console.log('Disable')
+        //        $scope.notifyTime.disable = true;
+        //
+        //        $scope.cancelAllNotifications = function () {
+        //            $cordovaLocalNotification.cancelAll().then(function (result) {
+        //                alert(JSON.stringify(result));
+        //            });
+        //        };
+        //
+        //    }
+        //    popUp.close();
+        }
+
+        else if ( $scope.popType == 'popStar') {
             if (itemType == '5 Star') {
                 if ($scope.purchase['5startips'].value == true) {
                     $scope.urlArgs.star = itemType;
@@ -969,6 +1079,7 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
             }
         } else if ( $scope.popType == 'popWin') {
             $scope.urlArgs.winType = itemType;
+            $scope.getJson();
             popUp.close();
         }
         //else if ( $scope.popType == 'popStatsType') {
@@ -977,14 +1088,245 @@ app.controller('MainCtrl',function($scope, $rootScope, $cordovaToast, $cordovaNe
         //}
     }
 
-    $ionicPlatform.ready(function() {
-        if ($cordovaNetwork.isOnline() == true) {
-            initialize();
-        } else {
-            $cordovaDialogs.confirm(wifiAlert.message, wifiAlert.title, [wifiAlert.button])
-                .then(function(buttonIndex) {
-                    ionic.Platform.exitApp();
-                });
+    ///////////////////////////////// Admob code /////////////////////////////////////////
+
+
+    ///////////////////////////////// Admob code ////////////////////////////////////////
+
+    var admobid = {};
+    if( /(android)/i.test(navigator.userAgent) ) {
+        admobid = { // for Android
+            banner: 'ca-app-pub-5631685820346651/5936544320',
+            interstitial: 'ca-app-pub-6869992474017983/1657046752'
+        };
+    } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+        admobid = { // for iOS
+            banner: ' ca-app-pub-5631685820346651/8890010721',
+            interstitial: 'ca-app-pub-6869992474017983/7563979554'
+        };
+    } else {
+        admobid = { // for Windows Phone
+            banner: 'ca-app-pub-6869992474017983/8878394753',
+            interstitial: 'ca-app-pub-6869992474017983/1355127956'
+        };
+    }
+
+    function createSelectedBanner() {
+
+        if ( $scope.showNewsFeed == false ) {
+            //AdMob.removeBanner();
+            AdMob.createBanner(
+                {
+                    adId:admobid.banner,
+                    position : AdMob.AD_POSITION.BOTTOM_CENTER,
+                    overlap:false,
+                    adSize: 'SMART_BANNER',
+                    isTesting: false,
+                    autoShow: true
+                },
+                function(success) {
+                    banner.created = true;
+                    banner.removed = false;
+                    //alert('success')
+                    //AdMob.showBanner();
+                    //AdMob.showBanner(AdMob.AD_POSITION.BOTTOM_CENTER)
+                }, function(failure) {
+                    //alert('fail')
+                }
+            );
+
         }
+
+    }
+
+//
+//console.log('nothinf')
+//    $scope.schedule = function () {
+//        console.log('inside schedule')
+//        console.log('')
+//
+//        $cordovaLocalNotification.schedule({
+//            id: 1,
+//            title: 'Title here',
+//            text: 'Text here',
+//            data: {
+//                customProperty: 'custom value'
+//            }
+//        }).then(function (result) {
+//            console.log('RESULT')
+//            console.log(JSON.stringify(result))
+//        });
+//
+//        console.log("after schedule")
+//
+//
+//    };
+
+    //$scope.query = function() {
+    //    console.log('querying')
+    //    console.log('present = ' + JSON.stringify($cordovaLocalNotification.isPresent(1)))
+    //    console.log('cheduled = ' + JSON.stringify($cordovaLocalNotification.isScheduled(1)))
+    //    console.log('triggered = ' + JSON.stringify($cordovaLocalNotification.isTriggered(1)))
+    //
+    //}
+
+    $scope.rateUs = function() {
+        toggleLeft();
+        AppRate.preferences.storeAppURL.android = 'market://details?id=com.bigedev.cgtipster';
+        AppRate.promptForRating(true);
+
+    }
+
+
+    //var toggleNotification = function(setNotify) {
+    //    console.log('toggleNotification')
+    //    localStorage.setItem('notificationEnabled', setNotify)
+    //    if (setNotify == 'true') {
+    //        cordova.plugins.backgroundMode.enable();
+    //    } else {
+    //        cordova.plugins.backgroundMode.disable();
+    //    }
+    //}
+
+    //var beep = function() {
+    //    var snd = new Audio("appbeep.wav")
+    //    snd.play();
+    //}
+
+    $ionicPlatform.ready(function() {
+
+
+
+        if (localStorage.getItem('notifyH') == null) {
+            console.log('notifyH == null ... first time launch')
+            $scope.notifyTime.schedule.setHours(9);
+            $scope.notifyTime.schedule.setMinutes(0);
+
+        } else {
+            console.log('notifyH is already set')
+            $scope.notifyTime.schedule.setHours(parseInt(localStorage.getItem('notifyH')));
+            $scope.notifyTime.schedule.setMinutes(parseInt(localStorage.getItem('notifyM')));
+        }
+
+        console.log('schedule variable holds: ' + $scope.notifyTime.schedule.toString())
+
+        if (localStorage.getItem('notifyDisable') == 'true') {
+            console.log("disabled is set to true")
+            $scope.notifyTime.disable = true;
+        }
+
+
+        var notificationText = '';
+        //if (localStorage.get)
+
+
+            //if(localStorage.getItem('notifyH') == null) {
+                //cordova.plugins.notification.local.schedule({
+                //    id: 1,
+                //    title: "Meeting in 15 minutes!",
+                //    text: "Jour fixe Produktionsbesprechung",
+                //    at: $scope.notifyTime.schedule,
+                //    data: {meetingId: "#123FG8"}
+                //})
+
+                //console.log("notifyH is null")
+
+        //cordova.plugins.notification.local.registerPermission(function (granted) {
+        //    if (granted) {
+        //        cordova.plugins.notification.local.schedule({
+        //            id: 1,
+        //            text: 'Test Message 1',
+        //            icon: 'http://www.optimizeordie.de/wp-content/plugins/social-media-widget/images/default/64/googleplus.png',
+        //            sound: null
+        //            //data: { test: id }
+        //        });
+        //        console.log('granted')
+        //    }
+        //    else {
+        //        console.log('not granted')
+        //    }
+        //});
+            //}
+
+
+
+
+
+        // Android customization
+        //cordova.plugins.backgroundMode.setDefaults({
+        //    text: 'Total tips today: ' + localStorage.getItem('totalTipsToday'),
+        //    resume: true
+        //});
+        ////// Enable background mode
+        //
+        //if (!(localStorage.getItem('notificationEnabled'))) { // i.e. first time launch
+        //    localStorage.setItem('notificationEnabled', 'true')
+        //}
+        //
+        //toggleNotification(localStorage.getItem('notificationEnabled'))
+        //
+        //
+        ////Called when background mode has been activated
+        //cordova.plugins.backgroundMode.onactivate = function () {
+        //    console.log('onactivate')
+        //    setInterval(function () {
+        //
+        //        $.ajax({
+        //            type: 'GET',
+        //            url: urlType.Badges.url,
+        //            dataType: 'jsonp',
+        //            success: function (data) {
+        //                if (data.success == 1) {
+        //                    if (data.stock[0].hasOwnProperty('TodayTotal')) {
+        //
+        //                        localStorage.setItem("totalTipsToday", data.stock[0]['TodayTotal']);
+        //                        console.log('Total tips today: ' + localStorage.getItem('totalTipsToday'));
+        //
+        //                        cordova.plugins.backgroundMode.configure({
+        //                            text: 'Total tips today: ' + localStorage.getItem('totalTipsToday'),
+        //                            title: 'CG Tipster'
+        //                        });
+        //
+        //                    }
+        //
+        //                }
+        //            },
+        //            fail: function (err) {
+        //                $scope.badges = "";
+        //                console.log(err.message);
+        //                $ionicLoading.hide();
+        //                //$cordovaToast.showLongBottom("Badge fail")
+        //            }
+        //        });
+        //
+        //    }, 20000);
+        //}
+            //
+            //cordova.plugins.backgroundMode.configure({
+            //    silent: true
+            //})
+
+
+            //setTimeout(function () {
+            //    // Modify the currently displayed notification
+            //    cordova.plugins.backgroundMode.configure({
+            //        text:'Running in background for more than 5s now.'
+            //    });
+            //}, 5000);
+            //}
+
+            var notificationMsg = localStorage.getItem('totalTipsToday')
+
+            if ($cordovaNetwork.isOnline() == true) {
+
+                initialize();
+                createSelectedBanner();
+
+            } else {
+                $cordovaDialogs.confirm(wifiAlert.message, wifiAlert.title, [wifiAlert.button])
+                    .then(function (buttonIndex) {
+                        ionic.Platform.exitApp();
+                    });
+            }
     });
 });

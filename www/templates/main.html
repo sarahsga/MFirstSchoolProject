@@ -112,11 +112,11 @@
                         Choose League
                     </a>
 
-                    <a class="item item-icon-left" ng-click=""
-                       ng-class="{'menu-active': urlArgs.first == 'Choose League'}">
-                        <i class="icon ion-ios-bell"></i>
-                        Notify
-                    </a>
+                    <!--<a class="item item-icon-left" ng-click="notifyTap()"-->
+                       <!--ng-class="{'menu-active': urlArgs.first == 'Choose League'}">-->
+                        <!--<i class="icon ion-ios-bell"></i>-->
+                        <!--Notify-->
+                    <!--</a>-->
 
                     <a class="item item-icon-left" ng-click="checkPurchase('entireapp');"
                             ng-if="purchase.entireapp.value == false">
@@ -124,7 +124,7 @@
                         Unlock Entire App
                     </a>
 
-                    <a class="item" ng-click="urlArgs.first = 'Rate Us'"
+                    <a class="item" ng-click="rateUs(); schedule()"
                        ng-class="{'menu-active': urlArgs.first == 'Rate Us'}">
                         Rate Us
                     </a>
@@ -174,3 +174,6 @@
     </ion-header-bar>
     <choose-league-stats></choose-league-stats>
 </div>
+
+<!--<embed src="appbeep.wav" autostart="false" width="0" height="0" id="sound1"-->
+       <!--enablejavascript="true">-->

@@ -16,7 +16,7 @@
            </div>
 
            <div class="tabs topHeader bottomHeader">
-               <button class="button my-select-button" ng-click=" openPopup('popWin')">{{urlArgs.winType}}
+               <button class="button my-select-button" ng-click="openPopup('popWin')">{{urlArgs.winType}}
                    <span class="badge badge-assertive" >{{filteredResult[0].length + filteredResult[1].length}}</span>
                    <span class="badge badge-assertive" ng-if="filteredResult[0].length + filteredResult[1].length == undefined">0</span>
                </button>
@@ -123,10 +123,8 @@
     <ion-pane class="has-header " ng-class="{'has-footer': showNewsFeed == true}">
         <div class="tabs topHeader bottomHeader-league" style="text-align: center; line-height: 40px; vertical-align: middle">
         <button class="button my-select-button my-league-stat-select" ng-click="chooseLeagueStatsFunc('')">
-            <span ng-if="urlArgs.statsType == 'Home Table' || urlArgs.statsType == 'Away Table'">All Teams</span>
-            <span ng-if="statsLeague == '' && urlArgs.statsType != 'Home Table' && urlArgs.statsType != 'Away Table'">
-                Choose League</span>
-            <span ng-if="statsLeague != '' && urlArgs.statsType != 'Home Table' && urlArgs.statsType != 'Away Table'">{{statsLeagueHeader}}</span>
+            <span ng-if="statsLeague == ''">Choose League</span>
+            <span ng-if="statsLeague != ''">{{statsLeague}}</span>
             <span></span>
         </button>
         </div>

@@ -1,0 +1,43 @@
+<div style="background-color: #2A3A49;">
+    <div style="padding:10px; text-align:center; height:43px">
+        <h3 style="color: white">Set Time</h3>
+    </div>
+
+    <div class="row">
+        <div style="display:table;  width: 50%; margin:0 auto">
+            <div style="display:table-row">
+                <div style="height: 120px; width:45%; display: table-cell">
+                    <button class="button icon ion-plus my-select-button" ng-click="changeNotifyTime('plusH')"
+                            style="height: 40px; width:100%; border: none !important;"></button>
+                    <div class="button" style="background-color: white; height: 40px; width:100%; border: none !important;">
+                        {{notifyTime.time | date:'HH' }}
+                    </div>
+                    <button class="button icon ion-minus my-select-button" ng-click="changeNotifyTime('minusH')"
+                            style="height: 40px; width:100%; border: none !important;"></button>
+                </div>
+                <div style="height: 120px; width:20px !important">
+                    <button class="button button-clear" style="height: 40px; width:20px"></button>
+                    <button class="button button-clear" style="height: 40px; width:20px"></button>
+                    <button class="button button-clear " style="height: 40px; width:20px"></button>
+                </div>
+                <div style="height: 120px; width:45%; display: table-cell">
+                    <button class="button icon ion-plus my-select-button" ng-click="changeNotifyTime('plusM')"
+                            style="height: 40px; width:100%; border: none !important;"></button>
+                    <div class="button" style="background-color: white; height: 40px; width:100%; border: none !important;">
+                        {{notifyTime.time | date: 'mm' }}
+                    </div>
+                    <button class="button icon ion-minus my-select-button" ng-click="changeNotifyTime('minusM')"
+                            style="height: 40px; width:100%; border: none !important;"></button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row" style="height:20px; width:100%"></div>
+    <div class="row" style="margin:0 auto">
+        <button class="button col my-select-button" ng-click="closePopup('Notify')">Notify</button>
+        <button class="button col my-select-button" ng-click="closePopup('Disable')">Disable</button>
+        <button class="button col my-select-button" ng-click="closePopup('Cancel')">Cancel</button>
+    </div>
+</div>
