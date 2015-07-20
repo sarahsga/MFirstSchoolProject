@@ -17,6 +17,13 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
         'button': 'OK'
     }
 
+    $scope.loading = {
+        'tips': false,
+        'stats' : false,
+        'accuracy' : false,
+        'leagues' : false
+    }
+
     ///////////// for admob //////////////////
 
     var banner = {
@@ -625,10 +632,10 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
 
     var getBadges = function() {
 
-        if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
-            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-            $scope.badges = "";
-        } else {
+        //if ( $cordovaNetwork.getNetwork() == Connection.NONE) {
+        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+        //    $scope.badges = "";
+        //} else {
             $ionicLoading.show({
                 template: 'Loading...'
             });
@@ -660,14 +667,14 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
             });
 
         }
-    }
+    //}
 
     var getAccuracy = function() {
 
-        if ($cordovaNetwork.isOnline() == false) {
-            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-            $scope.internet = false;
-        } else {
+        //if ($cordovaNetwork.isOnline() == false) {
+        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+        //    $scope.internet = false;
+        //} else {
         $scope.internet = true;
         $ionicLoading.show({
             template: 'Loading...'
@@ -699,7 +706,7 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
             }
         });
     }
-    }
+    //}
 
     $scope.chooseLeagueStatsFunc = function(item) {
         if ($scope.chooseLeagueStatsBool == true) {
@@ -714,10 +721,10 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
     }
 
     $scope.getStats = function(statsType) {
-        if ($cordovaNetwork.isOnline() == false) {
-            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-            $scope.internet = false;
-        } else {
+        //if ($cordovaNetwork.isOnline() == false) {
+        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+        //    $scope.internet = false;
+        //} else {
         $scope.internet = true;
         $scope.urlArgs.statsType = statsType;
 
@@ -740,7 +747,7 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
             }
         });
     }
-    }
+    //}
 
 
     $scope.changeNotifyTime = function(type) {
@@ -791,12 +798,12 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
         }
         $scope.urlArgs.star = '4 Star';
 
-        if ($cordovaNetwork.isOnline() == false) {
-            $scope.internet = false;
-            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-            $scope.stock[0] = '';
-            $scope.filteredResult = []
-        } else {
+        //if ($cordovaNetwork.isOnline() == false) {
+        //    $scope.internet = false;
+        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+        //    $scope.stock[0] = '';
+        //    $scope.filteredResult = []
+        //} else {
             $scope.internet = true;
             $ionicLoading.show({
                 template: 'Loading...'
@@ -845,7 +852,7 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
             });
         }
 
-    }
+    //}
 
     $scope.getMessage = function() {
         var message = "";
@@ -898,13 +905,13 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
 
     var getLeagues = function() {
 
-        if ($cordovaNetwork.isOnline() == false) {
-            $scope.internet = false;
-            $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
-            $scope.leagues = []
-            $scope.selectedLeagues = []
-            $scope.changeMenu();
-        } else {
+        //if ($cordovaNetwork.isOnline() == false) {
+        //    $scope.internet = false;
+        //    $cordovaDialogs.alert(wifiAlert.message, wifiAlert.title, wifiAlert.button)
+        //    $scope.leagues = []
+        //    $scope.selectedLeagues = []
+        //    $scope.changeMenu();
+        //} else {
             $scope.internet = true;
             $ionicLoading.show({
                 template: 'Loading...'
@@ -932,7 +939,7 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
                     //$cordovaToast.showLongBottom("league fail")
                 })
         }
-    }
+    //}
 
     $scope.setLeaguesSame = function(value) {
 
@@ -1193,27 +1200,38 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
     //    snd.play();
     //}
 
-    $ionicPlatform.ready(function() {
 
 
 
-        if (localStorage.getItem('notifyH') == null) {
-            console.log('notifyH == null ... first time launch')
-            $scope.notifyTime.schedule.setHours(9);
-            $scope.notifyTime.schedule.setMinutes(0);
+    //// Has TO SHOW ///////////////////
 
-        } else {
-            console.log('notifyH is already set')
-            $scope.notifyTime.schedule.setHours(parseInt(localStorage.getItem('notifyH')));
-            $scope.notifyTime.schedule.setMinutes(parseInt(localStorage.getItem('notifyM')));
-        }
+    //$ionicPlatform.ready(function() {
+    //
+    //
+    //
+    //    if (localStorage.getItem('notifyH') == null) {
+    //        console.log('notifyH == null ... first time launch')
+    //        $scope.notifyTime.schedule.setHours(9);
+    //        $scope.notifyTime.schedule.setMinutes(0);
+    //
+    //    } else {
+    //        console.log('notifyH is already set')
+    //        $scope.notifyTime.schedule.setHours(parseInt(localStorage.getItem('notifyH')));
+    //        $scope.notifyTime.schedule.setMinutes(parseInt(localStorage.getItem('notifyM')));
+    //    }
+    //
+    //    console.log('schedule variable holds: ' + $scope.notifyTime.schedule.toString())
+    //
+    //    if (localStorage.getItem('notifyDisable') == 'true') {
+    //        console.log("disabled is set to true")
+    //        $scope.notifyTime.disable = true;
+    //    }
+    //
+    //
+    //
 
-        console.log('schedule variable holds: ' + $scope.notifyTime.schedule.toString())
+       //////////////////////???????????????/////////////////?????????////////////////
 
-        if (localStorage.getItem('notifyDisable') == 'true') {
-            console.log("disabled is set to true")
-            $scope.notifyTime.disable = true;
-        }
 
 
         var notificationText = '';
@@ -1307,26 +1325,24 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
             //})
 
 
-            //setTimeout(function () {
-            //    // Modify the currently displayed notification
-            //    cordova.plugins.backgroundMode.configure({
-            //        text:'Running in background for more than 5s now.'
-            //    });
-            //}, 5000);
-            //}
 
-            var notificationMsg = localStorage.getItem('totalTipsToday')
 
-            if ($cordovaNetwork.isOnline() == true) {
+        ////// HAS TO SHOW //////////////////////////////////
+
+            //var notificationMsg = localStorage.getItem('totalTipsToday')
+            //
+            //if ($cordovaNetwork.isOnline() == true) {
 
                 initialize();
-                createSelectedBanner();
+    //            createSelectedBanner();
+    //
+    //        } else {
+    //            $cordovaDialogs.confirm(wifiAlert.message, wifiAlert.title, [wifiAlert.button])
+    //                .then(function (buttonIndex) {
+    //                    ionic.Platform.exitApp();
+    //                });
+    //        }
+    //});
 
-            } else {
-                $cordovaDialogs.confirm(wifiAlert.message, wifiAlert.title, [wifiAlert.button])
-                    .then(function (buttonIndex) {
-                        ionic.Platform.exitApp();
-                    });
-            }
-    });
+    ////////////?????????????????????????//////////////////////????//////////
 });

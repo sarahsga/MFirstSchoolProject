@@ -3,29 +3,44 @@
 }
 
 .checkbox-assertive input:checked:before, .checkbox-assertive input:checked + .checkbox-icon:before {
-    background: #FE7C67;
-    border-color: #FE7C67;
+    background: #424242;
+    border-color: #424242;
+}
+
+.checkbox-assertive input:before, .checkbox-assertive .checkbox-icon:before {
+    border-color: #424242;
 }
 
 .option {
     padding: 2px 3px 2px 3px !important;
     border-left: 0 none !important;
-    border: 2px solid #FE7C67;
+    border: 2px solid #0F7FA3;
     font-size: 12px !important;
     line-height: 13px !important;
     vertical-align: middle !important;
     height: 35px;
+    width: 15% !important;
+}
+
+.option-star {
+    margin-top: 2px !important;
+    height: 45px !important;
 }
 
 .option-active {
-    background-color: #FE7C67;
+    background-color: #0F7FA3;
     color: white;
 }
 
 .option-passive {
-    background-color: #2A3A49;
+    background-color: #424242;
     color: white;
 
+}
+
+.league-options {
+    background-color: #0F7FA3 !important;
+    color: white !important;
 }
 
 select
@@ -36,8 +51,8 @@ select
 }
 
 .my-select-button {
-    border: 2px solid #2A3A49 !important;
-    background-color: #FE7C67 !important;
+    border: 2px solid #424242  !important;
+    background-color: #666666 !important;
     color: white !important;
 }
 
@@ -48,6 +63,13 @@ select
     vertical-align: middle;
     min-height: 40px !important;
     height: 40px !important;
+    background-color: #0F7FA3 !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.tabs-striped .tabs {
+    border-bottom: 1px solid #424242 !important;
 }
 
 /*.my-center-align {*/
@@ -70,7 +92,7 @@ select
 }
 
 .topHeader {
-    background-color: #2A3A49 !important;
+    background-color: #424242 !important;
     color: #ffffff !important;
 }
 
@@ -87,7 +109,14 @@ select
 {
     top: 43px !important;
     height: 40px !important;
-    padding-top: 0px !important;
+    padding-top: 2px !important;
+}
+
+.bottomHeader-league-selectAll {
+    top: 43px !important;
+    height: 70px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 
 .bottomHeader2
@@ -108,7 +137,7 @@ select
     height: 30px !important;
     /*padding-top: 10px !important;*/
     padding-bottom: 0px !important;
-    color: #FE7C67 !important;
+    color: #02B8F2 !important;
     padding: 15px 15px 0px 15px !important;
 }
 
@@ -123,7 +152,7 @@ select
 /*}*/
 
 ion-content {
-    background-color: #7B96B3 !important;
+    background-color: #0F7FA3 !important;
     color: #ffffff !important;
 }
 
@@ -136,12 +165,8 @@ ion-content {
 
 .tab-item.active
 {
-    border-color: #FE7C67 !important;
+    border-color: #0092C1 !important;
     color: #ffffff !important;
-}
-.tabs-striped .tabs
-{
-    border-bottom: 1px solid #2A3A49 !important;
 }
 
 
@@ -151,7 +176,7 @@ ion-content {
 }
 .item
 {
-    background-color: #7B96B3 !important;
+    background-color: #424242;
     color: white !important;
     border: none;
 }
@@ -171,7 +196,7 @@ ion-content {
 }
 
 .menu-active {
-    background-color: #FE7C67 !important;
+    background-color: #666666 !important;
 }
 
 .popUpList > .item {
@@ -220,6 +245,14 @@ img {
     line-height: 34px;
 }
 
+.side-menu-divider {
+    background-color: #0F7FA3 !important ;
+}
+
+.badge.badge-assertive {
+    background-color: #0F7FA3;
+    color: #fff;
+}
 
 /*
 .mySelect {

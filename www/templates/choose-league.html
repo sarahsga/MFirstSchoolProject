@@ -1,23 +1,28 @@
-<div class="row" style=" width:70%; margin:0 auto">
-    <button class="button option-active col" ng-if="selectAllLeagues == false" ng-click="setLeaguesSame(true)">Select All</button>
-    <button class="button option-active col"
-            ng-if="selectAllLeagues == true" ng-click="setLeaguesSame(false)">Deselect All</button>
+<div class="tabs topHeader bottomHeader-league-selectAll" >
+    <div class="row" style=" width:70%; margin:0 auto">
+        <button style="padding:0px" class="button my-select-button col" ng-if="selectAllLeagues == false" ng-click="setLeaguesSame(true)">Select All</button>
+        <button style="padding:0px" class="button my-select-button col"
+                ng-if="selectAllLeagues == true" ng-click="setLeaguesSame(false)">Deselect All</button>
+    </div>
 </div>
 
-<div class="list list-inset" style="margin: 0px">
+<div class="list list-inset" style="margin: 0px; top:112px">
     <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
         <input type="text" ng-model="leagueSearch.value" placeholder="Search" style="color:white">
     </label>
 </div>
 
-<ul class="list">
+<ion-content>
 
-    <li class="item item-checkbox" collection-repeat="league in leagues | filter: leagueSearch.value">
-        <label class="checkbox checkbox-assertive">
-            <input type="checkbox" ng-model="league.value">
-        </label>
-        {{league.League}}
-    </li>
+    <ul class="list">
 
-</ul>
+        <li class="item item-checkbox league-options" collection-repeat="league in leagues | filter: leagueSearch.value">
+            <label class="checkbox checkbox-assertive">
+                <input type="checkbox" ng-model="league.value">
+            </label>
+            {{league.League}}
+        </li>
+
+    </ul>
+</ion-content>

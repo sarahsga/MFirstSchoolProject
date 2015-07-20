@@ -20,13 +20,23 @@
                    <span class="badge badge-assertive" >{{filteredResult[0].length + filteredResult[1].length}}</span>
                    <span class="badge badge-assertive" ng-if="filteredResult[0].length + filteredResult[1].length == undefined">0</span>
                </button>
-               <button class="button my-select-button" ng-click="openPopup('popStar')">{{urlArgs.star}} Tips
-                   <i class="icon ion-android-lock" ng-show="true"
-                      ng-if="urlArgs.star == '5 Star'"></i>
-                   <span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star'">{{filteredResult[0].length}}</span>
-                   <span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star' && filteredResult[0].length == undefined">0</span>
-                   <span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star'">{{filteredResult[1].length}}</span>
-                   <span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star' && filteredResult[1].length == undefined">0</span>
+
+
+               <button class="button button-small option option-star" style="border-left: 2px solid #0F7FA3 !important;"
+                       ng-class="{'option-active': urlArgs.star == '4 Star', 'option-passive': urlArgs.star != '4 Star' }"
+                       ng-click="closePopup('popStar')">4 Star<br/>Tips
+                   <i class="icon ion-android-lock" ng-if="urlArgs.star == '5 Star'"></i>
+                   <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star'">{{filteredResult[0].length}}</span>-->
+                   <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star' && filteredResult[0].length == undefined">0</span>-->
+               </button>
+
+               <button class="button button-small option option-star"
+                       ng-class="{'option-active': urlArgs.star == '5 Star', 'option-passive': urlArgs.star != '5 Star' }"
+                       ng-click="closePopup('popStar')">
+                   <span ng-if="purchase['5startips'].value == true">5 Star<br/>Tips</span>
+                   <span ng-if="purchase['5startips'].value == false"><i class="icon ion-android-lock"></i></span>
+                   <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star'">{{filteredResult[1].length}}</span>-->
+                   <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star' && filteredResult[1].length == undefined">0</span>-->
                </button>
 
                <!--<select ng-model="urlArgs.winType">-->
@@ -122,7 +132,7 @@
 <div ng-if="sideMenuOptions['Stats']  && chooseLeagueStatsBool == false">
     <ion-pane class="has-header " ng-class="{'has-footer': showNewsFeed == true}">
         <div class="tabs topHeader bottomHeader-league" style="text-align: center; line-height: 40px; vertical-align: middle">
-        <button class="button my-select-button my-league-stat-select" ng-click="chooseLeagueStatsFunc('')">
+        <button class="button my-league-stat-select" ng-click="chooseLeagueStatsFunc('')">
             <span ng-if="statsLeague == ''">Choose League</span>
             <span ng-if="statsLeague != ''">{{statsLeague}}</span>
             <span></span>
