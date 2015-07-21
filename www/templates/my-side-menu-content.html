@@ -24,17 +24,17 @@
 
                <button class="button button-small option option-star" style="border-left: 2px solid #0F7FA3 !important;"
                        ng-class="{'option-active': urlArgs.star == '4 Star', 'option-passive': urlArgs.star != '4 Star' }"
-                       ng-click="closePopup('popStar')">4 Star<br/>Tips
-                   <i class="icon ion-android-lock" ng-if="urlArgs.star == '5 Star'"></i>
+                       ng-click="starSelect('4 Star')">4 Star<br/>Tips
+                   <!--<i class="icon ion-android-lock" ng-if="urlArgs.star == '5 Star'"></i>-->
                    <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star'">{{filteredResult[0].length}}</span>-->
                    <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star' && filteredResult[0].length == undefined">0</span>-->
                </button>
 
                <button class="button button-small option option-star"
                        ng-class="{'option-active': urlArgs.star == '5 Star', 'option-passive': urlArgs.star != '5 Star' }"
-                       ng-click="closePopup('popStar')">
-                   <span ng-if="purchase['5startips'].value == true">5 Star<br/>Tips</span>
-                   <span ng-if="purchase['5startips'].value == false"><i class="icon ion-android-lock"></i></span>
+                       ng-click="starSelect('5 Star')">
+                   <span>5 Star<br/>Tips</span>
+                   <!--<span ng-if="purchase['5startips'].value == false"><i class="icon ion-android-lock"></i></span>-->
                    <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star'">{{filteredResult[1].length}}</span>-->
                    <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star' && filteredResult[1].length == undefined">0</span>-->
                </button>
@@ -139,7 +139,7 @@
         </button>
         </div>
         <div class="tabs topHeader bottomHeader2">
-            <button class="button button-small option" style="border-left: 2px solid #FE7C67 !important;"
+            <button class="button button-small option" style="border-left: 2px solid #0F7FA3 !important;"
                     ng-class="{'option-active': urlArgs.statsType == 'Main Table', 'option-passive': urlArgs.statsType != 'Main Table' }"
                     ng-click="getStats('Main Table');">Main<br/>Table</button>
             <button class="button button-small option"

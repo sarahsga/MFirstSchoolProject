@@ -19,12 +19,14 @@
     line-height: 13px !important;
     vertical-align: middle !important;
     height: 35px;
-    width: 15% !important;
+    min-width: 14%;
 }
 
 .option-star {
-    margin-top: 2px !important;
+    /*margin-top: 0px !important;*/
     height: 45px !important;
+    padding-top: 0px ;
+    padding-bottom: 0px ;
 }
 
 .option-active {
@@ -45,8 +47,8 @@
 
 select
 {
-    border: 2px solid #FE7C67;
-    background-color: #2A3A49;
+    border: 2px solid #0F7FA3;
+    background-color: #424242;
     color: white;
 }
 
@@ -72,6 +74,12 @@ select
     border-bottom: 1px solid #424242 !important;
 }
 
+.tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated {
+    margin-top: 1px;
+    border-width: 0px 0px 5px 0px !important;
+    border-style: solid;
+}
+
 /*.my-center-align {*/
     /*text-align: left;*/
     /*width: 30vw;*/
@@ -87,8 +95,8 @@ select
 }
 .button:active{
     color: white;
-    background-color: #2A3A49;
-    border: 2px solid #2A3A49;
+    background-color: #424242;
+    border: 2px solid #424242;
 }
 
 .topHeader {
@@ -179,7 +187,13 @@ ion-content {
     background-color: #424242;
     color: white !important;
     border: none;
+    -webkit-tap-highlight-color: #424242 !important;
 }
+
+/*.item:active, .item:hover, .button:active, .button:hover {*/
+    /*background-color: transparent !important;*/
+/*}*/
+
 .icon
 {
     color: white !important;
@@ -240,8 +254,8 @@ img {
 }
 
 .newsFeed-horizontal-scroll {
-    background-color: #2A3A49 !important;
-    color: #FE7C67 !important;
+    background-color: #424242 !important;
+    color: #0F7FA3 !important;
     line-height: 34px;
 }
 
@@ -252,6 +266,10 @@ img {
 .badge.badge-assertive {
     background-color: #0F7FA3;
     color: #fff;
+}
+
+.my-menu-list-item:active, .my-menu-list-item:hover {
+    background-color: #424242;
 }
 
 /*

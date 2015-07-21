@@ -1022,6 +1022,7 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
     }
 
     $scope.closePopup = function(itemType) {
+        //$scope.popType = itemType;
         console.log('inside popup.. $scope.popType = ' + $scope.popType)
         if ($scope.popType == 'timePicker') {
         //    console.log('pop time picker')
@@ -1071,20 +1072,22 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
         //    popUp.close();
         }
 
-        else if ( $scope.popType == 'popStar') {
-            if (itemType == '5 Star') {
-                if ($scope.purchase['5startips'].value == true) {
-                    $scope.urlArgs.star = itemType;
-                    popUp.close();
-                } else {
-                    $scope.purchase['5startips'].dirtyBit = true;
-                    $scope.startPurchase('5startips');
-                }
-            } else {
-                $scope.urlArgs.star = itemType;
-                popUp.close();
-            }
-        } else if ( $scope.popType == 'popWin') {
+        //else if ( $scope.popType == 'popStar') {
+        //    if (itemType == '5 Star') {
+        //        if ($scope.purchase['5startips'].value == true) {
+        //            $scope.urlArgs.star = itemType;
+        //            //popUp.close();
+        //        } else {
+        //            $scope.purchase['5startips'].dirtyBit = true;
+        //            $scope.startPurchase('5startips');
+        //        }
+        //    } else {
+        //        $scope.urlArgs.star = itemType;
+        //        //popUp.close();
+        //    }
+        //}
+    else if ( $scope.popType == 'popWin') {
+            console.log('inside wintype')
             $scope.urlArgs.winType = itemType;
             $scope.getJson();
             popUp.close();
@@ -1094,6 +1097,21 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
         //    popUp.close();
         //}
     }
+
+        $scope.starSelect = function(itemType) {
+            if (itemType == '5 Star') {
+                if ($scope.purchase['5startips'].value == true) {
+                    $scope.urlArgs.star = itemType;
+                    //popUp.close();
+                } else {
+                    $scope.purchase['5startips'].dirtyBit = true;
+                    $scope.startPurchase('5startips');
+                }
+            } else {
+                $scope.urlArgs.star = itemType;
+                //popUp.close();
+            }
+        }
 
     ///////////////////////////////// Admob code /////////////////////////////////////////
 
@@ -1205,7 +1223,7 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
 
     //// Has TO SHOW ///////////////////
 
-    //$ionicPlatform.ready(function() {
+    $ionicPlatform.ready(function() {
     //
     //
     //
@@ -1342,7 +1360,7 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
     //                    ionic.Platform.exitApp();
     //                });
     //        }
-    //});
+    });
 
     ////////////?????????????????????????//////////////////////????//////////
 });
