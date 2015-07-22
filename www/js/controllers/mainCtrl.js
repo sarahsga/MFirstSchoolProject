@@ -1199,7 +1199,11 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
     $scope.rateUs = function() {
         toggleLeft();
         var customLocale = {};
+        customLocale.title = "Rate CGTipster";
         customLocale.message = "Would you like to rate this app?";
+        customLocale.cancelButtonLabel = "No, Thanks";
+        customLocale.laterButtonLabel = "Remind Me Later";
+        customLocale.rateButtonLabel = "Rate It Now";
 
         AppRate.preferences.storeAppURL.android = 'market://details?id=com.bigedev.cgtipster';
         AppRate.preferences.customLocale = customLocale;
