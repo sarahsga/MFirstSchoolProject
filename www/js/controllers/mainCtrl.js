@@ -1346,7 +1346,7 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
 
 
         ////// HAS TO SHOW //////////////////////////////////
-
+console.log('mainctrl')
             var notificationMsg = localStorage.getItem('totalTipsToday')
 
             if ($cordovaNetwork.isOnline() == true) {
