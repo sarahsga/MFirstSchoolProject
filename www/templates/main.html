@@ -85,13 +85,13 @@
                         Tables
                     </div>
 
-                    <a class="item item-icon-left" ng-click="changeMenu('Stats'); getStats('Main Table');"
+                    <a class="item item-icon-left my-menu-list-item" ng-click="changeMenu('Stats'); getStats('Main Table');"
                        ng-class="{'menu-active': urlArgs.first == 'Stats'}">
                         <i class="icon ion-stats-bars"></i>
                         Stats
                     </a>
 
-                    <a class="item my-menu-list-item" ng-click="changeMenu('Accuracy');getJson();"
+                    <a class="item my-menu-list-item my-menu-list-item" ng-click="changeMenu('Accuracy');getJson();"
                        ng-class="{'menu-active': urlArgs.first == 'Accuracy'}">
                         <img src="css/icons/target.svg" class="my-img-icon">
                         Accuracy
@@ -106,7 +106,7 @@
                         <!--Settings-->
                     <!--</a>-->
 
-                    <a class="item item-icon-left" ng-click="changeMenu('Choose League');"
+                    <a class="item item-icon-left my-menu-list-item" ng-click="changeMenu('Choose League');"
                        ng-class="{'menu-active': urlArgs.first == 'Choose League'}">
                         <i class="icon ion-tshirt"></i>
                         Choose League
@@ -118,13 +118,13 @@
                         <!--Notify-->
                     <!--</a>-->
 
-                    <a class="item item-icon-left" ng-click="checkPurchase('entireapp');"
+                    <a class="item item-icon-left  my-menu-list-item" ng-click="checkPurchase('entireapp');"
                             ng-if="purchase.entireapp.value == false">
                         <i class="icon ion-ios-unlocked"></i>
                         Unlock Entire App
                     </a>
 
-                    <a class="item" ng-click="rateUs(); schedule()"
+                    <a class="item my-menu-list-item" ng-click="rateUs(); schedule()"
                        ng-class="{'menu-active': urlArgs.first == 'Rate Us'}">
                         Rate Us
                     </a>

@@ -7,8 +7,9 @@
 
 <ion-content class="has-header" style="top: 88px;">
     <ul class="list">
-        <li class="item league-options" collection-repeat="league in leagues | filter: leagueSearch.value" ng-click="chooseLeagueStatsFunc(league)">
-            <div style="height:1px; background-color:rgb(172, 172, 172); width: 100%"></div><br/>{{league.League}}
+        <li class="item league-options" style="border:1px solid #7B96B3 !important;"
+            collection-repeat="league in leagues | filter: leagueSearch.value" ng-click="chooseLeagueStatsFunc(league)">
+            {{league.League}}<br/>
         </li>
 
     </ul>

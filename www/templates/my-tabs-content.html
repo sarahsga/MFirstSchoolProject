@@ -18,40 +18,52 @@
     <div>
         <div ng-if="urlArgs.star == '4 Star'">
             <div ng-if="filteredResult[0].length == 0  && internet != false" class="row">
-                <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto; padding: 10px">There are no tips available at this time</h4>
+                <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto; padding: 10px">There are no tips available at this time</h4>
             </div>
             <div ng-if="internet == false" class="row">
-                <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">Please connect to the internet and try again</h4>
+                <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">Please connect to the internet and try again</h4>
             </div>
             <div ng-if="content[0].success == 1" class="row newsFeed" style="text-align: center"
                  ng-repeat="record in filteredResult[0]">
                 <div class="col">
-                    <div class="row">
-                        <div class="col">
+                    <div class="row tips-padding">
+                        <div class="col tips-padding ">
                             {{record.HomeTeam}}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col tips-padding">
                             {{record.AwayTeam}}
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    {{record.League}}
+                    <div class="row tips-padding">
+                        <div class="col tips-padding">
+                            {{record.League}}
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
-                    {{record.Date}}
-                    {{record.KickOff}}
+                    <div class="row tips-padding">
+                        <div class="col tips-padding">
+                            {{record.Date}}
+                        </div>
+                    </div>
+                    <div class="row tips-padding">
+                        <div class="col tips-padding">
+                            {{record.KickOff}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div ng-if="urlArgs.star == '5 Star'" class="myList">
             <div ng-if="filteredResult[1].length == 0  && internet != false" class="row">
-                <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto; padding: 10px">There are no tips available at this time</h4>
+                <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto; padding: 10px">There are no tips available at this time</h4>
             </div>
             <div ng-if="internet == false" class="row">
-                <h4 style="color:white; font-weight: normal; margin-left: auto; margin-right: auto; padding: 10px">Please connect to the internet and try again</h4>
+                <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto; padding: 10px">Please connect to the internet and try again</h4>
             </div>
             <div ng-if="content[1].success == 1" class="row newsFeed"
                  ng-repeat="record in filteredResult[1]">

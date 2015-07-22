@@ -13,15 +13,16 @@
     </label>
 </div>
 
-<ion-content>
+<ion-content style="  top: 157px;">
 
     <ul class="list">
 
-        <li class="item item-checkbox league-options" collection-repeat="league in leagues | filter: leagueSearch.value">
+        <li class="item item-checkbox league-options" collection-repeat="league in leagues | filter: leagueSearch.value"
+                style="border:1px solid #7B96B3 !important;">
             <label class="checkbox checkbox-assertive">
                 <input type="checkbox" ng-model="league.value">
             </label>
-            {{league.League}}
+            {{league.League}}<br/>
         </li>
 
     </ul>
