@@ -1195,9 +1195,14 @@ app.controller('MainCtrl',function($scope, $filter, $rootScope, $cordovaToast, $
     //
     //}
 
+    console.log('mmmmmio')
     $scope.rateUs = function() {
         toggleLeft();
+        var customLocale = {};
+        customLocale.message = "Would you like to rate this app?";
+
         AppRate.preferences.storeAppURL.android = 'market://details?id=com.bigedev.cgtipster';
+        AppRate.preferences.customLocale = customLocale;
         AppRate.promptForRating(true);
 
     }
