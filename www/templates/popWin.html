@@ -1,29 +1,29 @@
 <ul class="list popUpList">
-    <a class="item" ng-click="closePopup('Home Wins');"
+    <a class="item item-win" ng-click="closePopup('Home Wins');"
        ng-class="{'menu-active': urlArgs.winType == 'Home Wins'}">Home Wins
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.HomeTodayTotal}}</span>
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.HomeTotal}}</span>
     </a>
 
-    <a class="item" ng-click="closePopup('Away Wins');"
+    <a class="item item-win" ng-click="closePopup('Away Wins');"
        ng-class="{'menu-active': urlArgs.winType == 'Away Wins'}">Away Wins
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.AwayTodayTotal}}</span>
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.AwayTotal}}</span>
     </a>
 
-    <a class="item" ng-click="closePopup('High Scoring');"
+    <a class="item item-win" ng-click="closePopup('High Scoring');"
        ng-class="{'menu-active': urlArgs.winType == 'High Scoring'}">High Scoring
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.HighTodayTotal}}</span>
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.HighTotal}}</span>
     </a>
 
-    <a class="item" ng-click="closePopup('Low Scoring');"
+    <a class="item item-win" ng-click="closePopup('Low Scoring');"
        ng-class="{'menu-active': urlArgs.winType == 'Low Scoring'}">Low Scoring
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.LowTodayTotal}}</span>
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.LowTotal}}</span>
     </a>
 
-    <a class="item" ng-click="closePopup('BTTS');"
+    <a class="item item-win" ng-click="closePopup('BTTS');"
        ng-class="{'menu-active': urlArgs.winType == 'BTTS'}">BTTS
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Daily'">{{badges.BTTSTodayTotal}}</span>
         <span class="badge badge-assertive" ng-show="urlArgs.time == 'Weekly'">{{badges.BTTSTotal}}</span>

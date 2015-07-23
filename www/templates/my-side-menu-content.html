@@ -17,8 +17,8 @@
 
            <div class="tabs topHeader bottomHeader" style="padding:0px">
                <div class="row" style="padding:0px">
-                   <div class="col" style="text-align: center;">
-                       <button class="button my-select-button " style="width:100%"
+                   <div class="col" style=" min-width:140px !important; padding-left: 5px; padding-right:5px; text-align: center; ">
+                       <button class="button my-select-button " style="min-width:140px !important; width:100%"
                            ng-click="openPopup('popWin')">{{urlArgs.winType}}
                        <span class="badge badge-assertive" >{{filteredResult[0].length + filteredResult[1].length}}</span>
                        <span class="badge badge-assertive" ng-if="filteredResult[0].length + filteredResult[1].length == undefined">0</span>
@@ -26,23 +26,28 @@
                    </div>
 
 
-                   <div class="col" style="padding: 0px; display:inline-block;">
-                       <button class="button button-small option option-star" style="float:left; margin-top:17px; min-width:70px !important "
-                               ng-class="{'option-star-active': urlArgs.star == '4 Star', 'option-star-passive': urlArgs.star != '4 Star' }"
-                               ng-click="starSelect('4 Star')">4 Star<br/>Tips
-                           <!--<i class="icon ion-android-lock" ng-if="urlArgs.star == '5 Star'"></i>-->
-                           <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star'">{{filteredResult[0].length}}</span>-->
-                           <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star' && filteredResult[0].length == undefined">0</span>-->
-                       </button>
+                   <div class="col">
+                               <button class="button button-small option option-star" style="margin-left:5px !important; margin-right: 1px; margin-top:17px; width:100% !important;    "
+                                       ng-class="{'option-star-active': urlArgs.star == '4 Star', 'option-star-passive': urlArgs.star != '4 Star' }"
+                                       ng-click="starSelect('4 Star')">4 Star Tips
+                                   <!--<i class="icon ion-android-lock" ng-if="urlArgs.star == '5 Star'"></i>-->
+                                   <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star'">{{filteredResult[0].length}}</span>-->
+                                   <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '4 Star' && filteredResult[0].length == undefined">0</span>-->
+                               </button>
 
-                       <button class="button button-small option option-star" style="float:left; margin-top:17px; min-width: 70px !important; "
-                               ng-class="{'option-star-active': urlArgs.star == '5 Star', 'option-star-passive': urlArgs.star != '5 Star' }"
-                               ng-click="starSelect('5 Star')">
-                           <span>5 Star<br/>Tips</span>
-                           <!--<span ng-if="purchase['5startips'].value == false"><i class="icon ion-android-lock"></i></span>-->
-                           <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star'">{{filteredResult[1].length}}</span>-->
-                           <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star' && filteredResult[1].length == undefined">0</span>-->
-                       </button>
+
+                           </div>
+                           <div class="col">
+                               <button class="button button-small option option-star" style="margin-left:1px !important; margin-right: 2px; margin-top:17px; width:100% !important;"
+                                       ng-class="{'option-star-active': urlArgs.star == '5 Star', 'option-star-passive': urlArgs.star != '5 Star' }"
+                                       ng-click="starSelect('5 Star')">
+                                   <span>5 Star Tips</span>
+                                   <!--<span ng-if="purchase['5startips'].value == false"><i class="icon ion-android-lock"></i></span>-->
+                                   <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star'">{{filteredResult[1].length}}</span>-->
+                                   <!--<span class="badge badge-assertive" ng-if="urlArgs.star == '5 Star' && filteredResult[1].length == undefined">0</span>-->
+                               </button>
+                           </div>
+                       </div>
                    </div>
                </div>
 
@@ -177,7 +182,9 @@
         </div>
             <div>
                 <ion-content style="top: 163px !important; font-size: 11px !important;">
-                    <div class="newsFeed" collection-repeat="item in stats | filter: statsLeague">
+                    <h4 ng-if="statsLeague == ''"
+                            style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px; text-align: center">Choose a league to view stats!</h4>
+                    <div class="newsFeed" ng-if="statsLeague != ''" collection-repeat="item in stats | filter: statsLeague">
                         <!--<div class="row" ng-if="$first">-->
                         <!--<div class="col"  ng-repeat="(key,value) in item" ng-if="key != 'Name' && key!= 'League'">{{key}}</div>-->
                         <!--</div>-->
@@ -207,10 +214,10 @@
 <ion-content class="has-header" ng-class="{'has-footer': showNewsFeed == true}">
     <div ng-if="sideMenuOptions['Horse Racing Tips'] && chooseLeagueStatsBool == false">
         <div ng-if="stock[0] == ''  && internet != false" class="row">
-            <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">There are no tips available at this time</h4>
+            <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px; text-align:center">There are no tips available at this time</h4>
         </div>
         <div ng-if="internet == false" class="row">
-            <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">Please connect to the internet and try again</h4>
+            <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px; text-align:center">Please connect to the internet and try again</h4>
         </div>
         <div ng-repeat="st in stock[0]" class="row newsFeed">
             <div class="col">{{st.Name}}</div>
@@ -221,10 +228,10 @@
 
     <div ng-if="chooseLeagueStatsBool == false && (sideMenuOptions['NFL Tips'] || sideMenuOptions['Cricket Tips'] || sideMenuOptions['Boxing Tips']  || sideMenuOptions['Tennis Tips'])">
         <div ng-if="stock[0] == '' && internet != false" class="row ">
-            <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">There are no tips available at this time</h4>
+            <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px; text-align:center">There are no tips available at this time</h4>
         </div>
         <div ng-if="internet == false" class="row">
-            <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px">Please connect to the internet and try again</h4>
+            <h4 style="color:#2A3A49; font-weight: normal; margin-left: auto; margin-right: auto;  padding: 10px; text-align:center">Please connect to the internet and try again</h4>
         </div>
         <div ng-repeat="st in stock[0]" class="row newsFeed"
              ng-class-even="'listEven'" ng-class-odd="'listOdd'">
@@ -266,7 +273,8 @@
     </div>
 
     <!--<div ng-if="sideMenuOptions['Test']">-->
-        <!--<button class="button button-dark button-medium row" ng-click="startPurchase('5startips')">Buy 5startips</button>-->
+        <!--<button class="button button-dark button-medium row" ng-click="
+        tPurchase('5startips')">Buy 5startips</button>-->
         <!--<button class="button button-dark button-medium row" ng-click="startPurchase('horseracingtips')">Buy horseracingtips</button>-->
         <!--<button class="button button-dark button-medium row" ng-click="startPurchase('nfltips')">Buy nfltips</button>-->
         <!--<button class="button button-dark button-medium row" ng-click="startPurchase('entireapp')">Buy entireapp</button>-->

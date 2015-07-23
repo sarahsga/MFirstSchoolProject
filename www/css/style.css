@@ -27,11 +27,11 @@
 .option-star {
     /*margin-top: 0px !important;*/
     border: 2px solid #FAFAFA !important;
-    height: 45px !important;
+    height: 40px !important;
     padding-top: 0px ;
     padding-bottom: 0px ;
-    border-top-right-radius: 10px !important;
-    border-top-left-radius: 10px !important;
+    border-radius: 10px !important;
+    bottom:15px !important;
 }
 
 .option-star-active {
@@ -206,10 +206,14 @@ ion-content {
 }
 .item
 {
-    background-color: #2A3A49;
+    background-color: #7B96B3;
     /*color: white !important;*/
     border: none;
     -webkit-tap-highlight-color: #2A3A49 !important;
+}
+
+.item-win {
+    color: white !important;
 }
 
 /*.item:active, .item:hover, .button:active, .button:hover {*/
@@ -283,17 +287,17 @@ img {
 }
 
 .side-menu-divider {
-    background-color: #7B96B3 !important ;
+    background-color: #5980A4 !important ;
     color: white !important;
 }
 
-.badge.badge-assertive {
-    background-color: #7B96B3;
-    color: #fff;
-}
+/*.badge.badge-assertive {*/
+    /*background-color: #7B96B3;*/
+    /*color: #fff;*/
+/*}*/
 
 .my-menu-list-item:active, .my-menu-list-item:hover {
-    background-color: #2A3A49;
+    background-color: #7B96B3;
 }
 
 /*
