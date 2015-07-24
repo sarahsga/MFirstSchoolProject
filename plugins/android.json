@@ -1,0 +1,158 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize\" android:name=\"com.google.android.gms.ads.AdActivity\" android:theme=\"@android:style/Theme.Translucent\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 2
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"InAppBillingPlugin\"><param name=\"android-package\" value=\"com.smartmobilesoftware.inappbilling.InAppBillingPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"com.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AdMob\"><param name=\"android-package\" value=\"com.rjfun.cordova.admob.AdMobPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Globalization\"><param name=\"android-package\" value=\"org.apache.cordova.globalization.Globalization\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AppRate\"><param name=\"android-package\" value=\"org.pushandplay.cordova.apprate.AppRate\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "res/values/billing_key_param.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<string name=\"billing_key_param\">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsX1xkKmSWhFrgwuj4sOrrvWsrb5oqbl/jcwd/SigoDQGqxPasKsgLCzuO+21IfZrrc9h5Wpzf4DOrvcWWjb1OgLCAK/pwOqgeVWhzb/+6qIhw2N4ae+btvEyAs7IIGYlXN7IGtu+SXUCquiU4sUHdbDxN1A5qzxQtEcNf48+O5J4rvnOQLLEcL9N4YEyoxgzWb2xMG5r7rndZ83glrzlX8r/7nN4smOP77TmQ2df1dunHn1SRf8qLBHa2d5l5CPMNBlSnwH5meaVbAnc23tQy2eN4ABvQST65vVEvr5M+j86I21Xowup4OKbfXbLLjPN5iqHbCYy9mzbwlv9CNZGYQIDAQAB</string>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cc.fovea.cordova.purchase": {
+            "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsX1xkKmSWhFrgwuj4sOrrvWsrb5oqbl/jcwd/SigoDQGqxPasKsgLCzuO+21IfZrrc9h5Wpzf4DOrvcWWjb1OgLCAK/pwOqgeVWhzb/+6qIhw2N4ae+btvEyAs7IIGYlXN7IGtu+SXUCquiU4sUHdbDxN1A5qzxQtEcNf48+O5J4rvnOQLLEcL9N4YEyoxgzWb2xMG5r7rndZ83glrzlX8r/7nN4smOP77TmQ2df1dunHn1SRf8qLBHa2d5l5CPMNBlSnwH5meaVbAnc23tQy2eN4ABvQST65vVEvr5M+j86I21Xowup4OKbfXbLLjPN5iqHbCYy9mzbwlv9CNZGYQIDAQAB",
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "com.ionic.keyboard": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "nl.x-services.plugins.toast": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "org.apache.cordova.globalization": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        },
+        "org.pushandplay.cordova.apprate": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-extension": {
+            "PACKAGE_NAME": "com.bigedev.cgtipster"
+        }
+    }
+}

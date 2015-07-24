@@ -1,0 +1,29 @@
+<div class="tabs topHeader bottomHeader-league-selectAll" >
+    <div class="row" style=" width:70%; margin:0 auto">
+        <button style="padding:0px" class="button my-select-button col" ng-if="selectAllLeagues == false" ng-click="setLeaguesSame(true)">Select All</button>
+        <button style="padding:0px" class="button my-select-button col"
+                ng-if="selectAllLeagues == true" ng-click="setLeaguesSame(false)">Deselect All</button>
+    </div>
+</div>
+
+<div class="list list-inset" style="margin: 0px; top:112px;">
+    <label class="item item-input" style=" background-color: #2A3A49">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" ng-model="leagueSearch.value" placeholder="Search" style="color:white; ">
+    </label>
+</div>
+
+<ion-content style="  top: 157px;">
+
+    <ul class="list">
+
+        <li class="item item-checkbox league-options" collection-repeat="league in leagues | filter: leagueSearch.value"
+                style="border:1px solid #7B96B3 !important;">
+            <label class="checkbox checkbox-assertive">
+                <input type="checkbox" ng-model="league.value">
+            </label>
+            {{league.League}}<br/>
+        </li>
+
+    </ul>
+</ion-content>

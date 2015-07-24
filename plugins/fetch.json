@@ -1,0 +1,166 @@
+{
+    "nl.x-services.plugins.socialsharing": {
+        "source": {
+            "type": "registry",
+            "id": "nl.x-services.plugins.socialsharing"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.ionic.keyboard": {
+        "source": {
+            "type": "registry",
+            "id": "com.ionic.keyboard"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-network-information": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-network-information"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-dialogs": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-dialogs"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cc.fovea.cordova.purchase": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/j3k0/cordova-plugin-purchase",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {
+            "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsX1xkKmSWhFrgwuj4sOrrvWsrb5oqbl/jcwd/SigoDQGqxPasKsgLCzuO+21IfZrrc9h5Wpzf4DOrvcWWjb1OgLCAK/pwOqgeVWhzb/+6qIhw2N4ae+btvEyAs7IIGYlXN7IGtu+SXUCquiU4sUHdbDxN1A5qzxQtEcNf48+O5J4rvnOQLLEcL9N4YEyoxgzWb2xMG5r7rndZ83glrzlX8r/7nN4smOP77TmQ2df1dunHn1SRf8qLBHa2d5l5CPMNBlSnwH5meaVbAnc23tQy2eN4ABvQST65vVEvr5M+j86I21Xowup4OKbfXbLLjPN5iqHbCYy9mzbwlv9CNZGYQIDAQAB"
+        }
+    },
+    "cordova-plugin-admobpro": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-admobpro"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-extension": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-extension"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "org.apache.cordova.dialogs": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.dialogs"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "org.apache.cordova.globalization": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.globalization"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "org.apache.cordova.inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.inappbrowser"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "org.apache.cordova.device": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.device"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "de.appplant.cordova.plugin.email-composer": {
+        "source": {
+            "type": "local",
+            "path": "../cordova-plugin-email-composer"
+        }
+    },
+    "de.appplant.cordova.common.RegisterUserNotificationSettings": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/katzer/cordova-common-RegisterUserNotificationSettings",
+            "subdir": "."
+        }
+    },
+    "de.appplant.cordova.plugin.badge": {
+        "source": {
+            "type": "registry",
+            "id": "de.appplant.cordova.plugin.badge"
+        }
+    },
+    "de.appplant.cordova.plugin.hidden-statusbar-overlay": {
+        "source": {
+            "type": "registry",
+            "id": "de.appplant.cordova.plugin.hidden-statusbar-overlay"
+        }
+    },
+    "nl.x-services.plugins.toast": {
+        "source": {
+            "type": "registry",
+            "id": "nl.x-services.plugins.toast"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.pushandplay.cordova.apprate": {
+        "source": {
+            "type": "registry",
+            "id": "org.pushandplay.cordova.apprate"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

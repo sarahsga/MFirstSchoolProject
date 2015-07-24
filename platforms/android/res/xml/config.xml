@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.bigedev.cgtipster" version="3.1" versionCode="2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="InAppBillingPlugin">
+        <param name="android-package" value="com.smartmobilesoftware.inappbilling.InAppBillingPlugin" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="android-package" value="com.ionic.keyboard.IonicKeyboard" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="AdMob">
+        <param name="android-package" value="com.rjfun.cordova.admob.AdMobPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
+    <feature name="Globalization">
+        <param name="android-package" value="org.apache.cordova.globalization.Globalization" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="AppRate">
+        <param name="android-package" value="org.pushandplay.cordova.apprate.AppRate" />
+    </feature>
+    <icon density="mdpi" src="resources/android/icon/icon-mdpi.png" />
+    <icon density="hdpi" src="resources/android/icon/icon-hdpi.png" />
+    <icon density="xhdpi" src="resources/android/icon/icon-xhdpi.png" />
+    <icon density="xxhdpi" src="resources/android/icon/icon-xxhdpi.png" />
+    <icon density="xxxhdpi" src="resources/android/icon/icon-xxxhdpi.png" />
+    <icon density="ldpi" src="resources/android/icon/icon-ldpi.png" />
+    <splash density="land-mdpi" src="resources/android/splash/splash320land.png" />
+    <splash density="land-hdpi" src="resources/android/splash/splash480land.png" />
+    <splash density="land-xhdpi" src="resources/android/splash/splash600land.png" />
+    <splash density="land-xxhdpi" src="resources/android/splash/splash720land.png" />
+    <splash density="land-xxxhdpi" src="resources/android/splash/splash1080land.png" />
+    <splash density="port-mdpi" src="resources/android/splash/splash.png" />
+    <splash density="port-hdpi" src="resources/android/splash/splash320.png" />
+    <splash density="port-xhdpi" src="resources/android/splash/splash480.png" />
+    <splash density="port-xxhdpi" src="resources/android/splash/splash600.png" />
+    <splash density="port-xxxhdpi" src="resources/android/splash/splash720.png" />
+    <name>CGTipster</name>
+    <description>
+        The Most Accurate Sports Tipster
+    </description>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">
+      Ionic Framework Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="5000" />
+</widget>

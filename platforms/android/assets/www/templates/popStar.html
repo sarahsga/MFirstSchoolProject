@@ -1,0 +1,13 @@
+<ul class="list popUpList">
+    <a class="item" ng-click="closePopup('4 Star')"
+       ng-class="{'menu-active': urlArgs.star == '4 Star'}">4 Star
+        <span class="badge badge-assertive">{{badges[badgeArray[0]]}}</span>
+    </a>
+
+    <a class="item" ng-click="closePopup('5 Star')"
+       ng-class="{'menu-active': urlArgs.star == '5 Star'}">5 Star &nbsp;
+        <i class="icon ion-android-lock" ng-show="purchase['5startips'].value == false"></i>
+        <span class="badge badge-assertive">{{badges[badgeArray[1]]}}</span>
+    </a>
+
+</ul>

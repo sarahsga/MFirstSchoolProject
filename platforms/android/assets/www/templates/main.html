@@ -1,0 +1,177 @@
+<div ng-if="sideMenuOptions['Choose League'] != true && chooseLeagueStatsBool == false">
+    <ion-side-menus>
+        <ion-side-menu-content edge-drag-threshold="true"
+                               drag-content="true">
+            <ion-header-bar class="bar nav-title-slide-ios7 topHeader" style="border-bottom: 0px">
+                <div class="buttons">
+                    <button menu-toggle="left" class="button button-icon icon ion-navicon"
+                            style="color: #FE7C67;"></button>
+                </div>
+                <h1 class="title">
+                    <span ng-repeat="(key,value) in sideMenuOptions | TitleFilter">{{key}}</span>
+                </h1>
+                <div class="buttons" >
+                    <button class="button button-icon icon ion-android-share-alt"
+                            ng-click="shareMessage()" style="color: #FE7C67;"></button>
+                </div>
+            </ion-header-bar>
+
+            <my-side-menu-content></my-side-menu-content>
+
+            <ion-footer-bar class="newsFeed-horizontal-scroll">
+                <marquee behavior="scroll" direction="left" scrollamount="3">
+                    {{newsFeed}}
+                </marquee>
+            </ion-footer-bar>
+        </ion-side-menu-content>
+
+        <ion-side-menu side="left" expose-aside-when="large" class="sideMenu">
+            <ion-content>
+                <div class="list">
+
+                    <div class="item item-divider side-menu-divider">
+                        Sports
+                    </div>
+
+                    <a class="item my-menu-list-item" ng-click="changeMenu('Football Tips'); getJson();"
+                       ng-class="{'menu-active': urlArgs.first == 'Football Tips'}">
+                        <img src="css/icons/ios-football.svg" class="my-img-icon">
+                        Football Tips&nbsp;&nbsp;
+                        <span class="badge badge-assertive">{{badges.FootballTips}}</span>
+                    </a>
+
+                    <a class="item my-menu-list-item" ng-click="checkPurchase('Horse Racing Tips');"
+                       ng-class="{'menu-active': urlArgs.first == 'Horse Racing Tips'}">
+                        <img src="css/icons/flag.svg" class="my-img-icon">
+                        Horse Racing Tips&nbsp;
+                        <i class="icon ion-android-lock my-icon" ng-if="purchase['Horse Racing Tips'].value == false"></i>
+                        <span class="badge badge-assertive">{{badges.HorsesTips}}</span>
+                    </a>
+
+                    <a class="item my-menu-list-item" ng-click="checkPurchase('NFL Tips');"
+                       ng-class="{'menu-active': urlArgs.first == 'NFL Tips'}">
+                        <img src="css/icons/ios-americanfootball.svg" class="my-img-icon">
+                        NFL Tips&nbsp;&nbsp;
+                        <i class="icon ion-android-lock my-icon" ng-if="purchase['NFL Tips'].value == false"></i>
+                        <span class="badge badge-assertive">{{badges.NFLTips}}</span>
+                    </a>
+
+                    <a class="item my-menu-list-item" ng-click="checkPurchase('Boxing Tips');"
+                       ng-class="{'menu-active': urlArgs.first == 'Boxing Tips'}">
+                        <img src="css/icons/boxing.svg" class="my-img-icon">
+                        Boxing Tips&nbsp;&nbsp;
+                        <i class="icon ion-android-lock my-icon" ng-if="purchase['Boxing Tips'].value == false"></i>
+                        <span class="badge badge-assertive">{{badges.Boxing}}</span>
+
+                    </a>
+
+                    <a class="item my-menu-list-item" ng-click="checkPurchase('Cricket Tips');"
+                       ng-class="{'menu-active': urlArgs.first == 'Cricket Tips'}">
+                        <img src="css/icons/cricket.svg" class="my-img-icon">
+                        Cricket Tips&nbsp;&nbsp;
+                        <i class="icon ion-android-lock my-icon" ng-if="purchase['Cricket Tips'].value == false"></i>
+                        <span class="badge badge-assertive">{{badges.Cricket}}</span>
+                    </a>
+
+                    <a class="item my-menu-list-item" ng-click="checkPurchase('Tennis Tips');"
+                       ng-class="{'menu-active': urlArgs.first == 'Tennis Tips'}">
+                        <img src="css/icons/tennis.svg" class="my-img-icon">
+                        Tennis Tips&nbsp;&nbsp;
+                        <i class="icon ion-android-lock my-icon" ng-if="purchase['Tennis Tips'].value == false"></i>
+                        <span class="badge badge-assertive">{{badges.Tennis}}</span>
+                    </a>
+
+                    <div class="item item-divider side-menu-divider" >
+                        Tables
+                    </div>
+
+                    <a class="item item-icon-left my-menu-list-item" ng-click="changeMenu('Stats'); getStats('Main Table');"
+                       ng-class="{'menu-active': urlArgs.first == 'Stats'}">
+                        <i class="icon ion-stats-bars"></i>
+                        Stats
+                    </a>
+
+                    <a class="item my-menu-list-item my-menu-list-item" ng-click="changeMenu('Accuracy');getJson();"
+                       ng-class="{'menu-active': urlArgs.first == 'Accuracy'}">
+                        <img src="css/icons/target.svg" class="my-img-icon">
+                        Accuracy
+                    </a>
+
+                    <div class="item item-divider side-menu-divider">
+                        Customise
+                    </div>
+
+                    <!--<a class="item" ng-click="changeMenu('Settings');"-->
+                    <!--ng-class="{'menu-active': urlArgs.first == 'Settings'}">-->
+                    <!--Settings-->
+                    <!--</a>-->
+
+                    <a class="item item-icon-left my-menu-list-item" ng-click="changeMenu('Choose League');"
+                       ng-class="{'menu-active': urlArgs.first == 'Choose League'}">
+                        <i class="icon ion-tshirt"></i>
+                        Choose League
+                    </a>
+
+                    <!--<a class="item item-icon-left" ng-click="notifyTap()"-->
+                    <!--ng-class="{'menu-active': urlArgs.first == 'Choose League'}">-->
+                    <!--<i class="icon ion-ios-bell"></i>-->
+                    <!--Notify-->
+                    <!--</a>-->
+
+                    <a class="item item-icon-left  my-menu-list-item" ng-click="checkPurchase('entireapp');"
+                       ng-if="purchase.entireapp.value == false">
+                        <i class="icon ion-ios-unlocked"></i>
+                        Unlock Entire App
+                    </a>
+
+                    <a class="item my-menu-list-item" ng-click="rateUs(); schedule()"
+                       ng-class="{'menu-active': urlArgs.first == 'Rate Us'}">
+                        Rate Us
+                    </a>
+
+
+                    <!--<a class="item" ng-click="changeMenu('Test');"-->
+                    <!--ng-class="{'menu-active': urlArgs.first == 'Test'}">-->
+                    <!--Test-->
+                    <!--</a>-->
+                </div>
+            </ion-content>
+        </ion-side-menu>
+
+    </ion-side-menus>
+</div>
+
+<!--<div ng-if="sideMenuOptions['Settings'] == true">-->
+<!--<ion-header-bar class="bar topHeader">-->
+<!--<button class="button button-icon icon ion-android-arrow-back elements"-->
+<!--ng-click="goBackFromSettings()"></button>-->
+<!--<h1 class="title elements">Settings-->
+<!--</h1>-->
+<!--</ion-header-bar>-->
+<!--<ion-content></ion-content>-->
+
+<!--</div>-->
+
+<div ng-if="sideMenuOptions['Choose League'] == true && chooseLeagueStatsBool == false">
+    <ion-header-bar class="bar topHeader">
+        <button class="button button-icon icon ion-android-arrow-back elements"
+                ng-click="goBackFromChooseLeague()"></button>
+        <h1 class="title elements">Choose League
+        </h1>
+    </ion-header-bar>
+    <choose-league></choose-league>
+</div>
+
+
+<div ng-if="chooseLeagueStatsBool == true">
+    <ion-header-bar class="bar topHeader">
+        <button class="button button-icon icon ion-android-arrow-back elements"
+                ng-click="chooseLeagueStatsFunc()"></button>
+        <h1 class="title elements">Choose League
+        </h1>
+    </ion-header-bar>
+    <choose-league-stats></choose-league-stats>
+</div>
+
+<!--<embed src="appbeep.wav" autostart="false" width="0" height="0" id="sound1"-->
+<!--enablejavascript="true">-->

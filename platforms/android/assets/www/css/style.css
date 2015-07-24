@@ -1,0 +1,334 @@
+.tips {
+    background-color: #C9EAD2;
+}
+
+.checkbox-assertive input:checked:before, .checkbox-assertive input:checked + .checkbox-icon:before {
+    background: #2A3A49;
+    border-color: #2A3A49;
+}
+
+.checkbox-assertive input:before, .checkbox-assertive .checkbox-icon:before {
+    border-color: #2A3A49;
+}
+
+.no-result-statement {
+    color:#2A3A49 !important;
+    font-weight: normal !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 10px !important;
+    text-align: center !important;
+}
+.option {
+    padding: 2px 3px 2px 3px !important;
+    border-left: 0 none !important;
+    border: 2px solid #7B96B3;
+    font-size: 12px !important;
+    line-height: 13px !important;
+    vertical-align: middle !important;
+    height: 35px;
+    min-width: 14% !important;
+    width: 14% !important;
+    float:left;
+}
+
+.option-star {
+    /*margin-top: 0px !important;*/
+    border: 2px solid #FAFAFA !important;
+    height: 45px !important;
+    padding-top: 0px ;
+    padding-bottom: 0px ;
+    border-radius: 10px !important;
+    bottom: 15px !important;
+}
+
+.option-star-active {
+    background-color: #FAFAFA !important;
+    color: #2A3A49 !important;
+
+}
+
+.option-star-passive {
+    background-color: #2A3A49 !important;
+    color: #ffffff !important;
+
+}
+
+.option-active {
+    background-color: #FE7C67;
+    color: white;
+}
+
+.option-passive {
+    background-color: #2A3A49;
+    color: white;
+
+}
+
+.tips-padding {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.league-options {
+    background-color: #FAFAFA !important;
+    color: #2A3A49 !important;
+}
+
+select
+{
+    border: 2px solid #7B96B3;
+    background-color: #2A3A49;
+    color: white;
+}
+
+.my-select-button {
+    border: 2px solid #2A3A49  !important;
+    background-color: #FE7C67 !important;
+    color: white !important;
+}
+
+
+.my-league-stat-select {
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+    min-height: 40px !important;
+    height: 40px !important;
+    background-color: #7B96B3 !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.tabs-striped .tabs {
+    border-bottom: 1px solid #2A3A49 !important;
+}
+
+.tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated {
+    margin-top: 1px;
+    border-width: 0px 0px 5px 0px !important;
+    border-style: solid;
+}
+
+/*.my-center-align {*/
+/*text-align: left;*/
+/*width: 30vw;*/
+/*height: 30px;*/
+/*line-height: 30px !important;*/
+/*}*/
+
+.button {
+    border-radius: 0px;
+}
+.button:hover{
+    color: white;
+}
+.button:active{
+    color: white;
+    background-color: #2A3A49;
+    border: 2px solid #2A3A49;
+}
+
+.topHeader {
+    background-color: #2A3A49 !important;
+    color: #ffffff !important;
+}
+
+.bottomHeader
+{
+    top: 93px !important;
+    padding-top: 2px !important;
+    height: 70px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.bottomHeader-league
+{
+    top: 43px !important;
+    height: 40px !important;
+    padding-top: 2px !important;
+}
+
+.bottomHeader-league-selectAll {
+    top: 43px !important;
+    height: 70px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.bottomHeader2
+{
+    top: 83px !important;
+    padding-top: 2px !important;
+    height: 50px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.bottomHeader3
+{
+    top: 133px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-top: 0px !important;
+    height: 30px !important;
+    /*padding-top: 10px !important;*/
+    padding-bottom: 0px !important;
+    color: #FE7C67 !important;
+    padding: 15px 15px 0px 15px !important;
+}
+
+.title
+{
+    color: #ffffff !important;
+    font-size: 22px !important;
+}
+/*.mainContent*/
+/*{*/
+/*background-color: #7B96B3 !important;*/
+/*}*/
+
+ion-content {
+    background-color: #FAFAFA !important;
+    color: #2A3A49 !important;
+}
+
+
+.tab-item
+{
+    color: #ffffff !important;
+    opacity: 1;
+}
+
+.tab-item.active
+{
+    border-color: #FE7C67 !important;
+    color: #ffffff !important;
+}
+
+
+.sideMenu
+{
+    background-color: #7B96B3 !important;
+}
+.item
+{
+    background-color: #7B96B3;
+    /*color: white !important;*/
+    border: none;
+    -webkit-tap-highlight-color: #2A3A49 !important;
+}
+
+.item-win {
+    color: white !important;
+}
+
+/*.item:active, .item:hover, .button:active, .button:hover {*/
+/*background-color: transparent !important;*/
+/*}*/
+
+.icon
+{
+    color: white !important;
+}
+
+.popup-head
+{
+    padding: 0px !important;
+    border-bottom: 0px !important;
+}
+
+.popup-body {
+    padding: 1px !important;
+}
+
+.menu-active {
+    background-color: #FE7C67 !important;
+}
+
+.popUpList > .item {
+    border: 1px solid white !important;
+}
+.newsFeed
+{
+    border-bottom: 1px solid rgb(172, 172, 172) !important;
+    padding: 10px; !important;
+    margin-top: 0px !important;
+    padding-top: 10px !important;
+}
+
+.my-icon {
+    font-size: 20px !important;
+}
+
+.my-img-icon {
+    max-height: 54px!important;
+    height:32px !important;
+    max-width: 32px !important;
+    position: absolute !important;
+    top: 0px !important;
+    right:auto !important;
+    left:11px !important;
+    font-size: 32px !important;
+    align-items: center !important;
+    line-height: 54px !important;
+    vertical-align: middle !important;
+}
+
+img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+
+.my-menu-list-item {
+    padding: 16px 54px 16px 54px !important;
+    color: white !important;
+}
+
+.newsFeed-horizontal-scroll {
+    background-color: #2A3A49 !important;
+    color: #FE7C67 !important;
+    line-height: 34px;
+}
+
+.side-menu-divider {
+    background-color: #5980A4 !important ;
+    color: white !important;
+}
+
+/*.badge.badge-assertive {*/
+/*background-color: #7B96B3;*/
+/*color: #fff;*/
+/*}*/
+
+.my-menu-list-item:active, .my-menu-list-item:hover {
+    background-color: #7B96B3;
+}
+
+/*
+.mySelect {
+    background-color: #7994B1;
+}
+
+.mySelect .elements {
+    color: #2A3A49;
+}
+
+.myTabs {
+    background-color: #F3BD75 !important;
+}
+
+.myTabs a {
+    color: #2A3A49;
+}
+
+.listEven {
+    background-color: #E3D5EA;
+}
+
+.listOdd {
+    background-color: #C1C7CE;
+}*/

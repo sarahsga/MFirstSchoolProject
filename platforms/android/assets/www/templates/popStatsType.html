@@ -1,0 +1,21 @@
+<ul class="list popUpList">
+    <a class="item" ng-click="closePopup('Main Table', pop); getStats()"
+       ng-class="{'menu-active': urlArgs.statsType == 'Main Table'}">Main Table
+    </a>
+
+    <a class="item" ng-click="closePopup('Home Table', pop); getStats()"
+       ng-class="{'menu-active': urlArgs.statsType == 'Home Table'}">Home Table
+    </a>
+
+    <a class="item" ng-click="closePopup('Last 5', pop); getStats()"
+       ng-class="{'menu-active': urlArgs.statsType == 'Last 5'}">Last 5
+    </a>
+
+    <a class="item" ng-click="closePopup('Last 5 Home', pop); getStats()"
+       ng-class="{'menu-active': urlArgs.statsType == 'Last 5 Home'}">Last 5 Home
+    </a>
+
+    <a class="item" ng-click="closePopup('Last 5 Away', pop); getStats()"
+       ng-class="{'menu-active': urlArgs.statsType == 'Last 5 Away'}">Last 5 Away
+    </a>
+</ul>
