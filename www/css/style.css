@@ -11,6 +11,14 @@
     border-color: #2A3A49;
 }
 
+.no-result-statement {
+    color:#2A3A49 !important;
+    font-weight: normal !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 10px !important;
+    text-align: center !important;
+}
 .option {
     padding: 2px 3px 2px 3px !important;
     border-left: 0 none !important;
@@ -27,11 +35,11 @@
 .option-star {
     /*margin-top: 0px !important;*/
     border: 2px solid #FAFAFA !important;
-    height: 40px !important;
+    height: 45px !important;
     padding-top: 0px ;
     padding-bottom: 0px ;
     border-radius: 10px !important;
-    bottom:15px !important;
+    bottom: 15px !important;
 }
 
 .option-star-active {
@@ -103,10 +111,10 @@ select
 }
 
 /*.my-center-align {*/
-    /*text-align: left;*/
-    /*width: 30vw;*/
-    /*height: 30px;*/
-    /*line-height: 30px !important;*/
+/*text-align: left;*/
+/*width: 30vw;*/
+/*height: 30px;*/
+/*line-height: 30px !important;*/
 /*}*/
 
 .button {
@@ -178,7 +186,7 @@ select
 }
 /*.mainContent*/
 /*{*/
-    /*background-color: #7B96B3 !important;*/
+/*background-color: #7B96B3 !important;*/
 /*}*/
 
 ion-content {
@@ -195,7 +203,7 @@ ion-content {
 
 .tab-item.active
 {
-    border-color: #7B96B3 !important;
+    border-color: #FE7C67 !important;
     color: #ffffff !important;
 }
 
@@ -217,7 +225,7 @@ ion-content {
 }
 
 /*.item:active, .item:hover, .button:active, .button:hover {*/
-    /*background-color: transparent !important;*/
+/*background-color: transparent !important;*/
 /*}*/
 
 .icon
@@ -244,7 +252,7 @@ ion-content {
 }
 .newsFeed
 {
-   border-bottom: 1px solid rgb(172, 172, 172) !important;
+    border-bottom: 1px solid rgb(172, 172, 172) !important;
     padding: 10px; !important;
     margin-top: 0px !important;
     padding-top: 10px !important;
@@ -292,8 +300,8 @@ img {
 }
 
 /*.badge.badge-assertive {*/
-    /*background-color: #7B96B3;*/
-    /*color: #fff;*/
+/*background-color: #7B96B3;*/
+/*color: #fff;*/
 /*}*/
 
 .my-menu-list-item:active, .my-menu-list-item:hover {
